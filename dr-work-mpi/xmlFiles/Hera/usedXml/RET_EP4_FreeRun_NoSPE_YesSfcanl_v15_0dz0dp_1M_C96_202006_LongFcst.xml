@@ -1,0 +1,361 @@
+<?xml version="1.0"?>
+<!DOCTYPE workflow
+[
+	<!--
+	PROGRAM
+		Main workflow manager for Global Forecast System
+
+	NOTES:
+		This workflow was automatically generated at 2023-01-27 18:29:13.198072
+	-->
+	<!--
+	IMPORTANT: 
+	(1) Variable of DUST emissions to be changed
+	(2) Processed sfcanl missing some varibales that crash the model run
+	    For now, SFCANL_RST="NO" to use sfc_data from past cycle
+	-->
+	<!-- Experiment directory setup -->
+	<!ENTITY PSLOT "RET_EP4_FreeRun_NoSPE_YesSfcanl_v15_0dz0dp_1M_C96_202006">
+	<!ENTITY HOMEgfs "/home/Bo.Huang/JEDI-2020/UFS-Aerosols_RETcyc/UFS-Aerosols-EP4_JEDI-AeroDA-Reanl/"> 
+	<!--
+	<!ENTITY HOMEgfs "/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/MISC/UFS-Workflow/20231130/UFS-Aerosols-EP4_JEDI-AeroDA-Reanl">
+	-->
+	<!ENTITY TOPRUNDIR "/scratch2/BMC/gsd-fv3-dev/bhuang/expRuns/UFS-Aerosols_RETcyc/">
+	<!ENTITY EXPDIR "&HOMEgfs;/dr-work-mpi/">
+	<!ENTITY ROTDIR "&TOPRUNDIR;/&PSLOT;/dr-data-longfcst/">
+	<!ENTITY TASKRC "&EXPDIR;/TaskRecords/cmplCycle_&PSLOT;_longfcst.rc">
+
+	<!-- Directories for driving the workflow -->
+	<!ENTITY HOMEjedi "/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expCodes/fv3-bundle/V20230312/build/">
+	<!ENTITY JOBS_DIR "&HOMEgfs;/jobs/rocoto">
+	<!ENTITY DATAROOTTOP "/scratch2/BMC/gsd-fv3-dev/NCEPDEV/stmp3/Bo.Huang/RUNDIRS/&PSLOT;/">
+	<!ENTITY COMROOT "/scratch1/NCEPDEV/global/glopara/com/">
+	<!ENTITY DMPDIR   "/scratch1/NCEPDEV/global/glopara/dump">
+
+	<!-- Experiment parameter setup -->
+	<!ENTITY SDATE "202006080000">
+	<!ENTITY EDATE "202006300000">
+	<!ENTITY INTERVAL "24:00:00">
+	<!ENTITY CYCINTHR "06">
+	<!ENTITY CDUMP_CNTL "gdas">
+	<!ENTITY RUN_CNTL "gdas">
+	<!ENTITY CDUMP_ENKF "enkfgdas">
+	<!ENTITY RUN_ENKF "enkfgdas">
+	<!ENTITY RUN_ENVIR "emc">
+	<!ENTITY NMEM_ENKF     "40">
+	<!ENTITY NMEM_EFCSGRP_SLOW     "5">
+	<!ENTITY NMEM_EFCSGRP_FAST     "10">
+	<!ENTITY AERODA "NO">
+	<!ENTITY RECENTER_ENKF_AERO "NO">
+	<!ENTITY ENSRUN "NO">
+	<!ENTITY ENSDIAG "NO">
+	<!ENTITY SFCANL_RST "YES">
+	<!ENTITY ZERO_METINCS "'delp_inc','delz_inc','clwmr_inc','icmr_inc','liq_wat_inc'">
+	<!ENTITY FHMIN "6">
+	<!ENTITY FHOUT "6">
+	<!ENTITY FHMAX "120">
+	<!ENTITY TARALLRST "YES">
+	<!ENTITY LAYOUT_X "6">
+	<!ENTITY LAYOUT_Y "8">
+
+	<!-- GDAS met setup-->
+	<!ENTITY GFSVERSION "v15">
+	<!ENTITY METDIR_NRT  "&ROTDIR;/RetrieveGDAS/">
+	<!ENTITY CASE     "C96">
+	<!ENTITY CASE_CNTL     "C96">
+	<!ENTITY CASE_ENKF     "C96">
+	<!ENTITY NMEMSGRPS "01-40">
+	<!ENTITY CHGRESHPSSDIR "/BMC/fim/5year/MAPP_2018/bhuang/BackupGdas/chgres-&GFSVERSION;/">
+	<!ENTITY METRETDIR "&ROTDIR;/RetrieveGDAS/">
+	<!ENTITY METRECORD "/home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/misc/GDAS/CHGRESGDAS/&GFSVERSION;/record.chgres_hpss_htar_success_&GFSVERSION;">
+	<!ENTITY MISSGDASRECORD "/home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/misc/GDAS/CHGRESGDAS/&GFSVERSION;/record.chgres_hpss_htar_allmissing_&GFSVERSION;">
+
+	<!-- Obs setup-->
+	<!ENTITY AODTYPE     "NOAA_VIIRS">
+	<!ENTITY AODSAT     "npp">
+	<!ENTITY CASE_OBS     "C192">
+	<!ENTITY OBSDIR_NRT  "/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/NRTdata_UFS-Aerosols/AODObs/&AODTYPE;/&CASE_OBS;">
+	<!ENTITY MISS_NOAA_NPP "&EXPDIR;/TaskRecords/record.miss_NOAAVIIRS_NPP">
+	<!ENTITY MISS_NOAA_J01 "&EXPDIR;/TaskRecords/record.miss_NOAAVIIRS_J01">
+
+	<!-- Aerosol Emission directory -->
+	<!ENTITY EMISDIR_NRT "/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/NRTdata_UFS-Aerosols/gocart_emissions/">
+	<!--
+	<!ENTITY EMISDIR_NRT "/scratch1/NCEPDEV/global/glopara/data/gocart_emissions">
+	-->
+	<!ENTITY AEROEMIS_STOCH_CNTL "NO">
+	<!ENTITY AEROEMIS_STOCH_ENKF "NO">
+	<!ENTITY AEROEMIS_EXTSUF "_stochAeroEmis">
+	<!ENTITY AEROEMIS_STOCH_INIT ".T.">
+	<!ENTITY AEROEMIS_STOCH_INIT_RST00Z ".T.">
+	<!--
+	<!ENTITY AEROEMIS_SRCS "GBBEPx CEDS MEGAN DUSTPARM DUSTSRC">
+	-->
+	<!ENTITY AEROEMIS_SRCS "GBBEPx CEDS MEGAN DUSTPARM">
+	<!ENTITY AEROEMIS_SPPT "1.0">
+	<!ENTITY AEROEMIS_SPPT_TAU "6" >
+	<!ENTITY AEROEMIS_SPPT_LSCALE "500000">
+
+	<!ENTITY GBBDIR_NRT     "&EMISDIR_NRT;/nexus/GBBEPx_v004/">
+	<!ENTITY GBBVER "gbbepx_v004">
+
+        <!ENTITY CEDSVER "2019">
+	<!ENTITY CEDSDIR_NRT     "&EMISDIR_NRT;/nexus/CEDS/v&CEDSVER;/">
+
+        <!ENTITY MEGANVER "2019-10">
+	<!ENTITY MEGANDIR_NRT     "&EMISDIR_NRT;/nexus/MEGAN_OFFLINE_BVOC/v&MEGANVER;/">
+
+	<!ENTITY DUSTDIR_NRT "&EMISDIR_NRT;/nexus/FENGSHA-HBO/">
+
+	<!-- Archive directory setup -->
+	<!ENTITY ARCHHPSSDIR "/BMC/fim/5year/MAPP_2018/bhuang/UFS-Aerosols-expRuns/UFS-Aerosols_RETcyc/">
+	<!ENTITY ARCHRETHR "12">
+	<!ENTITY NMEM_ENSGRP_ARCH "10">
+
+	<!-- Machine related entities -->
+	<!ENTITY PARTITION    "hera">
+	<!ENTITY ACCOUNT    "chem-var">
+	<!ENTITY QUEUE      "batch">
+	<!ENTITY QUEUE_DEB      "debug">
+	<!ENTITY SCHEDULER  "slurm">
+
+	<!-- ROCOTO task control -->
+	<!ENTITY MAXTRIES "3">
+	<!ENTITY CYCLETHROTTLE "1">
+	<!ENTITY TASKTHROTTLE  "10">
+
+	<!-- ROCOTO parameters that control workflow -->
+	<!ENTITY PARTITION_HPSS    "service">
+	<!ENTITY ACCOUNT_HPSS    "chem-var">
+	<!ENTITY QUEUE_HPSS      "batch">
+	<!ENTITY WALLTIME_HPSS  "07:59:00">
+	<!ENTITY RESOURCES_HPSS "1:ppn=1:tpp=1">
+	<!ENTITY MEMORIES_HPSS "80000M">
+	<!ENTITY NATIVE_HPSS    "--export=NONE">
+
+	<!ENTITY QUEUE_SIGP_GDAS     "&QUEUE;">
+	<!ENTITY WALLTIME_SIGP_GDAS  "00:29:00">
+	<!ENTITY RESOURCES_SIGP_GDAS "2:ppn=21:tpp=1">
+	<!ENTITY MEMORIES_SIGP_GDAS "80000M">
+	<!ENTITY NATIVE_SIGP_GDAS    "--export=NONE">
+
+	<!ENTITY QUEUE_FCST_GDAS     "&QUEUE;">
+	<!ENTITY WALLTIME_FCST_GDAS  "00:59:00">
+	<!ENTITY RESOURCES_FCST_GDAS "8:ppn=40:tpp=1">
+	<!ENTITY NATIVE_FCST_GDAS    "--export=NONE">
+
+]>
+
+<workflow realtime="F" scheduler="slurm" cyclethrottle="&CYCLETHROTTLE;" taskthrottle="&TASKTHROTTLE;">
+
+	<log verbosity="10"><cyclestr>&ROTDIR;/logs/xmlLog/@Y@m@d@H.log</cyclestr></log>
+
+	<!-- Define the cycles -->
+	<cycledef group="gdas_half">&SDATE; &EDATE; &INTERVAL;</cycledef>
+	<cycledef group="gdas">&SDATE; &EDATE; &INTERVAL;</cycledef>
+
+<task name="gdasretcntlanl" cycledefs="gdas" maxtries="&MAXTRIES;">
+
+	<command>&JOBS_DIR;/retrieve_cntlanl_longfcst.sh</command>
+
+	<jobname><cyclestr>&PSLOT;_retcntlanl_@H</cyclestr></jobname>
+	<account>&ACCOUNT_HPSS;</account>
+	<queue>&QUEUE_HPSS;</queue>
+	<partition>&PARTITION_HPSS;</partition>
+	<walltime>&WALLTIME_HPSS;</walltime>
+	<nodes>&RESOURCES_HPSS;</nodes>
+	<!--
+	<memory>&MEMORIES_HPSS;</memory>
+	-->
+	<native>&NATIVE_HPSS;</native>
+
+	<join><cyclestr>&ROTDIR;/logs/@Y@m@d@H/retcntlanl.log</cyclestr></join>
+
+	<envar><name>PSLOT</name><value>&PSLOT;</value></envar>
+	<envar><name>CDATE</name><value><cyclestr>@Y@m@d@H</cyclestr></value></envar>
+	<envar><name>ROTDIR</name><value>&ROTDIR;</value></envar>
+	<envar><name>ARCHHPSSDIR</name><value>&ARCHHPSSDIR;</value></envar>
+	<envar><name>SFCANL_RST</name><value>&SFCANL_RST;</value></envar>
+
+	<dependency>
+		<and>
+			<sh shell="/bin/bash"><cyclestr>&JOBS_DIR;/checkdep_aerolongfcst_ic.sh</cyclestr></sh>
+			<or>
+				<taskdep task="gdasarch" cycle_offset="-&INTERVAL;"/>
+				<not><cycleexistdep cycle_offset="-&INTERVAL;"/></not>
+			</or>
+		</and>
+	</dependency>
+
+</task>
+
+<!--
+<task name="pertemis" cycledefs="gdas_half,gdas" maxtries="&MAXTRIES;">
+
+	<command>&JOBS_DIR;/pertaeroemis_mpi.sh</command>
+
+	<jobname><cyclestr>&PSLOT;_pertemis_@H</cyclestr></jobname>
+	<account>&ACCOUNT;</account>
+	<queue>&QUEUE_DEB;</queue>
+	<partition>&PARTITION;</partition>
+	<walltime>&WALLTIME_SIGP_GDAS;</walltime>
+	<nodes>&RESOURCES_SIGP_GDAS;</nodes>
+	<native>&NATIVE_SIGP_GDAS;</native>
+
+	<join><cyclestr>&ROTDIR;/logs/@Y@m@d@H/pertemis_mpi.log</cyclestr></join>
+
+	<envar><name>CASE</name><value>&CASE_CNTL;</value></envar>
+	<envar><name>NMEM_ENKF</name><value>&NMEM_ENKF;</value></envar>
+	<envar><name>NMEM_EFCSGRP</name><value>&NMEM_EFCSGRP_SLOW;</value></envar>
+	<envar><name>ENSGRP</name><value>01</value></envar>
+	<envar><name>PSLOT</name><value>&PSLOT;</value></envar>
+	<envar><name>ROTDIR</name><value>&ROTDIR;</value></envar>
+	<envar><name>HOMEgfs</name><value>&HOMEgfs;</value></envar>
+	<envar><name>EXPDIR</name><value>&EXPDIR;</value></envar>
+	<envar><name>CDUMP</name><value>&CDUMP_CNTL;</value></envar>
+	<envar><name>COMROOT</name><value>&COMROOT;</value></envar>
+	<envar><name>DATAROOT</name><value><cyclestr>&DATAROOTTOP;/@Y@m@d@H/&CDUMP_CNTL;</cyclestr></value></envar>
+	<envar><name>CDATE</name><value><cyclestr>@Y@m@d@H</cyclestr></value></envar>
+	<envar><name>PDY</name><value><cyclestr>@Y@m@d</cyclestr></value></envar>
+	<envar><name>cyc</name><value><cyclestr>@H</cyclestr></value></envar>
+	<envar><name>EMISDIR_NRT</name><value>&EMISDIR_NRT;</value></envar>
+	<envar><name>GBBDIR_NRT</name><value>&GBBDIR_NRT;</value></envar>
+	<envar><name>GBBVER</name><value>&GBBVER;</value></envar>
+	<envar><name>CEDSDIR_NRT</name><value>&CEDSDIR_NRT;</value></envar>
+	<envar><name>MEGANDIR_NRT</name><value>&MEGANDIR_NRT;</value></envar>
+	<envar><name>DUSTDIR_NRT</name><value>&DUSTDIR_NRT;</value></envar>
+	<envar><name>CEDSVER</name><value>&CEDSVER;</value></envar>
+	<envar><name>AEROEMIS_STOCH_CNTL</name><value>&AEROEMIS_STOCH_CNTL;</value></envar>
+	<envar><name>AEROEMIS_STOCH_ENKF</name><value>&AEROEMIS_STOCH_ENKF;</value></envar>
+	<envar><name>AEROEMIS_EXTSUF</name><value>&AEROEMIS_EXTSUF;</value></envar>
+	<envar><name>AEROEMIS_STOCH_INIT</name><value>&AEROEMIS_STOCH_INIT;</value></envar>
+	<envar><name>AEROEMIS_STOCH_INIT_RST00Z</name><value>&AEROEMIS_STOCH_INIT_RST00Z;</value></envar>
+	<envar><name>AEROEMIS_SRCS</name><value>&AEROEMIS_SRCS;</value></envar>
+	<envar><name>AEROEMIS_SPPT</name><value>&AEROEMIS_SPPT;</value></envar>
+	<envar><name>AEROEMIS_SPPT_TAU</name><value>&AEROEMIS_SPPT_TAU;</value></envar>
+	<envar><name>AEROEMIS_SPPT_LSCALE</name><value>&AEROEMIS_SPPT_LSCALE;</value></envar>
+
+	<dependency>
+		<and>
+			<or>
+				<taskdep task="gdasarch" cycle_offset="-06:00:00"/>
+				<not><cycleexistdep cycle_offset="-06:00:00"/></not>
+			</or>
+			<sh shell="/bin/bash"><cyclestr>&JOBS_DIR;/checkdep_aerofcst_emis.sh</cyclestr></sh>
+		</and>
+	</dependency>
+</task>
+-->
+
+<task name="gdasfcst" cycledefs="gdas_half,gdas" maxtries="&MAXTRIES;">
+
+	<command>&JOBS_DIR;/fcst.sh</command>
+
+	<jobname><cyclestr>&PSLOT;_gdasfcst_@H</cyclestr></jobname>
+	<account>&ACCOUNT;</account>
+	<queue>&QUEUE_FCST_GDAS;</queue>
+	<partition>&PARTITION;</partition>
+	<walltime>&WALLTIME_FCST_GDAS;</walltime>
+	<nodes>&RESOURCES_FCST_GDAS;</nodes>
+	<native>&NATIVE_FCST_GDAS;</native>
+
+	<join><cyclestr>&ROTDIR;/logs/@Y@m@d@H/gdasfcst.log</cyclestr></join>
+
+	<envar><name>CASE</name><value>&CASE_CNTL;</value></envar>
+	<envar><name>CASE_CNTL</name><value>&CASE_CNTL;</value></envar>
+	<envar><name>CASE_ENKF</name><value>&CASE_ENKF;</value></envar>
+	<envar><name>AERODA</name><value>&AERODA;</value></envar>
+	<envar><name>ENSRUN</name><value>&ENSRUN;</value></envar>
+	<envar><name>NMEM_ENKF</name><value>&NMEM_ENKF;</value></envar>
+	<envar><name>NMEM_EFCSGRP</name><value>&NMEM_EFCSGRP_SLOW;</value></envar>
+	<envar><name>RECENTER_ENKF_AERO</name><value>&RECENTER_ENKF_AERO;</value></envar>
+	<envar><name>PSLOT</name><value>&PSLOT;</value></envar>
+	<envar><name>ROTDIR</name><value>&ROTDIR;</value></envar>
+	<envar><name>HOMEgfs</name><value>&HOMEgfs;</value></envar>
+	<envar><name>EXPDIR</name><value>&EXPDIR;</value></envar>
+	<envar><name>METDIR_NRT</name><value>&METDIR_NRT;</value></envar>
+	<envar><name>CDUMP</name><value>&CDUMP_CNTL;</value></envar>
+	<envar><name>COMROOT</name><value>&COMROOT;</value></envar>
+	<envar><name>DATAROOT</name><value><cyclestr>&DATAROOTTOP;/@Y@m@d@H/&CDUMP_CNTL;</cyclestr></value></envar>
+	<envar><name>CDATE</name><value><cyclestr>@Y@m@d@H</cyclestr></value></envar>
+	<envar><name>PDY</name><value><cyclestr>@Y@m@d</cyclestr></value></envar>
+	<envar><name>cyc</name><value><cyclestr>@H</cyclestr></value></envar>
+	<envar><name>EMISDIR_NRT</name><value>&EMISDIR_NRT;</value></envar>
+	<envar><name>GBBDIR_NRT</name><value>&GBBDIR_NRT;</value></envar>
+	<envar><name>GBBVER</name><value>&GBBVER;</value></envar>
+	<envar><name>CEDSDIR_NRT</name><value>&CEDSDIR_NRT;</value></envar>
+	<envar><name>MEGANDIR_NRT</name><value>&MEGANDIR_NRT;</value></envar>
+	<envar><name>DUSTDIR_NRT</name><value>&DUSTDIR_NRT;</value></envar>
+	<envar><name>CEDSVER</name><value>&CEDSVER;</value></envar>
+	<envar><name>AEROEMIS_STOCH</name><value>&AEROEMIS_STOCH_CNTL;</value></envar>
+	<envar><name>AEROEMIS_EXTSUF</name><value>&AEROEMIS_EXTSUF;</value></envar>
+	<envar><name>AEROEMIS_STOCH_INIT</name><value>&AEROEMIS_STOCH_INIT;</value></envar>
+	<envar><name>AEROEMIS_STOCH_INIT_RST00Z</name><value>&AEROEMIS_STOCH_INIT_RST00Z;</value></envar>
+	<envar><name>AEROEMIS_SRCS</name><value>&AEROEMIS_SRCS;</value></envar>
+	<envar><name>AEROEMIS_SPPT</name><value>&AEROEMIS_SPPT;</value></envar>
+	<envar><name>AEROEMIS_SPPT_TAU</name><value>&AEROEMIS_SPPT_TAU;</value></envar>
+	<envar><name>AEROEMIS_SPPT_LSCALE</name><value>&AEROEMIS_SPPT_LSCALE;</value></envar>
+	<envar><name>MISSGDASRECORD</name><value>&MISSGDASRECORD;</value></envar>
+	<envar><name>SFCANL_RST</name><value>&SFCANL_RST;</value></envar>
+	<envar><name>GFSVERSION</name><value>&GFSVERSION;</value></envar>
+	<envar><name>ZERO_METINCS</name><value>&ZERO_METINCS;</value></envar>
+	<envar><name>FHMIN</name><value>&FHMIN;</value></envar>
+	<envar><name>FHOUT</name><value>&FHOUT;</value></envar>
+	<envar><name>FHMAX</name><value>&FHMAX;</value></envar>
+	<envar><name>layout_x</name><value>&LAYOUT_X;</value></envar>
+	<envar><name>layout_y</name><value>&LAYOUT_Y;</value></envar>
+
+	<dependency>
+		<and>
+			<taskdep task="gdasretcntlanl"/>
+			<sh shell="/bin/bash"><cyclestr>&JOBS_DIR;/checkdep_aerofcst_emis.sh</cyclestr></sh>
+		</and>
+	</dependency>
+</task>
+
+<task name="gdasarch" cycledefs="gdas_half,gdas" maxtries="&MAXTRIES;" final="true">
+
+	<command>&JOBS_DIR;/arch2hpss_longfcst.sh</command>
+
+	<jobname><cyclestr>&PSLOT;_gdasarch_@H</cyclestr></jobname>
+	<account>&ACCOUNT;</account>
+	<queue>&QUEUE_HPSS;</queue>
+	<partition>&PARTITION_HPSS;</partition>
+	<walltime>&WALLTIME_HPSS;</walltime>
+	<nodes>&RESOURCES_HPSS;</nodes>
+	<native>&NATIVE_HPSS;</native>
+
+	<join><cyclestr>&ROTDIR;/logs/@Y@m@d@H/gdasarch.log</cyclestr></join>
+
+	<envar><name>CDATE</name><value><cyclestr>@Y@m@d@H</cyclestr></value></envar>
+	<envar><name>CASE</name><value>&CASE;</value></envar>
+	<envar><name>METDIR_NRT</name><value>&METDIR_NRT;</value></envar>
+	<envar><name>CASE_ENKF</name><value>&CASE_ENKF;</value></envar>
+	<envar><name>CASE_CNTL</name><value>&CASE_CNTL;</value></envar>
+	<envar><name>NMEM_ENKF</name><value>&NMEM_ENKF;</value></envar>
+	<envar><name>ENSRUN</name><value>&ENSRUN;</value></envar>
+	<envar><name>AERODA</name><value>&AERODA;</value></envar>
+	<envar><name>PSLOT</name><value>&PSLOT;</value></envar>
+	<envar><name>ROTDIR</name><value>&ROTDIR;</value></envar>
+	<envar><name>HOMEgfs</name><value>&HOMEgfs;</value></envar>
+	<envar><name>EXPDIR</name><value>&EXPDIR;</value></envar>
+	<envar><name>ARCHHPSSDIR</name><value>&ARCHHPSSDIR;</value></envar>
+	<envar><name>ARCHRETHR</name><value>&ARCHRETHR;</value></envar>
+	<envar><name>NMEM_ENSGRP_ARCH</name><value>&NMEM_ENSGRP_ARCH;</value></envar>
+	<envar><name>COMROOT</name><value>&COMROOT;</value></envar>
+	<envar><name>DATAROOT</name><value><cyclestr>&DATAROOTTOP;/@Y@m@d@H/&CDUMP_CNTL;</cyclestr></value></envar>
+	<envar><name>OBSDIR_NRT</name><value>&OBSDIR_NRT;</value></envar>
+	<envar><name>CASE_OBS</name><value>&CASE_OBS;</value></envar>
+	<envar><name>AODTYPE</name><value>&AODTYPE;</value></envar>
+	<envar><name>TASKRC</name><value>&TASKRC;</value></envar>
+	<envar><name>GFSVERSION</name><value>&GFSVERSION;</value></envar>
+	<envar><name>FHMIN</name><value>&FHMIN;</value></envar>
+	<envar><name>FHOUT</name><value>&FHOUT;</value></envar>
+	<envar><name>FHMAX</name><value>&FHMAX;</value></envar>
+	<envar><name>TARALLRST</name><value>&TARALLRST;</value></envar>
+
+	<dependency>
+		<taskdep task="gdasfcst"/>
+	</dependency>
+</task>
+</workflow>

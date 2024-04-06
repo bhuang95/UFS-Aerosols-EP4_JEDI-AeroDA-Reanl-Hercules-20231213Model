@@ -1,0 +1,6 @@
+1) {HOMEDIR}/dr-work-mpi/config.aero
+	# Aerosol emissions
+2) {HOMEDIR}/dr-work-mpi/*.xml
+	# EMISDIR_NRT "/scratch1/NCEPDEV/global/glopara/data/gocart_emissions"
+2) {WORKFLOWDIR}/parm/ufs/chem/ExtData.gbbepx_v004
+	# Use full directory

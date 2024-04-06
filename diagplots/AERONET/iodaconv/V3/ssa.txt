@@ -1,0 +1,147 @@
+netcdf aeronet_alm_iodav3_2016093000_test {
+dimensions:
+	Channel = 4 ;
+	Location = UNLIMITED ; // (44 currently)
+variables:
+	int Channel(Channel) ;
+		Channel:suggested_chunk_dim = 4LL ;
+	int64 Location(Location) ;
+		Location:suggested_chunk_dim = 44LL ;
+
+// global attributes:
+		string :_ioda_layout = "ObsGroup" ;
+		:_ioda_layout_version = 0 ;
+		string :ioda_object_type = "ALM20" ;
+		string :sensor = "aeronet" ;
+		string :center_datetime = "2016-09-30T00:00:00Z" ;
+		string :window_in_hour = "6.0" ;
+data:
+
+group: MetaData {
+  variables:
+  	int64 aaod_ssa_l20_qc(Location) ;
+  		aaod_ssa_l20_qc:_FillValue = -9223372036854775806LL ;
+  		string aaod_ssa_l20_qc:units = "" ;
+  	int64 aaod_ssa_l20_qc_without_l20_aod440_0.4_threshold(Location) ;
+  		aaod_ssa_l20_qc_without_l20_aod440_0.4_threshold:_FillValue = -9223372036854775806LL ;
+  		string aaod_ssa_l20_qc_without_l20_aod440_0.4_threshold:units = "" ;
+  	int64 aod_l20_qc(Location) ;
+  		aod_l20_qc:_FillValue = -9223372036854775806LL ;
+  		string aod_l20_qc:units = "" ;
+  	int64 dateTime(Location) ;
+  		dateTime:_FillValue = 7258118400LL ;
+  		string dateTime:units = "seconds since 1970-01-01T00:00:00Z" ;
+  	float latitude(Location) ;
+  		latitude:_FillValue = 9.96921e+36f ;
+  		string latitude:units = "degrees_north" ;
+  	float longitude(Location) ;
+  		longitude:_FillValue = 9.96921e+36f ;
+  		string longitude:units = "degrees_east" ;
+  	int sensorCentralFrequency(Channel) ;
+  		sensorCentralFrequency:_FillValue = -2147483647 ;
+  		string sensorCentralFrequency:units = "Hz" ;
+  	float sensorCentralWavelength(Location) ;
+  		sensorCentralWavelength:_FillValue = 9.96921e+36f ;
+  		string sensorCentralWavelength:units = "microns" ;
+  	float stationElevation(Location) ;
+  		stationElevation:_FillValue = 9.96921e+36f ;
+  		string stationElevation:units = "m" ;
+  	string stationIdentification(Location) ;
+  		string stationIdentification:_FillValue = "" ;
+  data:
+  } // group MetaData
+
+group: ObsError {
+  variables:
+  	float absorptionAerosolOpticalDepth(Location, Channel) ;
+  		absorptionAerosolOpticalDepth:_FillValue = -9999.f ;
+  		string absorptionAerosolOpticalDepth:coordinates = "longitude latitude stationElevation" ;
+  		string absorptionAerosolOpticalDepth:units = "1" ;
+  	float aerosolOpticalDepth(Location, Channel) ;
+  		aerosolOpticalDepth:_FillValue = -9999.f ;
+  		string aerosolOpticalDepth:coordinates = "longitude latitude stationElevation" ;
+  		string aerosolOpticalDepth:units = "1" ;
+  	float singleScatteringAlbedo(Location, Channel) ;
+  		singleScatteringAlbedo:_FillValue = -9999.f ;
+  		string singleScatteringAlbedo:coordinates = "longitude latitude stationElevation" ;
+  		string singleScatteringAlbedo:units = "1" ;
+  data:
+  } // group ObsError
+
+group: ObsValue {
+  variables:
+  	float absorptionAerosolOpticalDepth(Location, Channel) ;
+  		absorptionAerosolOpticalDepth:_FillValue = -9999.f ;
+  		string absorptionAerosolOpticalDepth:coordinates = "longitude latitude stationElevation" ;
+  		string absorptionAerosolOpticalDepth:units = "1" ;
+  	float aerosolOpticalDepth(Location, Channel) ;
+  		aerosolOpticalDepth:_FillValue = -9999.f ;
+  		string aerosolOpticalDepth:coordinates = "longitude latitude stationElevation" ;
+  		string aerosolOpticalDepth:units = "1" ;
+  	float singleScatteringAlbedo(Location, Channel) ;
+  		singleScatteringAlbedo:_FillValue = -9999.f ;
+  		string singleScatteringAlbedo:coordinates = "longitude latitude stationElevation" ;
+  		string singleScatteringAlbedo:units = "1" ;
+  data:
+
+   singleScatteringAlbedo =
+  _, _, _, _,
+  _, _, _, _,
+  _, _, _, _,
+  _, _, _, _,
+  0.9146, 0.9353, 0.9346, 0.9245,
+  0.9182, 0.9339, 0.927, 0.9156,
+  _, _, _, _,
+  0.889, 0.8738, 0.8319, 0.7997,
+  _, _, _, _,
+  _, _, _, _,
+  _, _, _, _,
+  0.9401, 0.9511, 0.9378, 0.9287,
+  0.9299, 0.9215, 0.9062, 0.8916,
+  0.9234, 0.9244, 0.9124, 0.8996,
+  _, _, _, _,
+  _, _, _, _,
+  _, _, _, _,
+  _, _, _, _,
+  _, _, _, _,
+  _, _, _, _,
+  _, _, _, _,
+  _, _, _, _,
+  0.9056, 0.9356, 0.933, 0.9336,
+  0.913, 0.9379, 0.9404, 0.9409,
+  0.9228, 0.9428, 0.9509, 0.9508,
+  0.9223, 0.9396, 0.9479, 0.9478,
+  0.9247, 0.9445, 0.9478, 0.9398,
+  _, _, _, _,
+  _, _, _, _,
+  _, _, _, _,
+  _, _, _, _,
+  _, _, _, _,
+  _, _, _, _,
+  _, _, _, _,
+  _, _, _, _,
+  _, _, _, _,
+  _, _, _, _,
+  _, _, _, _,
+  _, _, _, _,
+  _, _, _, _,
+  _, _, _, _,
+  _, _, _, _,
+  _, _, _, _,
+  _, _, _, _ ;
+  } // group ObsValue
+
+group: PreQC {
+  variables:
+  	int64 absorptionAerosolOpticalDepth(Location, Channel) ;
+  		absorptionAerosolOpticalDepth:_FillValue = -9999LL ;
+  		string absorptionAerosolOpticalDepth:coordinates = "longitude latitude stationElevation" ;
+  	int64 aerosolOpticalDepth(Location, Channel) ;
+  		aerosolOpticalDepth:_FillValue = -9999LL ;
+  		string aerosolOpticalDepth:coordinates = "longitude latitude stationElevation" ;
+  	int64 singleScatteringAlbedo(Location, Channel) ;
+  		singleScatteringAlbedo:_FillValue = -9999LL ;
+  		string singleScatteringAlbedo:coordinates = "longitude latitude stationElevation" ;
+  data:
+  } // group PreQC
+}

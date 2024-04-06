@@ -1,0 +1,10 @@
+&record_input
+ input_grid_dir="/scratch1/BMC/gsd-fv3-dev/MAPP_2018/pagowski/fix_fv3/C96"
+ fname_grid="grid_spec.tile?.nc"
+ input_fv3_dir="/scratch1/BMC/gsd-fv3-dev/MAPP_2018/pagowski/jedi/expruns/aero_c96_jedi3densvar/enkfgdas.20180414/00/mem001/RESTART"
+ fname_fv3="20180414.060000.fv_aod.res.tile?.nc" 
+ input_obs_dir="/scratch1/BMC/wrf-chem/pagowski/MAPP_2018/OBS/VIIRS/AOT/thinned_C96/2018041406"
+ output_obs_dir="/scratch1/BMC/wrf-chem/pagowski/MAPP_2018/OBS/VIIRS/AOT/thinned_C96/2018041406"
+ fnamein_obs="viirs_aod_npp_2018041406_backup.nc"
+ fnameout_obs="viirs_aod_npp_2018041406_backup.nc"
+/

@@ -1,0 +1,18 @@
+Run log
+AeroReanl_EP4_AeroDA_YesSPEEnKF_YesSfcanl_v15_0dz0dp_41M_C96_202007
+  # 2020070506:
+      # gdasefcs05: mem024 failed and mem02 not completed, and copied mem001 and 002 for them
+  # 2020070806
+      # gdasefcs01: mem002-005 not complete and copyed from mem006-009. Rocotocomplete this task
+Reminder
+  # Generate AERONET for Diag*
+VIIRS AOD
+  #[2018010100-2019033118] from Mariusz using outdated viirs2ioda_old.x with possible negative AOD from mixed HPSS and AWS
+  #[2020070100-] using updated viirs2ioda_old.x by remove AOD<0.0 and >5.0 from HPSS. 
+
+Cost Estimate per cycle ~ 500 CPU hours
+   #EnVar:144*(15/60)h=36h 
+   #EnKF:144*(20/60)h=44h
+   #Diag:24*(5*4/60)h=8h
+   #Fcst:160*(16*8/60)h=341h
+   #Total:429h

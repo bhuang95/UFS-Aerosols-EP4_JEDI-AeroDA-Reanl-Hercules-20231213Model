@@ -1,0 +1,16 @@
+25c25
+< 	<!ENTITY ROTDIR "&TOPRUNDIR;/&PSLOT;/dr-data-longfcst-pertgbbepx-backup/">
+---
+> 	<!ENTITY ROTDIR "&TOPRUNDIR;/&PSLOT;/dr-data-longfcst-backup/">
+69c69
+< 	<!ENTITY ACCOUNT    "wrf-chem">
+---
+> 	<!ENTITY ACCOUNT    "gsd-fv3-dev">
+81c81
+< 	<!ENTITY ACCOUNT_HPSS    "chem-var">
+---
+> 	<!ENTITY ACCOUNT_HPSS    "wrf-chem">
+179c179
+< 	<command>&JOBS_DIR;/arch2hpss_longfcst_pertgbbepx_diag.sh</command>
+---
+> 	<command>&JOBS_DIR;/arch2hpss_longfcst_diag.sh</command>

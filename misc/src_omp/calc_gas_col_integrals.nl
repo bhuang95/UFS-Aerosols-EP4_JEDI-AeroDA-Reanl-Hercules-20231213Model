@@ -1,0 +1,12 @@
+&record_input
+ date="2018041500"
+ input_fv3_dir="/scratch1/BMC/wrf-chem/pagowski/MAPP_2018/MODEL/fv3/co"
+ fname_fv3_core="20190728.060000.fv_core.res.tile?.nc"
+ fname_fv3_tracer="20190728.060000.fv_tracer.res.tile?.nc"
+ varlist="co"
+ mol_weights=0.0280101
+/
+&record_output
+ output_dir="./"
+ fname_column="fv3_co_column.nc"
+/

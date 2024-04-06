@@ -1,0 +1,47 @@
+/bin/bash -c /home/Bo.Huang/JEDI-2020/UFS-Aerosols_RETcyc/UFS-Aerosols-EP4_JEDI-AeroDA-Reanl//jobs/rocoto/checkdep_calcmetinc_enkf.sh (2020-06-01 00:00:00 UTC)
++ CDATE=2020060100
++ ROTDIR=/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc//RET_EP4_AeroDA_YesSPE_C96_202006/dr-data/
++ METDIR_NRT=/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc//RET_EP4_AeroDA_YesSPE_C96_202006/dr-data//RetrieveGDAS/
++ NMEM_ENKF=20
++ CASE_ENKF=C96
++ CYCINTHR=06
++ NDATE=/scratch2/NCEPDEV/nwprod/NCEPLIBS/utils/prod_util.v1.1.0/exec/ndate
+++ /scratch2/NCEPDEV/nwprod/NCEPLIBS/utils/prod_util.v1.1.0/exec/ndate -06 2020060100
++ GDATE=2020053118
+++ echo 2020060100
+++ cut -c1-4
++ CYY=2020
+++ echo 2020060100
+++ cut -c5-6
++ CMM=06
+++ echo 2020060100
+++ cut -c7-8
++ CDD=01
+++ echo 2020060100
+++ cut -c9-10
++ CHH=00
+++ echo 2020053118
+++ cut -c1-4
++ GYY=2020
+++ echo 2020053118
+++ cut -c5-6
++ GMM=05
+++ echo 2020053118
+++ cut -c7-8
++ GDD=31
+++ echo 2020053118
+++ cut -c9-10
++ GHH=18
++ ecode=0
+++ wc -l
+++ ls /scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc//RET_EP4_AeroDA_YesSPE_C96_202006/dr-data//enkfgdas.20200601/00/mem001/analysis/atmos/enkfgdas.t00z.ratmanl.nc /scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc//RET_EP4_AeroDA_YesSPE_C96_202006/dr-data//enkfgdas.20200601/00/mem002/analysis/atmos/enkfgdas.t00z.ratmanl.nc /scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc//RET_EP4_AeroDA_YesSPE_C96_202006/dr-data//enkfgdas.20200601/00/mem003/analysis/atmos/enkfgdas.t00z.ratmanl.nc /scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc//RET_EP4_AeroDA_YesSPE_C96_202006/dr-data//enkfgdas.20200601/00/mem004/analysis/atmos/enkfgdas.t00z.ratmanl.nc /scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc//RET_EP4_AeroDA_YesSPE_C96_202006/dr-data//enkfgdas.20200601/00/mem005/analysis/atmos/enkfgdas.t00z.ratmanl.nc /scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc//RET_EP4_AeroDA_YesSPE_C96_202006/dr-data//enkfgdas.20200601/00/mem006/analysis/atmos/enkfgdas.t00z.ratmanl.nc /scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc//RET_EP4_AeroDA_YesSPE_C96_202006/dr-data//enkfgdas.20200601/00/mem007/analysis/atmos/enkfgdas.t00z.ratmanl.nc /scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc//RET_EP4_AeroDA_YesSPE_C96_202006/dr-data//enkfgdas.20200601/00/mem008/analysis/atmos/enkfgdas.t00z.ratmanl.nc /scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc//RET_EP4_AeroDA_YesSPE_C96_202006/dr-data//enkfgdas.20200601/00/mem009/analysis/atmos/enkfgdas.t00z.ratmanl.nc /scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc//RET_EP4_AeroDA_YesSPE_C96_202006/dr-data//enkfgdas.20200601/00/mem010/analysis/atmos/enkfgdas.t00z.ratmanl.nc /scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc//RET_EP4_AeroDA_YesSPE_C96_202006/dr-data//enkfgdas.20200601/00/mem011/analysis/atmos/enkfgdas.t00z.ratmanl.nc /scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc//RET_EP4_AeroDA_YesSPE_C96_202006/dr-data//enkfgdas.20200601/00/mem012/analysis/atmos/enkfgdas.t00z.ratmanl.nc /scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc//RET_EP4_AeroDA_YesSPE_C96_202006/dr-data//enkfgdas.20200601/00/mem013/analysis/atmos/enkfgdas.t00z.ratmanl.nc /scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc//RET_EP4_AeroDA_YesSPE_C96_202006/dr-data//enkfgdas.20200601/00/mem014/analysis/atmos/enkfgdas.t00z.ratmanl.nc /scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc//RET_EP4_AeroDA_YesSPE_C96_202006/dr-data//enkfgdas.20200601/00/mem015/analysis/atmos/enkfgdas.t00z.ratmanl.nc /scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc//RET_EP4_AeroDA_YesSPE_C96_202006/dr-data//enkfgdas.20200601/00/mem016/analysis/atmos/enkfgdas.t00z.ratmanl.nc /scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc//RET_EP4_AeroDA_YesSPE_C96_202006/dr-data//enkfgdas.20200601/00/mem017/analysis/atmos/enkfgdas.t00z.ratmanl.nc /scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc//RET_EP4_AeroDA_YesSPE_C96_202006/dr-data//enkfgdas.20200601/00/mem018/analysis/atmos/enkfgdas.t00z.ratmanl.nc /scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc//RET_EP4_AeroDA_YesSPE_C96_202006/dr-data//enkfgdas.20200601/00/mem019/analysis/atmos/enkfgdas.t00z.ratmanl.nc /scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc//RET_EP4_AeroDA_YesSPE_C96_202006/dr-data//enkfgdas.20200601/00/mem020/analysis/atmos/enkfgdas.t00z.ratmanl.nc
++ nfiles=20
++ '[' 20 '!=' 20 ']'
+++ wc -l
+++ ls '/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc//RET_EP4_AeroDA_YesSPE_C96_202006/dr-data//enkfgdas.20200531/18/mem???/model_data/history/enkfgdas.t18z.atmf006.nc'
+ls: cannot access /scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expRuns/UFS-Aerosols_RETcyc//RET_EP4_AeroDA_YesSPE_C96_202006/dr-data//enkfgdas.20200531/18/mem???/model_data/history/enkfgdas.t18z.atmf006.nc: No such file or directory
++ nfiles=0
++ '[' 0 '!=' 20 ']'
++ ecode=1
++ exit 1
+/bin/bash -c grep 2020060100 /home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/misc/GDAS/CHGRESGDAS/v15/record.chgres_hpss_htar_allmissing_v15 (2020-06-01 00:00:00 UTC)

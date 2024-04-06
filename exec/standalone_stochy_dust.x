@@ -1,0 +1,1 @@
+/work/noaa/wrf-chem/bhuang/NRTdata_UFS-Aerosols/src_sppt/exec/standalone_stochy_dust.x

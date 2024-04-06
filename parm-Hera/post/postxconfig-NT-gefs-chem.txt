@@ -1,0 +1,1 @@
+/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expCodes/UFSAerosols-workflow/20231116-develop/global-workflow/sorc/upp.fd/parm/postxconfig-NT-gefs-chem.txt

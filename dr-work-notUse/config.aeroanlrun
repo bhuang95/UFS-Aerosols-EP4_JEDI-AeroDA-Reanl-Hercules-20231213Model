@@ -1,0 +1,43 @@
+#!/bin/bash -x
+
+########## config.aeroanlrun ##########
+# Aerosol Analysis specific
+
+echo "BEGIN: config.aeroanlrun"
+
+# Get task specific resources
+. $EXPDIR/config.resources aeroanlrun
+export layout_envar="4,6"  #"2,4" 
+export io_layout_envar="1,1"  # Don't Change
+export ncore_envar=144         # ncore_anal=6*l1*l2 (l1, l2 in layout_anal)
+
+export layout_letkf="4,6"  #"2,4" 
+export io_layout_letkf="1,1"  # Don't Change
+export ncore_letkf=144        # ncore_anal=6*l1*l2 (l1, l2 in layout_anal)
+
+export layout_hofx="2,2"  #"2,2" 
+export io_layout_hofx="1,1"  # Don't Change
+export ncore_hofx=24        # ncore_anal=6*l1*l2 (l1, l2 in layout_anal)
+
+export STATICB_WEG="0.00"
+export ENSB_WEG="1.00"
+
+export VAR_BUMP_LOC="fixed_2500km_1.5"
+export LETKF_LOC="2500e3"
+export LETKF_INF_MULT="1.2"
+export LETKF_INF_RTPP="0.0"
+export LETKF_INF_RTPS="0.85"
+
+export AODOPE="AodLUTs"
+
+#export COMIN_OBS=${OBSDIR_NRT}
+#export AODTYPE=${AODTYPE}
+export AEROANL_VAR=${HOMEgfs}/scripts/exgdas_global_aeroanl_3denvar_run.sh
+export AEROANL_ENKF=${HOMEgfs}/scripts/exgdas_global_aeroanl_enkf_run.sh
+#export MEANTRCRVARS="sphum,so4,bc1,bc2,oc1,oc2,dust1,dust2,dust3,dust4,dust5,seas1,seas2,seas3,seas4,seas5,no3an1,no3an2,no3an3"
+export MEANTRCRVARS="sphum,so2,so4,dms,msa,bc1,bc2,oc1,oc2,dust1,dust2,dust3,dust4,dust5,seas1,seas2,seas3,seas4,seas5,pm25,pm10"
+export MEANCOREVARS="T,delp"
+#export RPLTRCRVARS="so4,bc1,bc2,oc1,oc2,dust1,dust2,dust3,dust4,dust5,seas1,seas2,seas3,seas4,seas5,no3an1,no3an2,no3an3"
+export RPLTRCRVARS="so4,bc1,bc2,oc1,oc2,dust1,dust2,dust3,dust4,dust5,seas1,seas2,seas3,seas4,seas5"
+
+echo "END: config.aeroanlrun"

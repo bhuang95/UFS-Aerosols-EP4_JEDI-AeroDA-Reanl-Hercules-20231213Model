@@ -1,0 +1,2 @@
+(1) INNOV-STATS/COLLECT_ENS_SPREAD_SAMPLES_DAILY_MASK.py
+	(a) Change nmem=20 to nmem=40 for future run. 

@@ -16,7 +16,8 @@ ARCHHPSSDIR=${ARCHHPSSDIR:-"/BMC/fim/5year/MAPP_2018/bhuang/UFS-Aerosols-expRuns
 ARCHNIAGDIR=${ARCHNIAGDIR:-"/collab1/data/Bo.Huang/FromOrion/expRuns/AeroReanl/"}
 
 #NDATE="/scratch2/NCEPDEV/nwprod/NCEPLIBS/utils/prod_util.v1.1.0/exec/ndate"
-NDATE="/home/bohuang/Workflow/UFS-Aerosols_NRTcyc/UFS-Aerosols-EP4_JEDI-AeroDA-Reanl-Orion/misc/ndate/ndate"
+#NDATE=${NDATE:-"/home/bohuang/Workflow/UFS-Aerosols_NRTcyc/UFS-Aerosols-EP4_JEDI-AeroDA-Reanl-Orion/misc/ndate/ndate"}
+NDATE=${HOMEgfs}/misc/ndate/ndate
 CDATE=$(${NDATE} -${CYCINTHR} ${CDATE})
 
 

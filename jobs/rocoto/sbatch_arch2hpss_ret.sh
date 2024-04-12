@@ -13,7 +13,8 @@ set -x
 
 source config_hera2hpss
 
-NDATE=${NDATE:-"/home/bohuang/Workflow/UFS-Aerosols_NRTcyc/UFS-Aerosols-EP4_JEDI-AeroDA-Reanl-Orion/misc/ndate/ndate"}
+#NDATE=${NDATE:-"/home/bohuang/Workflow/UFS-Aerosols_NRTcyc/UFS-Aerosols-EP4_JEDI-AeroDA-Reanl-Orion/misc/ndate/ndate"}
+NDATE=${HOMEgfs}/misc/ndate/ndate
 
 #module load hpss
 #export PATH="/apps/hpss/bin:$PATH"

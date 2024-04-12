@@ -5,8 +5,8 @@ source "${HOMEgfs}/ush/preamble.sh"
 ###############################################################
 # Source FV3GFS workflow modules
 #. ${HOMEgfs}/ush/load_fv3gfs_modules.sh
-. ${HOMEgfs}/ush/load_ufswm_modules.sh
-module load python/3.7.5
+source ${HOMEgfs}/ush/load_ufswm_modules.sh
+#module load python/3.7.5
 status=$?
 [[ ${status} -ne 0 ]] && exit ${status}
 
@@ -16,6 +16,8 @@ export DATA=${DATA:-${DATAROOT}/${jobid}}
 
 source "${HOMEgfs}/ush/jjob_header.sh" -e "aeroanlrun" -c "base aeroanlrun"
 
+source ${HOMEjedi}/jedi_module_base.hera.sh
+export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${HOMEjedi}/lib/"
 ##############################################
 # Set variables used in the script
 ##############################################
@@ -53,7 +55,7 @@ NCP="/bin/cp -r"
 NMV="/bin/mv -f"
 NRM="/bin/rm -rf"
 NLN="/bin/ln -sf"
-NDATE=${NDATE:-"/home/bohuang/Workflow/UFS-Aerosols_NRTcyc/UFS-Aerosols-EP4_JEDI-AeroDA-Reanl-Orion/misc/ndate/ndate"}
+NDATE=${HOMEgfs}/misc/ndate/ndate
 #GDATE=$(date +%Y%m%d%H -d "${CDATE:0:8} ${CDATE:8:2} - ${assim_freq} hours")
 GDATE=$(${NDATE} -${assim_freq} ${CDATE})
 

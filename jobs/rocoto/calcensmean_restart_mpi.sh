@@ -6,8 +6,13 @@ ulimit -s unlimited
 ###############################################################
 # Source FV3GFS workflow modules
 #. ${HOMEgfs}/ush/load_fv3gfs_modules.sh
-. ${HOMEgfs}/ush/load_ufswm_modules.sh
-module load python/3.7.5
+#. ${HOMEgfs}/ush/load_ufswm_modules.sh
+#module load python/3.7.5
+#module use ${HOMEgfs}/sorc/ufs_model.fd/tests/modulefiles
+#module load prod_util
+#source ${HOMEjedi}/jedi_module_base.hera.sh
+#export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${HOMEjedi}/lib/"
+source ${HOMEgfs}/ush/load_ufswm_modules.sh
 status=$?
 [[ ${status} -ne 0 ]] && exit ${status}
 
@@ -17,6 +22,8 @@ export DATA=${DATA:-${DATAROOT}/${jobid}}
 
 source "${HOMEgfs}/ush/jjob_header.sh" -e "aeroanlrun" -c "base aeroanlrun"
 
+source ${HOMEjedi}/jedi_module_base.hera.sh
+export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${HOMEjedi}/lib/"
 ##############################################
 # Set variables used in the script
 ##############################################
@@ -41,7 +48,8 @@ NMV="/bin/mv -f"
 NLN="/bin/ln -sf"
 NRM="/bin/rm -rf"
 
-NDATE=${NDATE:-"/home/bohuang/Workflow/UFS-Aerosols_NRTcyc/UFS-Aerosols-EP4_JEDI-AeroDA-Reanl-Orion/misc/ndate/ndate"}
+#NDATE=${NDATE:-"/home/bohuang/Workflow/UFS-Aerosols_NRTcyc/UFS-Aerosols-EP4_JEDI-AeroDA-Reanl-Orion/misc/ndate/ndate"}
+NDATE=${HOMEgfs}/misc/ndate/ndate
 #FDATE=$(date +%Y%m%d%H -d "${CDATE:0:8} ${CDATE:8:2} + ${assim_freq} hours")
 FDATE=$(${NDATE} +${assim_freq} ${CDATE})
 CYMD=${CDATE:0:8}

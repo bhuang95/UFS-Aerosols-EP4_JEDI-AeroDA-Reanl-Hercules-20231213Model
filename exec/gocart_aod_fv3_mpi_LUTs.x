@@ -1,1 +1,1 @@
-/work/noaa/wrf-chem/bhuang/NRTdata_UFS-Aerosols/src_mpi/exec/gocart_aod_fv3_mpi.x
+/work/noaa/wrf-chem/bhuang/expCodes-Hercules/src_mpi/exec/gocart_aod_fv3_mpi.x

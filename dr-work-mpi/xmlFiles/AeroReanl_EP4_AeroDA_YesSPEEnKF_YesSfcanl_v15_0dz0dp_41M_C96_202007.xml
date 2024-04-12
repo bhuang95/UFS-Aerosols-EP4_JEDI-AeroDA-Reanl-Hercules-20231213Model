@@ -16,7 +16,7 @@
 	-->
 	<!-- Experiment directory setup -->
 	<!ENTITY PSLOT "AeroReanl_EP4_AeroDA_YesSPEEnKF_YesSfcanl_v15_0dz0dp_41M_C96_202007">
-        <!ENTITY HOMEgfs "/home/bohuang/Workflow/UFS-Aerosols_NRTcyc/UFS-Aerosols-EP4_JEDI-AeroDA-Reanl-Hercules">
+        <!ENTITY HOMEgfs "/home/bohuang/Workflow/UFS-Aerosols_NRTcyc/UFS-Aerosols-EP4_JEDI-AeroDA-Reanl-Hercules-20231213Model/">
 	<!--ENTITY HOMEgfs "/work2/noaa/wrf-chem/bohuang/testHercules/UFSAerosols-workflow/20231213-develop/global-workflow"-->
 	<!--
 	<!ENTITY HOMEgfs "/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/MISC/UFS-Workflow/20231130/UFS-Aerosols-EP4_JEDI-AeroDA-Reanl">
@@ -26,18 +26,19 @@
 	<!--ENTITY EXPDIR "/work2/noaa/wrf-chem/bohuang/testHercules/UFSAerosols-workflow/20231213-develop/global-workflow/expdir/cycExp_ATMA_warm"-->
 	<!ENTITY ROTDIR "&TOPRUNDIR;/&PSLOT;/dr-data/">
 	<!ENTITY TASKRC "&EXPDIR;/TaskRecords/cmplCycle_&PSLOT;.rc">
+        <!ENTITY NDATE "&HOMEgfs;/misc/ndate/ndate">
 
 	<!-- Directories for driving the workflow -->
 	<!--ENTITY HOMEjedi "/work/noaa/wrf-chem/bhuang/expCodes/fv3-bundle/V20240301-spack-stack-1.5.0-ecbuildSrun/build/"-->
-        <!ENTITY HOMEjedi "/work2/noaa/wrf-chem/bohuang/testHercules/JEDI/V20240115/V20240115/build/">
+        <!ENTITY HOMEjedi "/work/noaa/wrf-chem/bhuang/expCodes-Hercules/JEDI/V20240115/V20240115/build">
 	<!ENTITY JOBS_DIR "&HOMEgfs;/jobs/rocoto">
 	<!ENTITY DATAROOTTOP "/work2/noaa/zrtrr/bohuang/RUNDIRS/&PSLOT;/">
 	<!ENTITY COMROOT "/work2/noaa/zrtrr/bohuang/com/">
 	<!ENTITY DMPDIR   "/work2/noaa/zrtrr/bohuang/dump">
 
 	<!-- Experiment parameter setup -->
-	<!ENTITY SDATE "202010020600">
-	<!ENTITY EDATE "202010020600">
+	<!ENTITY SDATE "202010140000">
+	<!ENTITY EDATE "202010140600">
 	<!ENTITY INTERVAL "06:00:00">
 	<!ENTITY CYCINTHR "06">
 	<!ENTITY CDUMP_CNTL "gdas">
@@ -117,7 +118,7 @@
 	<!--ENTITY PARTITION_BIGMEM    "bigmem"-->
 	<!ENTITY PARTITION_BIGMEM    "hercules">
 	<!ENTITY ACCOUNT    "rtrr">
-	<!ENTITY QUEUE      "debug">
+	<!ENTITY QUEUE      "batch">
 	<!ENTITY QUEUE_DEB      "debug">
 	<!ENTITY SCHEDULER  "slurm">
 
@@ -143,19 +144,19 @@
 
 	<!ENTITY QUEUE_SIGP_GDAS     "&QUEUE;">
 	<!ENTITY WALLTIME_SIGP_GDAS  "00:29:00">
-	<!ENTITY RESOURCES_SIGP_GDAS "1:ppn=20:tpp=1">
+	<!ENTITY RESOURCES_SIGP_GDAS "1:ppn=41:tpp=1">
 	<!ENTITY MEMORIES_SIGP_GDAS "80000M">
 	<!ENTITY NATIVE_SIGP_GDAS    "--export=NONE --exclusive">
 
 	<!ENTITY QUEUE_ANAL_GDAS     "&QUEUE;">
 	<!ENTITY WALLTIME_ANAL_GDAS  "00:29:00">
-	<!ENTITY RESOURCES_ANAL_GDAS "12:ppn=12:tpp=1">
+	<!ENTITY RESOURCES_ANAL_GDAS "6:ppn=24:tpp=1">
 	<!ENTITY MEMORIES_ANAL_GDAS "80000M">
 	<!ENTITY NATIVE_ANAL_GDAS    "--export=NONE --exclusive">
 
 	<!ENTITY QUEUE_ANAL_ENKF_GDAS     "&QUEUE;">
 	<!ENTITY WALLTIME_ANAL_ENKF_GDAS  "00:29:00">
-	<!ENTITY RESOURCES_ANAL_ENKF_GDAS "12:ppn=12:tpp=1">
+	<!ENTITY RESOURCES_ANAL_ENKF_GDAS "6:ppn=24:tpp=1">
 	<!ENTITY MEMORIES_ANAL_ENKF_GDAS "80000M">
 	<!ENTITY NATIVE_ANAL_ENKF_GDAS    "--export=NONE --exclusive">
 
@@ -167,13 +168,13 @@
 
 	<!ENTITY QUEUE_FCST_GDAS     "&QUEUE;">
 	<!ENTITY WALLTIME_FCST_GDAS  "00:29:00">
-	<!ENTITY RESOURCES_FCST_GDAS "4:ppn=40:tpp=1">
-	<!ENTITY NATIVE_FCST_GDAS    "--export=NONE">
+	<!ENTITY RESOURCES_FCST_GDAS "2:ppn=80:tpp=1">
+	<!ENTITY NATIVE_FCST_GDAS    "--export=NONE --exclusive">
 
 	<!ENTITY QUEUE_EFCS_GDAS     "&QUEUE;">
 	<!ENTITY WALLTIME_EFCS_GDAS  "00:29:00">
-	<!ENTITY RESOURCES_EFCS_GDAS "4:ppn=40:tpp=1">
-	<!ENTITY NATIVE_EFCS_GDAS    "--export=NONE">
+	<!ENTITY RESOURCES_EFCS_GDAS "2:ppn=80:tpp=1">
+	<!ENTITY NATIVE_EFCS_GDAS    "--export=NONE --exclusive">
 
 	<!ENTITY QUEUE_EMEAN_GDAS     "&QUEUE;">
 	<!ENTITY WALLTIME_EMEAN_GDAS  "00:29:00">
@@ -222,6 +223,7 @@
 	<envar><name>CDATE</name><value><cyclestr>@Y@m@d@H</cyclestr></value></envar>
 	<envar><name>ROTDIR</name><value>&ROTDIR;</value></envar>
 	<envar><name>MISSGDASRECORD</name><value>&MISSGDASRECORD;</value></envar>
+	<envar><name>NDATE</name><value>&NDATE;</value></envar>
 
 	<dependency>
 		<and>
@@ -262,6 +264,7 @@
 	<envar><name>PDY</name><value><cyclestr>@Y@m@d</cyclestr></value></envar>
 	<envar><name>cyc</name><value><cyclestr>@H</cyclestr></value></envar>
 	<envar><name>HOMEgfs</name><value>&HOMEgfs;</value></envar>
+	<envar><name>HOMEjedi</name><value>&HOMEjedi;</value></envar>
 	<envar><name>EXPDIR</name><value>&EXPDIR;</value></envar>
 	<envar><name>ROTDIR</name><value>&ROTDIR;</value></envar>
 	<envar><name>METDIR_NRT</name><value>&METDIR_NRT;</value></envar>
@@ -274,6 +277,7 @@
 	<envar><name>NMEM_ENKF</name><value>&NMEM_ENKF;</value></envar>
 	<envar><name>ENSRUN</name><value>&ENSRUN;</value></envar>
 	<envar><name>ZERO_METINCS</name><value>&ZERO_METINCS;</value></envar>
+	<envar><name>NDATE</name><value>&NDATE;</value></envar>
 
 	<dependency>
 		<and>
@@ -311,6 +315,7 @@
 	<envar><name>PDY</name><value><cyclestr>@Y@m@d</cyclestr></value></envar>
 	<envar><name>cyc</name><value><cyclestr>@H</cyclestr></value></envar>
 	<envar><name>HOMEgfs</name><value>&HOMEgfs;</value></envar>
+	<envar><name>HOMEjedi</name><value>&HOMEjedi;</value></envar>
 	<envar><name>EXPDIR</name><value>&EXPDIR;</value></envar>
 	<envar><name>ROTDIR</name><value>&ROTDIR;</value></envar>
 	<envar><name>SFCANL_RST</name><value>&SFCANL_RST;</value></envar>
@@ -320,6 +325,7 @@
 	<envar><name>GFSVERSION</name><value>&GFSVERSION;</value></envar>
 	<envar><name>NMEM_ENKF</name><value>&NMEM_ENKF;</value></envar>
 	<envar><name>ENSRUN</name><value>&ENSRUN;</value></envar>
+	<envar><name>NDATE</name><value>&NDATE;</value></envar>
 
 	<dependency>
 		<and>
@@ -379,6 +385,7 @@
 	<envar><name>AEROEMIS_SPPT</name><value>&AEROEMIS_SPPT;</value></envar>
 	<envar><name>AEROEMIS_SPPT_TAU</name><value>&AEROEMIS_SPPT_TAU;</value></envar>
 	<envar><name>AEROEMIS_SPPT_LSCALE</name><value>&AEROEMIS_SPPT_LSCALE;</value></envar>
+	<envar><name>NDATE</name><value>&NDATE;</value></envar>
 
 	<dependency>
 		<and>
@@ -428,6 +435,7 @@
 	<envar><name>CASE_ENKF</name><value>&CASE_ENKF;</value></envar>
 	<envar><name>AODTYPE</name><value>&AODTYPE;</value></envar>
 	<envar><name>GFSVERSION</name><value>&GFSVERSION;</value></envar>
+	<envar><name>NDATE</name><value>&NDATE;</value></envar>
 
 	<dependency>
 		<and>
@@ -452,7 +460,9 @@
 	<walltime>&WALLTIME_ANAL_ENKF_GDAS;</walltime>
 	<nodes>&RESOURCES_ANAL_ENKF_GDAS;</nodes>
 	<native>&NATIVE_ANAL_ENKF_GDAS;</native>
+	<!--
 	<memory>&MEMORIES_ANAL_ENKF_GDAS;</memory>
+	-->
 
 	<join><cyclestr>&ROTDIR;/logs/@Y@m@d@H/gdasaeroanl_enkf.log</cyclestr></join>
 
@@ -477,6 +487,7 @@
 	<envar><name>CASE_ENKF</name><value>&CASE_ENKF;</value></envar>
 	<envar><name>AODTYPE</name><value>&AODTYPE;</value></envar>
 	<envar><name>GFSVERSION</name><value>&GFSVERSION;</value></envar>
+	<envar><name>NDATE</name><value>&NDATE;</value></envar>
 
 	<dependency>
 		<and>
@@ -511,11 +522,13 @@
 	<envar><name>COMROOT</name><value>&COMROOT;</value></envar>
 	<envar><name>DATAROOT</name><value><cyclestr>&DATAROOTTOP;/@Y@m@d@H/&CDUMP_CNTL;</cyclestr></value></envar>
 	<envar><name>HOMEgfs</name><value>&HOMEgfs;</value></envar>
+	<envar><name>HOMEjedi</name><value>&HOMEjedi;</value></envar>
 	<envar><name>ROTDIR</name><value>&ROTDIR;</value></envar>
 	<envar><name>EXPDIR</name><value>&EXPDIR;</value></envar>
 	<envar><name>NMEM_ENKF</name><value>&NMEM_ENKF;</value></envar>
 	<envar><name>RECENTER_ENKF_AERO</name><value>&RECENTER_ENKF_AERO;</value></envar>
 	<envar><name>GFSVERSION</name><value>&GFSVERSION;</value></envar>
+	<envar><name>NDATE</name><value>&NDATE;</value></envar>
 
 	<dependency>
 		<and>
@@ -567,6 +580,7 @@
 		<envar><name>ENSGRP</name><value>#grp#</value></envar>
 		<envar><name>TASKRC</name><value>&TASKRC;</value></envar>
 		<envar><name>GFSVERSION</name><value>&GFSVERSION;</value></envar>
+		<envar><name>NDATE</name><value>&NDATE;</value></envar>
 		<dependency>
 			<taskdep task="gdasaeroanlefinal"/>
 		</dependency>
@@ -620,6 +634,7 @@
 	<envar><name>SFCANL_RST</name><value>&SFCANL_RST;</value></envar>
 	<envar><name>GFSVERSION</name><value>&GFSVERSION;</value></envar>
 	<envar><name>ZERO_METINCS</name><value>&ZERO_METINCS;</value></envar>
+	<envar><name>NDATE</name><value>&NDATE;</value></envar>
 
 
 	<dependency>
@@ -684,6 +699,7 @@
 		<envar><name>SFCANL_RST</name><value>&SFCANL_RST;</value></envar>
 		<envar><name>GFSVERSION</name><value>&GFSVERSION;</value></envar>
 		<envar><name>ZERO_METINCS</name><value>&ZERO_METINCS;</value></envar>
+		<envar><name>NDATE</name><value>&NDATE;</value></envar>
 		<dependency>
 			<and>
 				<taskdep task="pertemis"/>
@@ -718,9 +734,11 @@
 	<envar><name>ROTDIR</name><value>&ROTDIR;</value></envar>
 	<envar><name>EXPDIR</name><value>&EXPDIR;</value></envar>
 	<envar><name>HOMEgfs</name><value>&HOMEgfs;</value></envar>
+	<envar><name>HOMEjedi</name><value>&HOMEjedi;</value></envar>
 	<envar><name>COMROOT</name><value>&COMROOT;</value></envar>
 	<envar><name>DATAROOT</name><value><cyclestr>&DATAROOTTOP;/@Y@m@d@H/&CDUMP_CNTL;</cyclestr></value></envar>
 	<envar><name>GFSVERSION</name><value>&GFSVERSION;</value></envar>
+	<envar><name>NDATE</name><value>&NDATE;</value></envar>
 	<dependency>
 		<metataskdep metatask="gdasefmn"/>
 	</dependency>
@@ -763,6 +781,7 @@
 	<envar><name>AODTYPE</name><value>&AODTYPE;</value></envar>
 	<envar><name>TASKRC</name><value>&TASKRC;</value></envar>
 	<envar><name>GFSVERSION</name><value>&GFSVERSION;</value></envar>
+	<envar><name>NDATE</name><value>&NDATE;</value></envar>
 
 	<dependency>
 		<and>

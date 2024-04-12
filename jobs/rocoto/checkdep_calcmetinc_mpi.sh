@@ -7,7 +7,8 @@ NMEM_ENKF=${NMEM_ENKF:-"20"}
 CASE_ENKF=${CASE_ENKF:-"C192"}
 CYCINTHR=${CYCINTHR:-"06"}
 ENSRUN=${ENSRUN:-"YES"}
-NDATE=${NDATE:-"/home/bohuang/Workflow/UFS-Aerosols_NRTcyc/UFS-Aerosols-EP4_JEDI-AeroDA-Reanl-Orion/misc/ndate/ndate"}
+#NDATE=${NDATE:-"/home/bohuang/Workflow/UFS-Aerosols_NRTcyc/UFS-Aerosols-EP4_JEDI-AeroDA-Reanl-Orion/misc/ndate/ndate"}
+NDATE=${HOMEgfs}/misc/ndate/ndate
 
 GDATE=$(${NDATE} -${CYCINTHR} ${CDATE})
 

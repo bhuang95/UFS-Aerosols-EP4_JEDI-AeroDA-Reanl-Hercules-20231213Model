@@ -19,7 +19,8 @@ MEGANDIR_NRT=${MEGANDIR_NRT:-"/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-20
 DUSTDIR_NRT=${DUSTDIR_NRT:-"/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/NRTdata_UFS-Aerosols/gocart_emissions/Dust/"}
 CDATE=${CDATE:-"2023083006"}
 CYCINTHR=${CYCINTHR:-"6"}
-NDATE=${NDATE:-"/home/bohuang/Workflow/UFS-Aerosols_NRTcyc/UFS-Aerosols-EP4_JEDI-AeroDA-Reanl-Orion/misc/ndate/ndate"}
+#NDATE=${NDATE:-"/home/bohuang/Workflow/UFS-Aerosols_NRTcyc/UFS-Aerosols-EP4_JEDI-AeroDA-Reanl-Orion/misc/ndate/ndate"}
+NDATE=${HOMEgfs}/misc/ndate/ndate
 MEMBER=${MEMBER:-"-1"}
 DATA=${DATA:-"/scratch2/BMC/gsd-fv3-dev/NCEPDEV/stmp3/$USER/RUNDIRS/$CDATE/gdas/fcst/"}
 

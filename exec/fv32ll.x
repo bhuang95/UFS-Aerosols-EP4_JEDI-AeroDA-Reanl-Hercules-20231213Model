@@ -1,1 +1,1 @@
-/work/noaa/wrf-chem/bhuang/NRTdata_UFS-Aerosols/src_omp/exec/fv32ll.x
+/work/noaa/wrf-chem/bhuang/expCodes-Hercules/src_omp/exec/fv32ll.x

@@ -29,8 +29,10 @@ set -x
 # Source FV3GFS workflow modules
 source "${HOMEgfs}/ush/preamble.sh"
 #. $HOMEgfs/ush/load_fv3gfs_modules.sh
-. $HOMEgfs/ush/load_ufswm_modules.sh
-module load python/3.7.5
+#. $HOMEgfs/ush/load_ufswm_modules.sh
+source ${HOMEjedi}/jedi_module_base.hera.sh
+export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${HOMEjedi}/lib/"
+#module load python/3.7.5
 status=$?
 [[ $status -ne 0 ]] && exit $status
 
@@ -59,6 +61,7 @@ export SFCANL_RST=${SFCANL_RST:-"YES"}
 export NMEM_ENKF=${NMEM_ENKF:-"5"}
 export ENSRUN=${ENSRUN:-"YES"}
 
+NDATE=${HOMEgfs}/misc/ndate/ndate
 #export COMPONENT=${COMPONENT:-"atmos"}
 COMP_RST="model_data/atmos/restart/"
 export job="rplenssfc"

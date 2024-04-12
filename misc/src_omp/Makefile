@@ -1,19 +1,30 @@
+#Compilation instruction: make exec in the current dir
+#Move the targted executable to the front and do "mkae"
+
+
 #FC =  ifort -g -traceback -check all -fp-stack-check 
 FC = mpiifort   #ifort #mpiifort
 FCFLAGS = -qopenmp
 NETCDF_F = $(netcdf_fortran_ROOT)
 NETCDF_C = $(netcdf_c_ROOT)
 LIBCDF = -I$(NETCDF_F)/include -L$(NETCDF_F)/lib -I$(NETCDF_C)/include -L$(NETCDF_C)/lib -lnetcdff -lnetcdf
-DATETIME=/home/mpagowsk/mapp_2018/libs/fortran-datetime
+DATETIME= /work/noaa/wrf-chem/bhuang/expCodes-Hercules//MariusLibs/libs/fortran-datetime
+#/home/bohuang/Workflow/UFS-Aerosols_NRTcyc/UFS-Aerosols-EP4_JEDI-AeroDA-Reanl-Hercules-20231213Model/misc/MariusLibs/libs/fortran-datetime
+#/home/mpagowsk/mapp_2018/libs/fortran-datetime
 LIBDATETIME = -I$(DATETIME)/include -L$(DATETIME)/lib -lfortran_datetime
-SLINT = /home/mpagowsk/mapp_2018/libs/slint
+SLINT = /work/noaa/wrf-chem/bhuang/expCodes-Hercules//MariusLibs/libs/slint
 LIBSLINT = -I$(SLINT) -L$(SLINT) -lslint
 LDFLAGS = $(LIBCDF) $(LIBSLINT) $(LIBDATETIME)
 
 #SOURCEDIR = /work/noaa/wrf-chem/bhuang/NRTdata_UFS-Aerosols/src_omp/src_omp
-SOURCEDIR= /home/bohuang/Workflow/UFS-Aerosols_NRTcyc/UFS-Aerosols-EP4_JEDI-AeroDA-Reanl-Orion/misc/src_omp
-BUILDDIR = /work/noaa/wrf-chem/bhuang/NRTdata_UFS-Aerosols/src_omp/build
-EXECDIR =  /work/noaa/wrf-chem/bhuang/NRTdata_UFS-Aerosols/src_omp/exec
+SOURCEDIR= /home/bohuang/Workflow/UFS-Aerosols_NRTcyc/UFS-Aerosols-EP4_JEDI-AeroDA-Reanl-Hercules-20231213Model/misc/src_omp
+#/home/bohuang/Workflow/UFS-Aerosols_NRTcyc/UFS-Aerosols-EP4_JEDI-AeroDA-Reanl-Orion/misc/src_omp
+BUILDDIR = /work/noaa/wrf-chem/bhuang/expCodes-Hercules//src_omp/build
+#/work/noaa/wrf-chem/bhuang/NRTdata_UFS-Aerosols/src_omp/build
+#EXECDIR = /work/noaa/wrf-chem/bhuang/expCodes/HerculesCodes/src_omp/exec 
+EXECDIR= /work/noaa/wrf-chem/bhuang/expCodes-Hercules//src_omp/exec
+#/work/noaa/wrf-chem/bhuang/expCodes-Hercules/src_omp/exec
+#/work/noaa/wrf-chem/bhuang/NRTdata_UFS-Aerosols/src_omp/exec
 
 RM = /bin/rm -f
 
@@ -277,7 +288,18 @@ OBJ127 = \
 	$(BUILDDIR)/module_viirs2ioda.o \
 	$(BUILDDIR)/module_generic_thinning.o \
 	$(BUILDDIR)/viirs2ioda.o
+
+$(EXECDIR)/fv32ll_reanalysis.x: $(OBJ116a)
+	$(FC) $(OBJ116a) $(FCFLAGS) $(LDFLAGS) -o $@
+
+$(EXECDIR)/fv3aod2ll.x: $(OBJ105)
+	$(FC) $(OBJ105) $(FCFLAGS) $(LDFLAGS) -o $@
  
+$(EXECDIR)/fv32ll.x: $(OBJ116)
+	$(FC) $(OBJ116) $(FCFLAGS) $(LDFLAGS) -o $@
+
+$(EXECDIR)/fv32pll.x: $(OBJ104)
+	$(FC) $(OBJ104) $(FCFLAGS) $(LDFLAGS) -o $@
 
 $(EXECDIR)/viirs2ioda_old.x: $(OBJ101)
 	$(FC) $(OBJ101) $(FCFLAGS) $(LDFLAGS) -o $@

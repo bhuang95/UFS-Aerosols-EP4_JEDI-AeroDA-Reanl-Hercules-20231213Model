@@ -14,7 +14,8 @@ set -x
 module load python/3.7.5
 source config_hera2hpss
 
-NDATE=${NDATE:-"/home/bohuang/Workflow/UFS-Aerosols_NRTcyc/UFS-Aerosols-EP4_JEDI-AeroDA-Reanl-Orion/misc/ndate/ndate"}
+#NDATE=${NDATE:-"/home/bohuang/Workflow/UFS-Aerosols_NRTcyc/UFS-Aerosols-EP4_JEDI-AeroDA-Reanl-Orion/misc/ndate/ndate"}
+NDATE=${HOMEgfs}/misc/ndate/ndate
 
 NCP="/bin/cp -r"
 NMV="/bin/mv -f"
@@ -90,6 +91,9 @@ if [ ${ICNT} -eq 0 ]; then
     echo "YES" > ${TMPDIR}/remove.record
 
     ${NRM} ${DATAHPSSDIR}
+    if [ -f ${GLBUSRECORD}-HERCULES ] then
+        ${NRM} ${GLBUSRECORD}-HERCULES
+    fi
 else
     echo "Globus failed at ${GDATE}" >> ${GLBUSRECORD}
     exit ${ICNT}

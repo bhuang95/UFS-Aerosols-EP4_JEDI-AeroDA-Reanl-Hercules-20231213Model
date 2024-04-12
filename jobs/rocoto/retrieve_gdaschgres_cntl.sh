@@ -28,7 +28,8 @@ export ENSRUN=${ENSRUN:-"YES"}
 export MISSGDASRECORD=${MISSGDASRECORD:-"/home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/misc/GDAS/CHGRESGDAS/v14/record.chgres_hpss_htar_allmissing_v14"}
 COMP_ANL_ATM="analysis/atmos"
 COMP_MOD_ATM_RST="model_data/atmos/restart"
-NDATE=${NDATE:-"/home/bohuang/Workflow/UFS-Aerosols_NRTcyc/UFS-Aerosols-EP4_JEDI-AeroDA-Reanl-Orion/misc/ndate/ndate"}
+#NDATE=${NDATE:-"/home/bohuang/Workflow/UFS-Aerosols_NRTcyc/UFS-Aerosols-EP4_JEDI-AeroDA-Reanl-Orion/misc/ndate/ndate"}
+NDATE=${HOMEgfs}/misc/ndate/ndate
 
 
 #source "${HOMEgfs}/ush/preamble.sh"

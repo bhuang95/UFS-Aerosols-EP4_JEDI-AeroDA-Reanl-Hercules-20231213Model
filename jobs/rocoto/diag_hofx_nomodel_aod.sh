@@ -43,7 +43,8 @@ export assim_freq=${assim_freq:-"6"}
 export job="diag_hofx"
 export jobid="${job}.$$"
 export DATA1=${DATA:-${DATAROOT}/${jobid}}
-NDATE=${NDATE:-"/home/bohuang/Workflow/UFS-Aerosols_NRTcyc/UFS-Aerosols-EP4_JEDI-AeroDA-Reanl-Orion/misc/ndate/ndate"}
+#NDATE=${NDATE:-"/home/bohuang/Workflow/UFS-Aerosols_NRTcyc/UFS-Aerosols-EP4_JEDI-AeroDA-Reanl-Orion/misc/ndate/ndate"}
+NDATE=${HOMEgfs}/misc/ndate/ndate
 
 
 source ${HOMEjedi}/jedi_module_base.hera.sh

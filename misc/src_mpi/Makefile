@@ -1,3 +1,4 @@
+# Command: make EXECDIR/test.x then make EXECDIR/${targetexec}.x
 FC =  mpiifort
 FCFLAGS =  -FR -O3 -convert big_endian
 
@@ -6,16 +7,23 @@ NETCDF_C = $(netcdf_c_ROOT)
 LIBCDF = -I$(NETCDF_F)/include -L$(NETCDF_F)/lib -I$(NETCDF_C)/include -L$(NETCDF_C)/lib -lnetcdff -lnetcdf
 
 LIBMP = -lmpi -qopenmp
-LIBS = /home/mpagowsk/mapp_2018/libs
+LIBS = /work/noaa/wrf-chem/bhuang/expCodes-Hercules/MariusLibs/libs
+#/home/bohuang/Workflow/UFS-Aerosols_NRTcyc/MariusLibs/libs 
+#/work/noaa/wrf-chem/bhuang/expCodes/HerculesCodes/MariusLibs/libs
+#/home/bohuang/Workflow/UFS-Aerosols_NRTcyc/UFS-Aerosols-EP4_JEDI-AeroDA-Reanl-Hercules-20231213Model/misc/MariusLibs/libs 
+#/home/mpagowsk/mapp_2018/libs
 #/scratch1/BMC/gsd-fv3-dev/MAPP_2018/pagowski/libs
 LIBCRTM = -I$(LIBS)/crtm_big_endian/include -L$(LIBS)/crtm_big_endian/lib -lcrtm
 LIBGEOS =  -I$(LIBS)/geos-aero/include -L$(LIBS)/geos-aero/lib -lgeos-aero
 LDFLAGS = $(LIBCDF) $(LIBMP) $(LIBCRTM) $(LIBGEOS)
 
 #SOURCEDIR = /work/noaa/wrf-chem/bhuang/NRTdata_UFS-Aerosols/src_mpi/src_mpi
-SOURCEDIR = /home/bohuang/Workflow/UFS-Aerosols_NRTcyc/UFS-Aerosols-EP4_JEDI-AeroDA-Reanl-Orion/misc/src_mpi
-BUILDDIR = /work/noaa/wrf-chem/bhuang/NRTdata_UFS-Aerosols/src_mpi/build
-EXECDIR = /work/noaa/wrf-chem/bhuang/NRTdata_UFS-Aerosols/src_mpi/exec
+SOURCEDIR = /home/bohuang/Workflow/UFS-Aerosols_NRTcyc/UFS-Aerosols-EP4_JEDI-AeroDA-Reanl-Hercules-20231213Model/misc/src_mpi
+#/home/bohuang/Workflow/UFS-Aerosols_NRTcyc/UFS-Aerosols-EP4_JEDI-AeroDA-Reanl-Orion/misc/src_mpi
+BUILDDIR = /work/noaa/wrf-chem/bhuang/expCodes-Hercules/src_mpi/build/
+#/work/noaa/wrf-chem/bhuang/NRTdata_UFS-Aerosols/src_mpi/build
+EXECDIR = /work/noaa/wrf-chem/bhuang/expCodes-Hercules/src_mpi/exec
+#/work/noaa/wrf-chem/bhuang/NRTdata_UFS-Aerosols/src_mpi/exec
 
 RM = /bin/rm -f
 

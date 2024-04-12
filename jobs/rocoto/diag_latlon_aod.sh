@@ -30,7 +30,8 @@ CYCINTHR=${CYCINTHR:-"6"}
 DATAROOT=${DATAROOT:-"/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/MISC/UFS-Aerosols/TestScripts/grid-aod/tests/"}
 COMPONENT=${COMPONENT:-"model_data/atmos/restart"}
 
-NDATE="/home/bohuang/Workflow/UFS-Aerosols_NRTcyc/UFS-Aerosols-EP4_JEDI-AeroDA-Reanl-Orion/misc/ndate/ndate"
+#NDATE=${NDATE:-"/home/bohuang/Workflow/UFS-Aerosols_NRTcyc/UFS-Aerosols-EP4_JEDI-AeroDA-Reanl-Orion/misc/ndate/ndate"}
+NDATE=${HOMEgfs}/misc/ndate/ndate
 FV3AODEXEC=${HOMEgfs}/exec/gocart_aod_fv3_mpi_LUTs.x
 LLAODEXEC=${HOMEgfs}/exec/fv3aod2ll.x
 NCORES=40

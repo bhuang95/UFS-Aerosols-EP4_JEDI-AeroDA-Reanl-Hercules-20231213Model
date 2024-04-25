@@ -12,10 +12,12 @@ set -x
 # Back up cycled data to HPSS at ${CDATE}-6 cycle
 
 module load python/3.7.5
+#module load globus-cli/3.27
 source config_hera2hpss
 
 #NDATE=${NDATE:-"/home/bohuang/Workflow/UFS-Aerosols_NRTcyc/UFS-Aerosols-EP4_JEDI-AeroDA-Reanl-Orion/misc/ndate/ndate"}
-NDATE=${HOMEgfs}/misc/ndate/ndate
+#NDATE=${HOMEgfs}/misc/ndate/ndate
+NDATE=/work/noaa/wrf-chem/bhuang/expCodes-Hercules/ndate/ndate
 #module load hpss
 #export PATH="/apps/hpss/bin:$PATH"
 set -x
@@ -85,7 +87,8 @@ if [ ${ICNT} -eq 0 ]; then
     fi
     echo "YES" > ${TMPDIR}/remove.record
     ${NRM} ${DATAHPSSDIR}
-    if [ -f ${GLBUSRECORD}-HERCULES ] then
+
+    if [ -f ${GLBUSRECORD}-HERCULES ]; then
         ${NRM} ${GLBUSRECORD}-HERCULES
     fi
 

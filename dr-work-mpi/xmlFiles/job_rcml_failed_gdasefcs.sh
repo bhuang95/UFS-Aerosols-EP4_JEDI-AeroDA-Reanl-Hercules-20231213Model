@@ -5,9 +5,9 @@ module load rocoto
 set -x 
 
 RUNDIR="/work/noaa/gsd-fv3-dev/bhuang/expRuns/UFS-Aerosols_RETcyc/AeroReanl"
-XMLDIR="/home/bohuang/Workflow/UFS-Aerosols_NRTcyc/UFS-Aerosols-EP4_JEDI-AeroDA-Reanl-Orion/dr-work-mpi/xmlFiles"
+XMLDIR="/home/bohuang/Workflow/UFS-Aerosols_NRTcyc/UFS-Aerosols-EP4_JEDI-AeroDA-Reanl-Hercules-20231213Model/dr-work-mpi/xmlFiles"
 DBDIR="${RUNDIR}/xmlDB/"
-NDATE="/home/bohuang/Workflow/UFS-Aerosols_NRTcyc/UFS-Aerosols-EP4_JEDI-AeroDA-Reanl-Orion/misc/ndate/ndate"
+NDATE="/home/bohuang/Workflow/UFS-Aerosols_NRTcyc/UFS-Aerosols-EP4_JEDI-AeroDA-Reanl-Hercules-20231213Model/misc/ndate/ndate"
 rstat="/apps/contrib/rocoto/1.3.6/bin/rocotostat"
 rcmpl="/apps/contrib/rocoto/1.3.6/bin/rocotocomplete"
 
@@ -16,9 +16,9 @@ NTASKS=8
 NTRIES=3
 
 EXPS="
-AeroReanl_EP4_AeroDA_YesSPEEnKF_YesSfcanl_v15_0dz0dp_41M_C96_202007
 AeroReanl_EP4_AeroDA_YesSPEEnKF_YesSfcanl_v14_0dz0dp_41M_C96_201801
 "
+#AeroReanl_EP4_AeroDA_YesSPEEnKF_YesSfcanl_v15_0dz0dp_41M_C96_202007
 
 for EXP in ${EXPS}; do
     RECDIR=${XMLDIR}/FAILED_GDASEFCS
@@ -56,7 +56,8 @@ ${rstat} -w ${XMLDIR}/${EXP}.xml -d ${DBDIR}/${EXP}.db -c ${CDATE}00 -m gdasefmn
             
 	            FMEM_ED=$((10#${FGRP} * 10#${MEMGRP}))
 	            FMEM_ST=$((${FMEM_ED} - ${MEMGRP} + 1))
-	            FMEM_INC=$((10#${DGRP} * 10#${MEMGRP}))
+	            #FMEM_INC=$((10#${DGRP} * 10#${MEMGRP}))
+	            FMEM_INC=$((${DGRP} * ${MEMGRP}))
 	            FEFCS=${ENKFDIR}/efcs.grp${FGRP}
 	    
 	            IMEM=${FMEM_ST}

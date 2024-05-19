@@ -97,6 +97,10 @@ if [ ${ICNT} -eq 0 ]; then
     if [ -f ${GLBUSRECORD}-HERCULES ]; then
         ${NRM} ${GLBUSRECORD}-HERCULES
     fi
+
+    if [ -f ${GLBUSRECORD} ]; then
+        ${NRM} ${GLBUSRECORD}
+    fi
 else
     echo "Globus failed at ${GDATE}" >> ${GLBUSRECORD}
     exit ${ICNT}

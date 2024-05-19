@@ -146,6 +146,8 @@ while [ ${IMEM} -le ${ENSED} ]; do
     INCFILE=${ANLDIR}/${ENKFOPT}.t${CH}z.${RCEOPT}atminc.nc
     ANLFILE=${ANLDIR}/${ENKFOPT}.t${CH}z.${RCEOPT}atmanl.nc
 
+    [[ -f ${INCFILE} ]] && ${NRM} ${INCFILE}
+
     ${NLN} ${BKGFILE} ./atmges_mem001
     ${NLN} ${ANLFILE} ./atmanl_mem001
     ${NLN} ${INCFILE} ./atminc_mem001

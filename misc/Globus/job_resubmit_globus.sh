@@ -1,23 +1,26 @@
 #!/bin/bash
 
-#SJOB=sbatch_glbus2niag_ret.sh
-#TOPDIR=/work/noaa/gsd-fv3-dev/bhuang/expRuns/UFS-Aerosols_RETcyc/AeroReanl/AeroReanl_EP4_AeroDA_YesSPEEnKF_YesSfcanl_v15_0dz0dp_41M_C96_202007/dr-data/HERA2HPSS
-#TOPDIR=/work/noaa/gsd-fv3-dev/bhuang/expRuns/UFS-Aerosols_RETcyc/AeroReanl/AeroReanl_EP4_AeroDA_YesSPEEnKF_YesSfcanl_v14_0dz0dp_41M_C96_201801/dr-data/HERA2HPSS
+SJOB=sbatch_glbus2niag_ret.sh
+TOPDIR=/work/noaa/gsd-fv3-dev/bhuang/expRuns/UFS-Aerosols_RETcyc/AeroReanl/AeroReanl_EP4_AeroDA_YesSPEEnKF_YesSfcanl_v14_0dz0dp_41M_C96_201801/dr-data/HERA2HPSS/
 
-SJOB=sbatch_glbus2niag_diag.sh
-#TOPDIR=/work/noaa/gsd-fv3-dev/bhuang/expRuns/UFS-Aerosols_RETcyc/AeroReanl/AeroReanl_EP4_AeroDA_YesSPEEnKF_YesSfcanl_v15_0dz0dp_41M_C96_202007/dr-data-backup/HERA2HPSS
-TOPDIR=/work/noaa/gsd-fv3-dev/bhuang/expRuns/UFS-Aerosols_RETcyc/AeroReanl/AeroReanl_EP4_AeroDA_YesSPEEnKF_YesSfcanl_v14_0dz0dp_41M_C96_201801/dr-data-backup/HERA2HPSS/
-RECDIR=${TOPDIR}/resubmit.record
+#SJOB=sbatch_glbus2niag_diag.sh
+##TOPDIR=/work/noaa/gsd-fv3-dev/bhuang/expRuns/UFS-Aerosols_RETcyc/AeroReanl/AeroReanl_EP4_AeroDA_YesSPEEnKF_YesSfcanl_v15_0dz0dp_41M_C96_202007/dr-data-backup/HERA2HPSS
+#TOPDIR=/work/noaa/gsd-fv3-dev/bhuang/expRuns/UFS-Aerosols_RETcyc/AeroReanl/AeroReanl_EP4_AeroDA_YesSPEEnKF_YesSfcanl_v14_0dz0dp_41M_C96_201801/dr-data-backup/HERA2HPSS/
+#RECDIR=${TOPDIR}/resubmit.record
 
 CYCS="
-2018041212
-2018041218
-2018041300
-2018041306
-2018041312
-2018041318
-2018041400
-2018041406
+2018091500
+2018091600
+2018091618
+2018091700
+2018091706
+2018091718
+2018091800
+2018091906
+2018091912
+2018092000
+2018092106
+2018092200
 "
 
 [[ ! -d ${RECDIR} ]] && mkdir -p ${RECDIR}

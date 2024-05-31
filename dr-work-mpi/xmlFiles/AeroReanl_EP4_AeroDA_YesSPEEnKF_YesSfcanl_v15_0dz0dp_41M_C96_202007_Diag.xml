@@ -15,7 +15,7 @@
 	    For now, SFCANL_RST="NO" to use sfc_data from past cycle
 	-->
 	<!-- Experiment directory setup -->
-	<!ENTITY PSLOT "AeroReanl_EP4_AeroDA_YesSPEEnKF_YesSfcanl_v14_0dz0dp_41M_C96_201801">
+	<!ENTITY PSLOT "AeroReanl_EP4_AeroDA_YesSPEEnKF_YesSfcanl_v15_0dz0dp_41M_C96_202007">
 	<!ENTITY HOMEgfs "/home/bohuang/Workflow/UFS-Aerosols_NRTcyc/UFS-Aerosols-EP4_JEDI-AeroDA-Reanl-Hercules-20231213Model/">
 	<!--
 	<!ENTITY HOMEgfs "/scratch2/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/MISC/UFS-Workflow/20231130/UFS-Aerosols-EP4_JEDI-AeroDA-Reanl">
@@ -34,8 +34,8 @@
 	<!ENTITY DMPDIR   "/work/noaa/zrtrr/bohuang/dump">
 
 	<!-- Experiment parameter setup -->
-	<!ENTITY SDATE "201802070000">
-	<!ENTITY EDATE "201811301800">
+	<!ENTITY SDATE "202007230600">
+	<!ENTITY EDATE "202104301800">
 	<!ENTITY INTERVAL "06:00:00">
 	<!ENTITY CYCINTHR "06">
 	<!ENTITY CDUMP_CNTL "gdas">

@@ -6,6 +6,13 @@ CASE_CNTL=${CASE_CNTL:-"C192"}
 CASE_ENKF=${CASE_ENKF:-"C192"}
 ENSRUN=${ENSRUN:-"YES"}
 NMEMSGRPS=${NMEMSGRPS:-"01-40"}
+MISSGDASRECORD=${MISSGDASRECORD:-"/home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/misc/GDAS/CHGRESGDAS/v15/record.chgres_hpss_htar_allmissing_v15"}
+
+
+if ( grep ${CDATE} ${MISSGDASRECORD} ); then
+    echo "GDAS Met data not avaibale on HPSS and continue"
+    exit 0
+fi
 
 CYY=$(echo "${CDATE}" | cut -c1-4)
 CMM=$(echo "${CDATE}" | cut -c5-6)

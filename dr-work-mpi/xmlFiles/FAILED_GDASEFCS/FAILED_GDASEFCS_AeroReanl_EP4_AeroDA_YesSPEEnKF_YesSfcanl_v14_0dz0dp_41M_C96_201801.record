@@ -810,3 +810,21 @@
 2018091518 at Fri May 17 11:40:05 CDT 2024
     ** SUCCEEDED: grp07-mem034-ratmanl replaced by grp01-mem004
     ** SUCCEEDED: grp07-mem035-ratmanl replaced by grp01-mem005
+2018102318 at Sat May 25 15:45:06 CDT 2024
+    ** FAILED:    grp01-mem003 replaced by grp02-mem003
+    ** FAILED:    grp01-mem004 replaced by grp02-mem004
+    ** FAILED:    grp01-mem005 replaced by grp02-mem005
+    ** FAILED:     copy all failed members at gdasefcs01
+2018102318 at Mon May 27 14:04:50 CDT 2024
+    ** FAILED:    grp01-mem003 replaced by grp02-mem003
+    ** FAILED:    grp01-mem004 replaced by grp02-mem004
+    ** FAILED:    grp01-mem005 replaced by grp02-mem005
+    ** FAILED:     copy all failed members at gdasefcs01
+2018102318 at Mon May 27 14:05:25 CDT 2024
+    ** SUCCEEDED: grp01-mem003 replaced by grp02-mem008
+    ** SUCCEEDED: grp01-mem004 replaced by grp02-mem009
+    ** SUCCEEDED: grp01-mem005 replaced by grp02-mem010
+2018102800 at Tue May 28 08:15:10 CDT 2024
+    ** SUCCEEDED: grp06-mem028 replaced by grp01-mem003
+    ** SUCCEEDED: grp06-mem029 replaced by grp01-mem004
+    ** SUCCEEDED: grp06-mem030 replaced by grp01-mem005

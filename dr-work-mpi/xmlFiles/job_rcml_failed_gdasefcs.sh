@@ -10,6 +10,7 @@ DBDIR="${RUNDIR}/xmlDB/"
 NDATE="/home/bohuang/Workflow/UFS-Aerosols_NRTcyc/UFS-Aerosols-EP4_JEDI-AeroDA-Reanl-Hercules-20231213Model/misc/ndate/ndate"
 rstat="/apps/contrib/rocoto/1.3.6/bin/rocotostat"
 rcmpl="/apps/contrib/rocoto/1.3.6/bin/rocotocomplete"
+rboot="/apps/contrib/rocoto/1.3.6/bin/rocotoboot"
 
 MEMGRP=5
 NTASKS=8
@@ -33,7 +34,8 @@ for EXP in ${EXPS}; do
     EXPDIR=${RUNDIR}/${EXP}/dr-data/FAILED_GDASEFCS
     [[ ! -d ${EXPDIR} ]] && mkdir -p ${EXPDIR}
     cd ${EXPDIR}
-    if [ ! -f rstat.log ]; then
+    #if [ ! -f rstat.log ]; then
+    if ( grep ${CDATE} rstat_resubmit.record ); then
 ${rstat} -w ${XMLDIR}/${EXP}.xml -d ${DBDIR}/${EXP}.db -c ${CDATE}00 -m gdasefmn > rstat.log
 	
         grep "DEAD" rstat.log > failed.log
@@ -78,11 +80,13 @@ ${rstat} -w ${XMLDIR}/${EXP}.xml -d ${DBDIR}/${EXP}.db -c ${CDATE}00 -m gdasefmn
 			    #echo "HBO-cp -r ${ENKFDIR}/${FMEM_RPL} ${ENKFDIR}/${FMEM}"
 		            mv ${ENKFDIR}/${FMEM} ${ENKFDIR}/${FMEM}-FAILED
 		            cp -r ${ENKFDIR}/${FMEM_RPL} ${ENKFDIR}/${FMEM}
+			    echo "${FMEM_PASS}" >> ${FEFCS}
 			   
                             ERR=$?
 		            ICNT=$((${ICNT}+${ERR}))
 			    if [ ${ERR} -eq 0 ]; then
 			        echo "    ** SUCCEEDED: grp${FGRP}-${FMEM} replaced by grp${SGRP}-${FMEM_RPL}" >> ${EXPREC}
+				break
 			    else
 			        echo "    ** FAILED:    grp${FGRP}-${FMEM} replaced by grp${SGRP}-${FMEM_RPL}" >> ${EXPREC}
 			    fi
@@ -92,12 +96,12 @@ ${rstat} -w ${XMLDIR}/${EXP}.xml -d ${DBDIR}/${EXP}.db -c ${CDATE}00 -m gdasefmn
 
                     if [ ${ICNT} -eq 0 ]; then
 			#echo "HBO-rocotocomplete -w ${XMLDIR}/${EXP}.xml -d ${DBDIR}/${EXP}.db -c ${CDATE}00 -t gdasefcs${FGRP}"
-${rcmpl} -w ${XMLDIR}/${EXP}.xml -d  ${DBDIR}/${EXP}.db -c ${CDATE}00 -t gdasefcs${FGRP}
+${rboot} -w ${XMLDIR}/${EXP}.xml -d  ${DBDIR}/${EXP}.db -c ${CDATE}00 -t gdasefcs${FGRP}
                         ERR=$?
 		        ICNT=$((${ICNT}+${ERR}))
 	                if [ ${ERR} -ne 0 ]; then
-	                    echo "FAILED rocotocomplete gdasefcs${FGRP}"
-			    echo "    ** FAILED:     rocotocomplete gdasefcs${FGRP}" >> ${EXPREC}
+	                    echo "FAILED rocotoboot gdasefcs${FGRP}"
+			    echo "    ** FAILED:     rocotoboot gdasefcs${FGRP}" >> ${EXPREC}
 	                fi
 	            else
 	                echo "Failed copying all failed members in ${CDATE}00-gdasefcs${FGRP}"
@@ -117,4 +121,5 @@ ${rcmpl} -w ${XMLDIR}/${EXP}.xml -d  ${DBDIR}/${EXP}.db -c ${CDATE}00 -t gdasefc
 	    rm -rf rstat.log
 	fi
     fi
+    #fi
 done # EXP

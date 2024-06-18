@@ -219,7 +219,8 @@ if [ ${ERR} -eq 0 ]; then
     #fi
     # echo "YES" > ${TMPDIR}/remove.record
     cd ${TMPDIR}
-/opt/slurm/bin/sbatch sbatch_glbus2niag_ret.sh
+#/opt/slurm/bin/sbatch sbatch_glbus2niag_ret.sh
+echo "Globus failed at ${GDATE}" > ${GLBUSRECORD}
 else
     echo "HTAR failed at ${GDATE}" >> ${HPSSRECORD}
     exit ${ERR}

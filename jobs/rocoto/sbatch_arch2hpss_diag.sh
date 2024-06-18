@@ -79,6 +79,7 @@ if [ ${ICNT} -ne 0 ]; then
 else
     echo "HTAR diag at ${CDATE} passed and exit now".
     cd ${TMPDIR}
-/opt/slurm/bin/sbatch sbatch_glbus2niag_diag.sh
+#/opt/slurm/bin/sbatch sbatch_glbus2niag_diag.sh
+echo "Globus failed at ${CDATE}" > ${GLBUSRECORD}
 fi
 exit ${ICNT}

@@ -65,12 +65,15 @@ HPSSRECORD=${TMPDIR}/../record.failed_HERA2HPSS-${CDATE}
 TMPDIR=${TMPDIR}
 
 NIAGEP=1bfd8a79-52b2-4589-88b2-0648e0c0b35d
-ORIONEP=2cf2c281-cafc-4b20-900b-45abeb042854
+#ORIONEP=2cf2c281-cafc-4b20-900b-45abeb042854
+ORIONEP=8a10dd4f-24ee-4794-a39d-9c313ab6a34b
 #HEREP=869912fe-f6de-46c0-af10-b22efd84a022
 GLBUSRECORD=${TMPDIR}/../record.failed_GLBUS2NIAG-${CDATE}
 EOF
 
 /opt/slurm/bin/sbatch sbatch_arch2hpss_ret.sh
+#GLBUSRECORD=${TMPDIR}/../record.failed_GLBUS2NIAG-${CDATE}
+#echo "Globus failed at ${CDATE}-6hour" > ${GLBUSRECORD}
 ERR=$?
 echo ${CDATE} > ${TASKRC}
 sleep 60

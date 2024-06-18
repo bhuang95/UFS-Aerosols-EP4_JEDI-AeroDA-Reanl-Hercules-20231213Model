@@ -16,3 +16,41 @@
     ** SUCCEEDED: grp07-mem033 replaced by grp01-mem003
     ** SUCCEEDED: grp07-mem034 replaced by grp01-mem004
     ** SUCCEEDED: grp07-mem035 replaced by grp01-mem005
+2021042806 at Sun Jun  2 19:23:48 CDT 2024
+    ** SUCCEEDED: grp01-mem001 replaced by grp02-mem006
+    ** SUCCEEDED: grp01-mem002 replaced by grp02-mem007
+    ** SUCCEEDED: grp01-mem003 replaced by grp02-mem008
+    ** SUCCEEDED: grp01-mem004 replaced by grp02-mem009
+    ** SUCCEEDED: grp01-mem005 replaced by grp02-mem010
+2021050812 at Thu Jun  6 13:30:11 CDT 2024
+    ** SUCCEEDED: grp02-mem009 replaced by grp01-mem004
+    ** SUCCEEDED: grp02-mem010 replaced by grp01-mem005
+    ** SUCCEEDED: grp05-mem024 replaced by grp03-mem014
+    ** SUCCEEDED: grp05-mem025 replaced by grp03-mem015
+2021051200 at Fri Jun  7 05:35:41 CDT 2024
+    ** SUCCEEDED: grp02-mem010 replaced by grp01-mem005
+    ** SUCCEEDED: grp03-mem015 replaced by grp04-mem020
+    ** SUCCEEDED: grp06-mem030 replaced by grp05-mem025
+    ** SUCCEEDED: grp07-mem035 replaced by grp08-mem040
+2021051500 at Fri Jun  7 23:25:32 CDT 2024
+    ** FAILED: replace failed members due to FNUM=8 larger than SNUM=0
+2021052918 at Mon Jun 17 18:00:17 CDT 2024
+2021052918 at Mon Jun 17 18:15:09 CDT 2024
+2021052918 at Mon Jun 17 18:20:10 CDT 2024
+2021052918 at Mon Jun 17 18:30:09 CDT 2024
+2021052918 at Mon Jun 17 18:35:09 CDT 2024
+2021052918 at Mon Jun 17 18:45:09 CDT 2024
+2021052918 at Mon Jun 17 18:50:09 CDT 2024
+2021052918 at Tue Jun 18 00:00:09 CDT 2024
+2021052918 at Tue Jun 18 00:15:14 CDT 2024
+2021052918 at Tue Jun 18 00:30:09 CDT 2024
+2021052918 at Tue Jun 18 00:45:09 CDT 2024
+2021052918 at Tue Jun 18 06:00:11 CDT 2024
+2021052918 at Tue Jun 18 06:15:08 CDT 2024
+2021052918 at Tue Jun 18 06:30:10 CDT 2024
+2021052918 at Tue Jun 18 06:45:09 CDT 2024
+2021052918 at Tue Jun 18 06:50:09 CDT 2024
+2021052918 at Tue Jun 18 12:03:33 CDT 2024
+    ** SUCCEEDED: grp06-mem030 replaced by grp01-mem005
+    ** SUCCEEDED: grp08-mem039 replaced by grp02-mem009
+    ** SUCCEEDED: grp08-mem040 replaced by grp02-mem010

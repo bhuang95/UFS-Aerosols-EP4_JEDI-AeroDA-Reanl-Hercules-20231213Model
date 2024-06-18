@@ -11,13 +11,14 @@
 set -x
 # Back up cycled data to HPSS at ${CDATE}-6 cycle
 
-module load python/3.7.5
-#module load globus-cli/3.27
+#module load python/3.7.5
+module load globus-cli/3.27
 source config_hera2hpss
 
 #NDATE=${NDATE:-"/home/bohuang/Workflow/UFS-Aerosols_NRTcyc/UFS-Aerosols-EP4_JEDI-AeroDA-Reanl-Orion/misc/ndate/ndate"}
 #NDATE=${HOMEgfs}/misc/ndate/ndate
-NDATE=/work/noaa/wrf-chem/bhuang/expCodes-Hercules/ndate/ndate
+#NDATE=/work/noaa/wrf-chem/bhuang/expCodes-Hercules/ndate/ndate
+NDATE=/home/bohuang/Workflow/UFS-Aerosols_NRTcyc/UFS-Aerosols-EP4_JEDI-AeroDA-Reanl-Orion/misc/ndate/ndate
 
 NCP="/bin/cp -r"
 NMV="/bin/mv -f"

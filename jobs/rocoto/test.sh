@@ -1,6 +1,8 @@
 #!/bin/bash
-set -x
-a=10
-b=-6
-c=$((${a}+${b}))
 
+hh=$(date +%H)
+
+echo ${hh}
+if [ "${hh}" = "00" ] || [ "${hh}" = "06" ] || [ "${hh}" = "12" ] || [ "${hh}" = "18" ]; then
+   echo ${hh}
+fi

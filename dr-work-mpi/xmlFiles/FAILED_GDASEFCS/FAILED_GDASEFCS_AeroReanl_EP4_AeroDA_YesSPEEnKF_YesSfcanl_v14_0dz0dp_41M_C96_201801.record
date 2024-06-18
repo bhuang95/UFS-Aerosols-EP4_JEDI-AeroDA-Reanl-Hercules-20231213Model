@@ -828,3 +828,33 @@
     ** SUCCEEDED: grp06-mem028 replaced by grp01-mem003
     ** SUCCEEDED: grp06-mem029 replaced by grp01-mem004
     ** SUCCEEDED: grp06-mem030 replaced by grp01-mem005
+2018111412 at Sat Jun  1 18:05:11 CDT 2024
+    ** SUCCEEDED: grp03-mem013 replaced by grp01-mem003
+    ** SUCCEEDED: grp03-mem014 replaced by grp01-mem004
+    ** SUCCEEDED: grp03-mem015 replaced by grp01-mem005
+2018112000 at Sun Jun  2 19:20:10 CDT 2024
+    ** SUCCEEDED: grp01-mem001 replaced by grp03-mem011
+    ** SUCCEEDED: grp01-mem002 replaced by grp03-mem012
+    ** SUCCEEDED: grp01-mem003 replaced by grp03-mem013
+    ** SUCCEEDED: grp01-mem004 replaced by grp03-mem014
+    ** SUCCEEDED: grp01-mem005 replaced by grp03-mem015
+    ** SUCCEEDED: grp02-mem006 replaced by grp04-mem016
+    ** SUCCEEDED: grp02-mem007 replaced by grp04-mem017
+    ** SUCCEEDED: grp02-mem008 replaced by grp04-mem018
+    ** SUCCEEDED: grp02-mem009 replaced by grp04-mem019
+    ** SUCCEEDED: grp02-mem010 replaced by grp04-mem020
+    ** SUCCEEDED: grp05-mem021 replaced by grp06-mem026
+    ** SUCCEEDED: grp05-mem022 replaced by grp06-mem027
+    ** SUCCEEDED: grp05-mem023 replaced by grp06-mem028
+    ** SUCCEEDED: grp05-mem024 replaced by grp06-mem029
+    ** SUCCEEDED: grp05-mem025 replaced by grp06-mem030
+2018120412 at Wed Jun  5 15:20:10 CDT 2024
+    ** SUCCEEDED: grp04-mem016 replaced by grp01-mem001
+    ** SUCCEEDED: grp04-mem017 replaced by grp01-mem002
+    ** SUCCEEDED: grp04-mem018 replaced by grp01-mem003
+    ** SUCCEEDED: grp04-mem019 replaced by grp01-mem004
+    ** SUCCEEDED: grp04-mem020 replaced by grp01-mem005
+2018121200 at Fri Jun  7 05:35:23 CDT 2024
+    ** SUCCEEDED: grp03-mem015 replaced by grp01-mem005
+2018121506 at Sat Jun  8 00:20:26 CDT 2024
+    ** FAILED: replace failed members due to FNUM=8 larger than SNUM=0

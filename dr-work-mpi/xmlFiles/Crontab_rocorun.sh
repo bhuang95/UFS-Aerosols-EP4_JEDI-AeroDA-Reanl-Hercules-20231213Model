@@ -39,4 +39,19 @@ done
 #/home/bohuang/Workflow/UFS-Aerosols_NRTcyc/UFS-Aerosols-EP4_JEDI-AeroDA-Reanl-Hercules-20231213Model/dr-work-mpi/xmlFiles/job_rcml_failed_gdasefcs_cp_enkfana.sh
 
 
+hh=$(date +%H)
+#mm=$(date +%m)
+#if [ "${mm}" = "00" ]; then
+evenhrs="00 02 04 06 08 10 12 14 16 18 20 22"
+oddhrs="01 03 05 07 09 11 13 15 17 19 21 23"
+for hr in ${evenhrs}; do
+if [ "${hh}" = "${hr}" ]; then
+/home/bohuang/Workflow/UFS-Aerosols_NRTcyc/UFS-Aerosols-EP4_JEDI-AeroDA-Reanl-Hercules-20231213Model/dr-work-mpi/xmlFiles/job_rcml_failed_gdasefcs_resubmit.sh
+fi
+done
+for hr in ${oddhrs}; do
+if [ "${hh}" = "${hr}" ]; then
 /home/bohuang/Workflow/UFS-Aerosols_NRTcyc/UFS-Aerosols-EP4_JEDI-AeroDA-Reanl-Hercules-20231213Model/dr-work-mpi/xmlFiles/job_rcml_failed_gdasefcs.sh
+fi
+done
+#fi

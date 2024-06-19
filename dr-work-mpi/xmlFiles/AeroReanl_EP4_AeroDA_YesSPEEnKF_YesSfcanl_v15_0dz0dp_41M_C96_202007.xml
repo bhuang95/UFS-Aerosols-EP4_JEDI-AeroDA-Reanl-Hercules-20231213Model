@@ -117,7 +117,7 @@
 	<!ENTITY PARTITION    "hercules">
 	<!--ENTITY PARTITION_BIGMEM    "bigmem"-->
 	<!ENTITY PARTITION_BIGMEM    "hercules">
-	<!ENTITY ACCOUNT    "zrtrr">
+	<!ENTITY ACCOUNT    "rtrr">
 	<!ENTITY QUEUE      "batch">
 	<!ENTITY QUEUE_DEB      "debug">
 	<!ENTITY SCHEDULER  "slurm">

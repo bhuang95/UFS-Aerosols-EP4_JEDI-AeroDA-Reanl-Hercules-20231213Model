@@ -1,6 +1,6 @@
 #!/bin/bash
 
-module load rocoto
+#module load rocoto
 
 set -x 
 
@@ -31,9 +31,9 @@ for EXP in ${EXPS}; do
     cd ${EXPDIR}
     if ( ! grep ${CDATE} rstat_resubmit.record ); then
     
-${rstat} -w ${XMLDIR}/${EXP}.xml -d ${DBDIR}/${EXP}.db -c ${CDATE}00 -m gdasefmn > rstat_resubmit.record
+${rstat} -w ${XMLDIR}/${EXP}.xml -d ${DBDIR}/${EXP}.db -c ${CDATE}00 -m gdasefmn > rstat_resubmit.log
 	
-        grep "DEAD" rstat_resubmit.record > failed.log
+        grep "DEAD" rstat_resubmit.log > failed.log
 
         FNUM=$(cat failed.log | wc -l)
 
@@ -46,10 +46,10 @@ ${rstat} -w ${XMLDIR}/${EXP}.xml -d ${DBDIR}/${EXP}.db -c ${CDATE}00 -m gdasefmn
 		    FGRP=${FTASK:(-2)}
                         ${rboot} -w ${XMLDIR}/${EXP}.xml -d  ${DBDIR}/${EXP}.db -c ${CDATE}00 -t gdasefcs${FGRP}
                         ERR=$?
+		        echo "${CDATE}" > rstat_resubmit.record
 	                if [ ${ERR} -ne 0 ]; then
 	                    echo "FAILED rocotoboot gdasefcs${FGRP}"
 			    echo "    ** FAILED:     rocotoboot gdasefcs${FGRP}" >> ${EXPREC}
-		            echo "${CDATE}" > rstat_resubmit.record
 	                fi
 	            IL=$((${IL}+1))
 		done

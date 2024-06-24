@@ -96,6 +96,7 @@ ${rstat} -w ${XMLDIR}/${EXP}.xml -d ${DBDIR}/${EXP}.db -c ${CDATE}00 -m gdasefmn
 
                     if [ ${ICNT} -eq 0 ]; then
 			#echo "HBO-rocotocomplete -w ${XMLDIR}/${EXP}.xml -d ${DBDIR}/${EXP}.db -c ${CDATE}00 -t gdasefcs${FGRP}"
+			echo "Reboot gdasefcs${FGRP}" >> ${EXPREC}
 ${rboot} -w ${XMLDIR}/${EXP}.xml -d  ${DBDIR}/${EXP}.db -c ${CDATE}00 -t gdasefcs${FGRP}
                         ERR=$?
 		        ICNT=$((${ICNT}+${ERR}))

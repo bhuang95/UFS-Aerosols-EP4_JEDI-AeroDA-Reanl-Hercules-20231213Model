@@ -329,12 +329,6 @@ OBSBLK="
           model units coeff: 1.e-9
       obs error:
         covariance model: diagonal
-      #obs filters:
-      #- filter: PreQC
-      #  maxvalue: 3
-        #filter variables:
-        #- name: [aerosolOpticalDepth]
-	#  channels: 4
 "
 
 # Create yaml file

@@ -5,6 +5,7 @@
 set -x 
 
 RUNDIR="/work/noaa/gsd-fv3-dev/bhuang/expRuns/UFS-Aerosols_RETcyc/AeroReanl"
+RUNTMP="/work/noaa/zrtrr/bohuang/RUNDIRS"
 XMLDIR="/home/bohuang/Workflow/UFS-Aerosols_NRTcyc/UFS-Aerosols-EP4_JEDI-AeroDA-Reanl-Hercules-20231213Model/dr-work-mpi/xmlFiles"
 DBDIR="${RUNDIR}/xmlDB/"
 NDATE="/home/bohuang/Workflow/UFS-Aerosols_NRTcyc/UFS-Aerosols-EP4_JEDI-AeroDA-Reanl-Hercules-20231213Model/misc/ndate/ndate"
@@ -23,6 +24,10 @@ for EXP in ${EXPS}; do
     EXPREC=${RECDIR}/FAILED_GDASEFCS_${EXP}.record
     LOGS=$(ls -d ${RUNDIR}/${EXP}/dr-data/logs/20???????? | tail -n 1)
     CDATE=$(basename ${LOGS})
+    GDATE=$(${NDATE} -6 ${CDATE})
+    if [ -d ${RUNTMP}/${EXP}/${GDATE} ]; then
+        rm -rf ${RUNTMP}/${EXP}/${GDATE}
+    fi
     CYMD=${CDATE:0:8}
     CH=${CDATE:8:2}
     ENKFDIR=${RUNDIR}/${EXP}/dr-data/enkfgdas.${CYMD}/${CH}/

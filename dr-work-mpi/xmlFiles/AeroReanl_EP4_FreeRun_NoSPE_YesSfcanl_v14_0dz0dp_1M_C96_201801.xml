@@ -35,7 +35,7 @@
 
 	<!-- Experiment parameter setup -->
 	<!ENTITY SDATE "201803010000">
-	<!ENTITY EDATE "201903311800">
+	<!ENTITY EDATE "202006301800">
 	<!--ENTITY EDATE "201906111800"-->
 	<!ENTITY INTERVAL "06:00:00">
 	<!ENTITY CYCINTHR "06">
@@ -55,7 +55,7 @@
 	<!ENTITY ZERO_METINCS "'delp_inc','delz_inc','clwmr_inc','icmr_inc','liq_wat_inc'">
 
 	<!-- GDAS met setup-->
-	<!ENTITY GFSVERSION "v14">
+	<!ENTITY GFSVERSION "v15">
 	<!ENTITY METDIR_NRT  "&ROTDIR;/RetrieveGDAS/">
 	<!ENTITY CASE     "C96">
 	<!ENTITY CASE_CNTL     "C96">

@@ -29,13 +29,13 @@
 	<!-- Directories for driving the workflow -->
 	<!ENTITY HOMEjedi "/work/noaa/wrf-chem/bhuang/expCodes-Hercules/JEDI/V20240115/V20240115/build">
 	<!ENTITY JOBS_DIR "&HOMEgfs;/jobs/rocoto">
-	<!ENTITY DATAROOTTOP "/work/noaa/zrtrr/bohuang/RUNDIRS/&PSLOT;/">
+	<!ENTITY DATAROOTTOP "/work/noaa/zrtrr/bohuang/RUNDIRS/&PSLOT;/DAIG/">
 	<!ENTITY COMROOT "/work/noaa/zrtrr/bohuang/com/">
 	<!ENTITY DMPDIR   "/work/noaa/zrtrr/bohuang/dump">
 
 	<!-- Experiment parameter setup -->
 	<!ENTITY SDATE "202007230600">
-	<!ENTITY EDATE "202108311800">
+	<!ENTITY EDATE "202209301800">
 	<!ENTITY INTERVAL "06:00:00">
 	<!ENTITY CYCINTHR "06">
 	<!ENTITY CDUMP_CNTL "gdas">

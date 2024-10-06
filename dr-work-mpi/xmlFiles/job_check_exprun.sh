@@ -1,6 +1,6 @@
 #!/bin/bash
 
-module load rocoto
+#module load rocoto
 RUNDIR="/work/noaa/gsd-fv3-dev/bhuang/expRuns/UFS-Aerosols_RETcyc/AeroReanl"
 XMLDIR="/home/bohuang/Workflow/UFS-Aerosols_NRTcyc/UFS-Aerosols-EP4_JEDI-AeroDA-Reanl-Hercules-20231213Model/dr-work-mpi/xmlFiles"
 DBDIR="${RUNDIR}/xmlDB/"
@@ -25,7 +25,7 @@ for EXP in ${EXPS}; do
     LOGS=$(ls -d ${RUNDIR}/${EXP}/dr-data/logs/20???????? | tail -n 1)
     CDATE=$(basename ${LOGS})
     echo "Check DEAD task for ${EXP}-${CDATE}"
-    rocotostat -w ${XMLDIR}/${EXP}.xml -d ${DBDIR}/${EXP}.db > ${DBDIR}/rstat.log
+    /apps/contrib/rocoto/1.3.6/bin/rocotostat -w ${XMLDIR}/${EXP}.xml -d ${DBDIR}/${EXP}.db > ${DBDIR}/rstat.log
     DEADTASK=$(grep "DEAD" ${DBDIR}/rstat.log)
     if [ ! -z "${DEADTASK}" ]; then
         echo "#####"
@@ -38,7 +38,7 @@ for EXP in ${EXPS}; do
     LOGS=$(ls -d ${RUNDIR}/${EXP}/dr-data-backup/logs/20???????? | tail -n 1)
     CDATE=$(basename ${LOGS})
     echo "Check DEAD task for ${EXP}_Diag-${CDATE}"
-    rocotostat -w ${XMLDIR}/${EXP}_Diag.xml -d ${DBDIR}/${EXP}_Diag.db > ${DBDIR}/rstat.log
+    /apps/contrib/rocoto/1.3.6/bin/rocotostat -w ${XMLDIR}/${EXP}_Diag.xml -d ${DBDIR}/${EXP}_Diag.db > ${DBDIR}/rstat.log
     DEADTASK=$(grep "DEAD" ${DBDIR}/rstat.log)
     if [ ! -z "${DEADTASK}" ]; then
         echo "#####"

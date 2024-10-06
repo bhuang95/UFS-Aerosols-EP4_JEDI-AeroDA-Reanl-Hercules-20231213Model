@@ -277,6 +277,7 @@ driver:
   save posterior mean: true
   save posterior ensemble: true
   save posterior mean increment: false
+  do posterior observer: false
 
 local ensemble DA:
   solver: LETKF

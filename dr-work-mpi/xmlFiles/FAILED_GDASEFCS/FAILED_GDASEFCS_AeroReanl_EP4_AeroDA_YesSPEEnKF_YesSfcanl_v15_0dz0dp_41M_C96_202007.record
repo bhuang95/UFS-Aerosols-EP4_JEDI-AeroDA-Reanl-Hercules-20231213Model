@@ -168,3 +168,48 @@ Reboot gdasefcs07
 Reboot gdasefcs07
 2021062318 at Mon Jun 24 14:51:14 CDT 2024
 Reboot gdasefcs07
+2021082206 at Thu Jul 11 20:00:12 CDT 2024
+2021082206 at Thu Jul 11 21:00:11 CDT 2024
+    ** SUCCEEDED: grp02-mem008 replaced by grp01-mem003
+Reboot gdasefcs02
+2021082712 at Sat Jul 13 00:15:10 CDT 2024
+2021082712 at Sat Jul 13 01:00:15 CDT 2024
+    ** SUCCEEDED: grp03-mem011 replaced by grp01-mem001
+Reboot gdasefcs03
+2021091318 at Tue Jul 16 18:00:20 CDT 2024
+2021091318 at Tue Jul 16 19:00:12 CDT 2024
+    ** SUCCEEDED: grp06-mem026 replaced by grp01-mem001
+Reboot gdasefcs06
+2021100318 at Sun Jul 21 00:00:13 CDT 2024
+2021100318 at Sun Jul 21 01:00:12 CDT 2024
+    ** SUCCEEDED: grp04-mem019 replaced by grp01-mem004
+Reboot gdasefcs04
+2021102600 at Fri Jul 26 16:50:47 CDT 2024
+2022051518 at Sat Sep  7 20:00:13 CDT 2024
+2022051518 at Sat Sep  7 21:00:19 CDT 2024
+    ** SUCCEEDED: grp07-mem032 replaced by grp01-mem002
+Reboot gdasefcs07
+2022062718 at Mon Sep 16 00:00:17 CDT 2024
+2022062718 at Mon Sep 16 01:00:16 CDT 2024
+    ** SUCCEEDED: grp08-mem040 replaced by grp01-mem005
+Reboot gdasefcs08
+2022072412 at Mon Sep 23 08:00:30 CDT 2024
+2022072412 at Mon Sep 23 09:00:23 CDT 2024
+    ** SUCCEEDED: grp05-mem022 replaced by grp01-mem002
+Reboot gdasefcs05
+2022072500 at Mon Sep 23 12:30:19 CDT 2024
+2022072500 at Mon Sep 23 13:00:20 CDT 2024
+    ** SUCCEEDED: grp08-mem036 replaced by grp01-mem001
+Reboot gdasefcs08
+2022081212 at Fri Sep 27 14:00:25 CDT 2024
+2022081212 at Fri Sep 27 15:00:25 CDT 2024
+    ** SUCCEEDED: grp06-mem026 replaced by grp01-mem001
+Reboot gdasefcs06
+2022081518 at Sat Sep 28 06:25:23 CDT 2024
+2022081518 at Sat Sep 28 07:00:23 CDT 2024
+    ** SUCCEEDED: grp05-mem024 replaced by grp01-mem004
+Reboot gdasefcs05
+2022091118 at Fri Oct  4 16:40:26 CDT 2024
+2022091118 at Fri Oct  4 17:00:26 CDT 2024
+    ** SUCCEEDED: grp05-mem022 replaced by grp01-mem002
+Reboot gdasefcs05

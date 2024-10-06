@@ -38,7 +38,7 @@
 
 	<!-- Experiment parameter setup -->
 	<!ENTITY SDATE "201802070000">
-	<!ENTITY EDATE "201903311800">
+	<!ENTITY EDATE "202006301800">
 	<!ENTITY INTERVAL "06:00:00">
 	<!ENTITY CYCINTHR "06">
 	<!ENTITY CDUMP_CNTL "gdas">
@@ -57,7 +57,7 @@
 	<!ENTITY ZERO_METINCS "'delp_inc','delz_inc','clwmr_inc','icmr_inc','liq_wat_inc'">
 
 	<!-- GDAS met setup-->
-	<!ENTITY GFSVERSION "v14">
+	<!ENTITY GFSVERSION "v15">
 	<!ENTITY METDIR_NRT  "&ROTDIR;/RetrieveGDAS/">
 	<!ENTITY CASE     "C96">
 	<!ENTITY CASE_CNTL     "C96">
@@ -150,8 +150,8 @@
 
 	<!ENTITY QUEUE_ANAL_GDAS     "&QUEUE;">
 	<!ENTITY WALLTIME_ANAL_GDAS  "01:29:00">
-	<!ENTITY RESOURCES_ANAL_GDAS "18:ppn=8:tpp=1">
-	<!ENTITY MEMORIES_ANAL_GDAS "80000M">
+	<!ENTITY RESOURCES_ANAL_GDAS "36:ppn=4:tpp=1">
+	<!ENTITY MEMORIES_ANAL_GDAS "256G">
 	<!ENTITY NATIVE_ANAL_GDAS    "--export=NONE --exclusive">
 
 	<!ENTITY QUEUE_ANAL_ENKF_GDAS     "&QUEUE;">
@@ -408,9 +408,7 @@
 	<partition>&PARTITION_BIGMEM;</partition>
 	<walltime>&WALLTIME_ANAL_GDAS;</walltime>
 	<nodes>&RESOURCES_ANAL_GDAS;</nodes>
-	<!--
 	<memory>&MEMORIES_ANAL_GDAS;</memory>
-	-->
 	<native>&NATIVE_ANAL_GDAS;</native>
 
 	<join><cyclestr>&ROTDIR;/logs/@Y@m@d@H/gdasaeroanl_var.log</cyclestr></join>

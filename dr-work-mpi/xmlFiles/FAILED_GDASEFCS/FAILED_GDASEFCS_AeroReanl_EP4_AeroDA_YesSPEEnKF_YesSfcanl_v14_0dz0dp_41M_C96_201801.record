@@ -860,3 +860,46 @@
     ** FAILED: replace failed members due to FNUM=8 larger than SNUM=0
 2019011012 at Wed Jun 19 04:55:09 CDT 2024
 2019030300 at Thu Jul  4 02:01:08 CDT 2024
+2019061012 at Fri Jul 26 12:40:14 CDT 2024
+2019061012 at Fri Jul 26 13:00:16 CDT 2024
+    ** SUCCEEDED: grp03-mem011 replaced by grp01-mem001
+Reboot gdasefcs03
+2019073112 at Mon Aug  5 08:00:12 CDT 2024
+2019073112 at Mon Aug  5 09:00:12 CDT 2024
+    ** SUCCEEDED: grp05-mem024 replaced by grp01-mem004
+Reboot gdasefcs05
+2019080100 at Mon Aug  5 12:20:54 CDT 2024
+2019080100 at Mon Aug  5 13:01:41 CDT 2024
+    ** SUCCEEDED: grp07-mem035 replaced by grp01-mem005
+Reboot gdasefcs07
+2019081506 at Thu Aug  8 10:20:15 CDT 2024
+2019081506 at Thu Aug  8 11:00:15 CDT 2024
+    ** SUCCEEDED: grp08-mem038 replaced by grp01-mem003
+Reboot gdasefcs08
+2019081518 at Thu Aug  8 12:55:15 CDT 2024
+2019081518 at Thu Aug  8 13:05:14 CDT 2024
+    ** FAILED: replace failed members due to FNUM=5 larger than SNUM=3
+2019081518 at Thu Aug  8 13:10:14 CDT 2024
+    ** FAILED: replace failed members due to FNUM=5 larger than SNUM=3
+2019081518 at Thu Aug  8 13:15:15 CDT 2024
+    ** FAILED: replace failed members due to FNUM=5 larger than SNUM=3
+2019081518 at Thu Aug  8 13:20:15 CDT 2024
+    ** FAILED: replace failed members due to FNUM=5 larger than SNUM=3
+2019081518 at Thu Aug  8 13:25:14 CDT 2024
+    ** FAILED: replace failed members due to FNUM=5 larger than SNUM=3
+2019081518 at Thu Aug  8 13:30:14 CDT 2024
+    ** FAILED: replace failed members due to FNUM=5 larger than SNUM=3
+2019081518 at Thu Aug  8 13:35:14 CDT 2024
+    ** FAILED: replace failed members due to FNUM=5 larger than SNUM=3
+2019081518 at Thu Aug  8 13:40:14 CDT 2024
+    ** FAILED: replace failed members due to FNUM=5 larger than SNUM=3
+2019081518 at Thu Aug  8 13:45:14 CDT 2024
+    ** FAILED: replace failed members due to FNUM=5 larger than SNUM=3
+2019081518 at Thu Aug  8 13:50:14 CDT 2024
+    ** FAILED: replace failed members due to FNUM=5 larger than SNUM=3
+2019081518 at Thu Aug  8 13:55:14 CDT 2024
+    ** FAILED: replace failed members due to FNUM=5 larger than SNUM=3
+2019091812 at Wed Aug 14 14:45:25 CDT 2024
+2019091812 at Wed Aug 14 15:00:16 CDT 2024
+    ** SUCCEEDED: grp03-mem011 replaced by grp01-mem001
+Reboot gdasefcs03

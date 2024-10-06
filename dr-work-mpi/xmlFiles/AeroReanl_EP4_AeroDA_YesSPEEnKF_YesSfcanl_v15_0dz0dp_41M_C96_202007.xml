@@ -31,6 +31,7 @@
 	<!-- Directories for driving the workflow -->
 	<!--ENTITY HOMEjedi "/work/noaa/wrf-chem/bhuang/expCodes/fv3-bundle/V20240301-spack-stack-1.5.0-ecbuildSrun/build/"-->
         <!ENTITY HOMEjedi "/work/noaa/wrf-chem/bhuang/expCodes-Hercules/JEDI/V20240115/V20240115/build">
+        <!--ENTITY HOMEjedi "/work/noaa/wrf-chem/bhuang/expCodes-Hercules/JEDI/V20240115/V20240115-Build2-Intel/build/"-->
 	<!ENTITY JOBS_DIR "&HOMEgfs;/jobs/rocoto">
 	<!ENTITY DATAROOTTOP "/work/noaa/zrtrr/bohuang/RUNDIRS/&PSLOT;/">
 	<!ENTITY COMROOT "/work/noaa/zrtrr/bohuang/com/">
@@ -38,7 +39,7 @@
 
 	<!-- Experiment parameter setup -->
 	<!ENTITY SDATE "202007230600">
-	<!ENTITY EDATE "202108311800">
+	<!ENTITY EDATE "202209301800">
 	<!ENTITY INTERVAL "06:00:00">
 	<!ENTITY CYCINTHR "06">
 	<!ENTITY CDUMP_CNTL "gdas">
@@ -150,8 +151,8 @@
 
 	<!ENTITY QUEUE_ANAL_GDAS     "&QUEUE;">
 	<!ENTITY WALLTIME_ANAL_GDAS  "01:59:00">
-	<!ENTITY RESOURCES_ANAL_GDAS "18:ppn=8:tpp=1">
-	<!ENTITY MEMORIES_ANAL_GDAS "80000M">
+	<!ENTITY RESOURCES_ANAL_GDAS "36:ppn=4:tpp=1">
+	<!ENTITY MEMORIES_ANAL_GDAS "256G">
 	<!ENTITY NATIVE_ANAL_GDAS    "--export=NONE --exclusive">
 
 	<!ENTITY QUEUE_ANAL_ENKF_GDAS     "&QUEUE;">
@@ -408,9 +409,7 @@
 	<partition>&PARTITION_BIGMEM;</partition>
 	<walltime>&WALLTIME_ANAL_GDAS;</walltime>
 	<nodes>&RESOURCES_ANAL_GDAS;</nodes>
-	<!--
 	<memory>&MEMORIES_ANAL_GDAS;</memory>
-	-->
 	<native>&NATIVE_ANAL_GDAS;</native>
 
 	<join><cyclestr>&ROTDIR;/logs/@Y@m@d@H/gdasaeroanl_var.log</cyclestr></join>

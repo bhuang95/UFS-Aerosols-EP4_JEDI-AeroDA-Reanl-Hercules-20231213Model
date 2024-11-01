@@ -213,3 +213,15 @@ Reboot gdasefcs05
 2022091118 at Fri Oct  4 17:00:26 CDT 2024
     ** SUCCEEDED: grp05-mem022 replaced by grp01-mem002
 Reboot gdasefcs05
+2022092206 at Mon Oct  7 02:00:33 CDT 2024
+2022092206 at Mon Oct  7 03:00:33 CDT 2024
+    ** SUCCEEDED: grp08-mem040 replaced by grp01-mem005
+Reboot gdasefcs08
+2022092218 at Mon Oct  7 06:00:34 CDT 2024
+2022092218 at Mon Oct  7 07:00:38 CDT 2024
+    ** SUCCEEDED: grp07-mem035 replaced by grp01-mem005
+Reboot gdasefcs07
+2022121900 at Tue Oct 22 16:00:13 CDT 2024
+2022121900 at Tue Oct 22 17:00:16 CDT 2024
+    ** SUCCEEDED: grp08-mem039 replaced by grp01-mem004
+Reboot gdasefcs08

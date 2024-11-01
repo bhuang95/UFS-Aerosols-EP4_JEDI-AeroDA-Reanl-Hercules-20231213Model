@@ -13,8 +13,8 @@ rstat="/apps/contrib/rocoto/1.3.6/bin/rocotostat"
 rcmpl="/apps/contrib/rocoto/1.3.6/bin/rocotocomplete"
 rboot="/apps/contrib/rocoto/1.3.6/bin/rocotoboot"
 
+#AeroReanl_EP4_AeroDA_YesSPEEnKF_YesSfcanl_v14_0dz0dp_41M_C96_201801
 EXPS="
-AeroReanl_EP4_AeroDA_YesSPEEnKF_YesSfcanl_v14_0dz0dp_41M_C96_201801
 AeroReanl_EP4_AeroDA_YesSPEEnKF_YesSfcanl_v15_0dz0dp_41M_C96_202007
 "
 

@@ -39,7 +39,7 @@
 
 	<!-- Experiment parameter setup -->
 	<!ENTITY SDATE "202007230600">
-	<!ENTITY EDATE "202209301800">
+	<!ENTITY EDATE "202212311800">
 	<!ENTITY INTERVAL "06:00:00">
 	<!ENTITY CYCINTHR "06">
 	<!ENTITY CDUMP_CNTL "gdas">
@@ -118,7 +118,7 @@
 	<!ENTITY PARTITION    "hercules">
 	<!--ENTITY PARTITION_BIGMEM    "bigmem"-->
 	<!ENTITY PARTITION_BIGMEM    "hercules">
-	<!ENTITY ACCOUNT    "zrtrr">
+	<!ENTITY ACCOUNT    "wrfruc">
 	<!ENTITY QUEUE      "batch">
 	<!ENTITY QUEUE_DEB      "debug">
 	<!ENTITY SCHEDULER  "slurm">

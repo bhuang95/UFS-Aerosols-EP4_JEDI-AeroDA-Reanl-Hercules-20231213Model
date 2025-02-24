@@ -1,0 +1,35 @@
+       CYCLE                    TASK                       JOBID               STATE         EXIT STATUS     TRIES      DURATION
+================================================================================================================================
+202006010000         gdasretrievemet                    52338387           SUCCEEDED                   0         1        1011.0
+202006010000          gdasmetinccntl                    52339921           SUCCEEDED                   0         1          15.0
+202006010000       gdasmetinc_enkf01                           -                   -                   -         -             -
+202006010000       gdasmetinc_enkf02                    52340001           SUCCEEDED                   0         1          38.0
+202006010000       gdasmetinc_enkf03                    52340002           SUCCEEDED                   0         1          35.0
+202006010000       gdasmetinc_enkf04                    52339949           SUCCEEDED                   0         1          43.0
+202006010000          gdasrplsfccntl                    52385728           SUCCEEDED                   0         5          14.0
+202006010000       gdasrplsfc_enkf01                    52385871           SUCCEEDED                   0         1          22.0
+202006010000       gdasrplsfc_enkf02                    52386288           SUCCEEDED                   0         1          21.0
+202006010000       gdasrplsfc_enkf03                    52386293           SUCCEEDED                   0         1          22.0
+202006010000       gdasrplsfc_enkf04                    52386488           SUCCEEDED                   0         1          23.0
+202006010000          gdasaeroanlvar                    52339656           SUCCEEDED                   0         0           0.0
+202006010000         gdasaeroanlenkf                    52339120           SUCCEEDED                   0         3         555.0
+202006010000    gdasaeroanl_efinal01                    52340340           SUCCEEDED                   0         1          78.0
+202006010000    gdasaeroanl_efinal02                    52340341           SUCCEEDED                   0         1          76.0
+202006010000    gdasaeroanl_efinal03                    52340371           SUCCEEDED                   0         1          64.0
+202006010000    gdasaeroanl_efinal04                    52340372           SUCCEEDED                   0         1          64.0
+202006010000          gdasaerodiag01                    52340496           SUCCEEDED                   0         1         180.0
+202006010000          gdasaerodiag02                    52340565           SUCCEEDED                   0         1         116.0
+202006010000          gdasaerodiag03                    52340566           SUCCEEDED                   0         1         116.0
+202006010000          gdasaerodiag04                    52340665           SUCCEEDED                   0         1         121.0
+202006010000                gdasfcst                    52386915           SUCCEEDED                   0         3         205.0
+202006010000              gdasefcs01                    52389058         UNAVAILABLE                   -         4           0.0
+202006010000              gdasefcs02                           -                   -                   -         -             -
+202006010000              gdasefcs03                           -                   -                   -         -             -
+202006010000              gdasefcs04                           -                   -                   -         -             -
+202006010000              gdasemean1                           -                   -                   -         -             -
+202006010000              gdasemean2                           -                   -                   -         -             -
+202006010000              gdasemean3                           -                   -                   -         -             -
+202006010000              gdasemean4                           -                   -                   -         -             -
+202006010000              gdasemean5                           -                   -                   -         -             -
+202006010000              gdasemean6                           -                   -                   -         -             -
+202006010000                gdasarch                           -                   -                   -         -             -

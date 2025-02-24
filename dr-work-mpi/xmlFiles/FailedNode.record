@@ -1,0 +1,6 @@
+gdaefcs
+"""
+12211 srun: error: Task launch for StepId=17178853.1 failed on node Orion-23-20: Communication connection failure
+12212 srun: error: Application launch failed: Communication connection failure
+12213 srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+"""

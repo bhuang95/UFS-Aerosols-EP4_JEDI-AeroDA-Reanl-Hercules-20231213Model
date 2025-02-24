@@ -1,0 +1,1 @@
+/work2/noaa/wrf-chem/bohuang/testHercules/UFSAerosols-workflow/20231213-develop/global-workflow/sorc/ufs_model.fd/tests/ufs_model.x

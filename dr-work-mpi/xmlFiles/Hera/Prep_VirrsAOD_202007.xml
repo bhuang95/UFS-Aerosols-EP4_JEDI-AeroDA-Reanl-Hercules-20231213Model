@@ -1,0 +1,154 @@
+<?xml version="1.0"?>
+<!DOCTYPE workflow
+[
+	<!--
+	PROGRAM
+		Main workflow manager for Global Forecast System
+
+	NOTES:
+		This workflow was automatically generated at 2023-01-27 18:29:13.198072
+	-->
+	<!--
+	IMPORTANT: 
+	(1) Variable of DUST emissions to be changed
+	(2) Processed sfcanl missing some varibales that crash the model run
+	    For now, SFCANL_RST="NO" to use sfc_data from past cycle
+	-->
+	<!-- Experiment directory setup -->
+	<!ENTITY PSLOT "Prep_VIIRSAOD_202007">
+	<!ENTITY HOMEgfs "/home/Bo.Huang/JEDI-2020/UFS-Aerosols_RETcyc/UFS-Aerosols-EP4_JEDI-AeroDA-Reanl/"> 
+	<!ENTITY TOPRUNDIR "/scratch2/BMC/gsd-fv3-dev/bhuang/expRuns/UFS-Aerosols_RETcyc/AeroReanl/">
+	<!ENTITY EXPDIR "&HOMEgfs;/dr-work-mpi/">
+	<!ENTITY ROTDIR "&TOPRUNDIR;/&PSLOT;/dr-data/">
+	<!ENTITY TASKRC "&EXPDIR;/TaskRecords/cmplCycle_&PSLOT;.rc">
+
+	<!-- Directories for driving the workflow -->
+	<!ENTITY HOMEjedi "/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expCodes/fv3-bundle/V20240115/build/">
+	<!ENTITY JOBS_DIR "&HOMEgfs;/jobs/rocoto">
+	<!ENTITY DATAROOTTOP "/scratch2/BMC/gsd-fv3-dev/NCEPDEV/stmp3/Bo.Huang/RUNDIRS/&PSLOT;/">
+	<!ENTITY COMROOT "/scratch1/NCEPDEV/global/glopara/com/">
+	<!ENTITY DMPDIR   "/scratch1/NCEPDEV/global/glopara/dump">
+
+	<!-- Experiment parameter setup -->
+	<!ENTITY SDATE "202007010000">
+	<!ENTITY EDATE "202012310000">
+	<!ENTITY INTERVAL "24:00:00">
+	<!ENTITY CYCINTHR "6">
+	<!ENTITY CDUMP "gdas">
+
+	<!-- Obs setup-->
+	<!ENTITY AODTYPE     "NOAA_VIIRS">
+	<!ENTITY HPSSPASS "NO">
+	<!ENTITY AODSAT     "npp">
+	<!ENTITY CASE_OBS     "C192">
+	<!ENTITY OBSDIR_NRT  "/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/NRTdata_UFS-Aerosols/AODObs/&AODTYPE;/&CASE_OBS;">
+	<!ENTITY MISS_NOAA_NPP "&EXPDIR;/TaskRecords/record.miss_NOAAVIIRS_NPP">
+	<!ENTITY MISS_NOAA_J01 "&EXPDIR;/TaskRecords/record.miss_NOAAVIIRS_J01">
+
+	<!-- Machine related entities -->
+	<!ENTITY PARTITION    "hera">
+	<!ENTITY ACCOUNT    "gsd-fv3-dev">
+	<!ENTITY QUEUE      "debug">
+	<!ENTITY QUEUE_DEB      "debug">
+	<!ENTITY SCHEDULER  "slurm">
+
+	<!-- ROCOTO task control -->
+	<!ENTITY MAXTRIES "3">
+	<!ENTITY CYCLETHROTTLE "1">
+	<!ENTITY TASKTHROTTLE  "20">
+
+	<!-- ROCOTO parameters that control workflow -->
+	<!ENTITY PARTITION_HPSS    "service">
+	<!ENTITY ACCOUNT_HPSS    "gsd-fv3-dev">
+	<!ENTITY QUEUE_HPSS      "batch">
+	<!ENTITY WALLTIME_HPSS  "07:59:00">
+	<!ENTITY RESOURCES_HPSS "1:ppn=1:tpp=1">
+	<!ENTITY MEMORIES_HPSS "80000M">
+	<!ENTITY NATIVE_HPSS    "--export=NONE">
+
+	<!ENTITY QUEUE_PREP     "&QUEUE;">
+	<!ENTITY WALLTIME_PREP  "00:29:00">
+	<!ENTITY RESOURCES_PREP "10:ppn=40:tpp=1">
+	<!--ENTITY MEMORIES_PREP "80000M"-->
+	<!ENTITY NATIVE_PREP    "--export=NONE">
+]>
+
+<workflow realtime="F" scheduler="slurm" cyclethrottle="&CYCLETHROTTLE;" taskthrottle="&TASKTHROTTLE;">
+
+	<log verbosity="10"><cyclestr>&ROTDIR;/logs/xmlLog/@Y@m@d@H.log</cyclestr></log>
+
+	<!-- Define the cycles -->
+	<cycledef group="gdas_half">&SDATE; &EDATE; 24:00:00</cycledef>
+	<cycledef group="gdas">&SDATE; &EDATE; 24:00:00</cycledef>
+
+<task name="retaod" cycledefs="gdas" maxtries="&MAXTRIES;">
+
+	<command>&JOBS_DIR;/retrieve_aod_noaaviirs.sh</command>
+
+	<jobname><cyclestr>&PSLOT;_retaod_@H</cyclestr></jobname>
+	<account>&ACCOUNT_HPSS;</account>
+	<queue>&QUEUE_HPSS;</queue>
+	<partition>&PARTITION_HPSS;</partition>
+	<walltime>&WALLTIME_HPSS;</walltime>
+	<nodes>&RESOURCES_HPSS;</nodes>
+	<!--
+	<memory>&MEMORIES_HPSS;</memory>
+	-->
+	<native>&NATIVE_HPSS;</native>
+
+	<join><cyclestr>&ROTDIR;/logs/@Y@m@d@H/retaod.log</cyclestr></join>
+
+	<envar><name>PSLOT</name><value>&PSLOT;</value></envar>
+	<envar><name>CDATE</name><value><cyclestr>@Y@m@d@H</cyclestr></value></envar>
+	<envar><name>ROTDIR</name><value>&ROTDIR;</value></envar>
+	<envar><name>AODSAT</name><value>&AODSAT;</value></envar>
+	<envar><name>TASKRC</name><value>&TASKRC;</value></envar>
+	<envar><name>HPSSPASS</name><value>&HPSSPASS;</value></envar>
+
+	<dependency>
+		<or>
+			<taskdep task="prepaod" cycle_offset="-24:00:00"/>
+			<not><cycleexistdep cycle_offset="-24:00:00"/></not>
+		</or>
+	</dependency>
+
+</task>
+
+
+<task name="prepaod" cycledefs="gdas" maxtries="&MAXTRIES;" final="true">
+
+	<command>&JOBS_DIR;/prepaod_noaaviirs_v1_v2_v3.sh</command>
+
+	<jobname><cyclestr>&PSLOT;_prepaod_@H</cyclestr></jobname>
+
+	<queue>&QUEUE_PREP;</queue>
+	<partition>&PARTITION;</partition>
+	<account>&ACCOUNT;</account>
+	<walltime>&WALLTIME_PREP;</walltime>
+	<nodes>&RESOURCES_PREP;</nodes>
+	<!--
+	<memory>&MEMORIES_CALCINC_GDAS;</memory>
+	<native>&NATIVE_PREP;</native>
+	-->
+
+	<join><cyclestr>&ROTDIR;/logs/@Y@m@d@H/prepaod.log</cyclestr></join>
+
+	<envar><name>CDATE</name><value><cyclestr>@Y@m@d@H</cyclestr></value></envar>
+	<envar><name>CYCINTHR</name><value>&CYCINTHR;</value></envar>
+        <envar><name>PSLOT</name><value>&PSLOT;</value></envar>
+	<envar><name>HOMEgfs</name><value>&HOMEgfs;</value></envar>
+	<envar><name>HOMEjedi</name><value>&HOMEjedi;</value></envar>
+	<envar><name>ROTDIR</name><value>&ROTDIR;</value></envar>
+	<envar><name>CASE_OBS</name><value>&CASE_OBS;</value></envar>
+	<envar><name>DATAROOT</name><value><cyclestr>&DATAROOTTOP;/@Y@m@d@H/&CDUMP;</cyclestr></value></envar>
+	<envar><name>CDUMP</name><value>&CDUMP;</value></envar>
+	<envar><name>OBSDIR_NRT</name><value>&OBSDIR_NRT;</value></envar>
+	<envar><name>AODTYPE</name><value>&AODTYPE;</value></envar>
+	<envar><name>TASKRC</name><value>&TASKRC;</value></envar>
+
+	<dependency>
+		<taskdep task="retaod"/>
+	</dependency>
+
+</task>
+</workflow>

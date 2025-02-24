@@ -1,0 +1,32 @@
+201801-run-2018031606
+    	28926 + exglobal_forecast.sh[168]: srun -l --export=ALL -n 160 /work/noaa/zrtrr/bohuang/RUNDIRS/AeroReanl_EP4_AeroDA_YesSPEEnKF_YesSfcanl_v15_0dz0dp_41M_C9      6_202007//2020083006/gdas/efcs.131855/mem009/ufs_model.x
+   	 21387 srun: error: Task launch for StepId=17219351.2 failed on node Orion-17-26: Communication connection failure
+   	 21388 srun: error: Application launch failed: Communication connection failure
+   	 21389 srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+   	 21390   0: slurmstepd: error: *** STEP 17219351.2 ON Orion-16-63 CANCELLED AT 2024-03-25T05:06:10 ***
+   	 21391 srun: error: Orion-16-63: tasks 0-39: Killed
+   	 21392 srun: Terminating StepId=17219351.2
+   	 21393 srun: error: Orion-17-27: tasks 120-159: Killed
+   	 21394 srun: error: Orion-16-64: tasks 40-79: Killed
+
+202007-run-2020083006
+	28926 + exglobal_forecast.sh[168]: srun -l --export=ALL -n 160 /work/noaa/zrtrr/bohuang/RUNDIRS/AeroReanl_EP4_AeroDA_YesSPEEnKF_YesSfcanl_v15_0dz0dp_41M_C9      6_202007//2020083006/gdas/efcs.131855/mem009/ufs_model.x
+	28927 srun: error: Task launch for StepId=17191583.3 failed on node Orion-08-25: Communication connection failure
+	28928 srun: error: Application launch failed: Communication connection failure
+	28929 srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+	28930   0: slurmstepd: error: *** STEP 17191583.3 ON Orion-08-23 CANCELLED AT 2024-03-21T21:00:49 ***
+	28931 srun: error: Orion-08-23: tasks 0-39: Killed
+	28932 srun: Terminating StepId=17191583.3
+	28933 srun: error: Orion-08-24: tasks 40-79: Killed
+	28934 srun: error: Orion-08-26: tasks 120-159: Killed
+
+202007-run-2020082712
+	12210 + exglobal_forecast.sh[168]: srun -l --export=ALL -n 160 /work/noaa/zrtrr/bohuang/RUNDIRS/AeroReanl_EP4_AeroDA_YesSPEEnKF_YesSfcanl_v15_0dz0dp_41M_C9      6_202007//2020082712/gdas/efcs.395771/mem007/ufs_model.x
+	12211 srun: error: Task launch for StepId=17178853.1 failed on node Orion-23-20: Communication connection failure
+	12212 srun: error: Application launch failed: Communication connection failure
+	12213 srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+	12214   0: slurmstepd: error: *** STEP 17178853.1 ON Orion-02-25 CANCELLED AT 2024-03-20T20:33:40 ***
+	12215 srun: error: Orion-02-25: tasks 0-39: Killed
+	12216 srun: Terminating StepId=17178853.1
+	12217 srun: error: Orion-23-19: tasks 40-79: Killed
+	12218 srun: error: Orion-23-21: tasks 120-159: Killed

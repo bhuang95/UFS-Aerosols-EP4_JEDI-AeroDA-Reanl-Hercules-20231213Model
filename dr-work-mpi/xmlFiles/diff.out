@@ -1,0 +1,102 @@
+19,20c19
+<         <!ENTITY HOMEgfs "/home/bohuang/Workflow/UFS-Aerosols_NRTcyc/UFS-Aerosols-EP4_JEDI-AeroDA-Reanl-Hercules-20231213Model/">
+< 	<!--ENTITY HOMEgfs "/work2/noaa/wrf-chem/bohuang/testHercules/UFSAerosols-workflow/20231213-develop/global-workflow"-->
+---
+> 	<!ENTITY HOMEgfs "/home/bohuang/Workflow/UFS-Aerosols_NRTcyc/UFS-Aerosols-EP4_JEDI-AeroDA-Reanl-Orion">
+24,26c23,24
+< 	<!ENTITY TOPRUNDIR "/work2/noaa/gsd-fv3-dev/bhuang/expRuns/UFS-Aerosols_RETcyc/AeroReanl/">
+<         <!ENTITY EXPDIR "&HOMEgfs;/dr-work-mpi/">
+< 	<!--ENTITY EXPDIR "/work2/noaa/wrf-chem/bohuang/testHercules/UFSAerosols-workflow/20231213-develop/global-workflow/expdir/cycExp_ATMA_warm"-->
+---
+> 	<!ENTITY TOPRUNDIR "/work/noaa/gsd-fv3-dev/bhuang/expRuns/UFS-Aerosols_RETcyc/AeroReanl/">
+> 	<!ENTITY EXPDIR "&HOMEgfs;/dr-work-mpi/">
+29d26
+<         <!ENTITY NDATE "&HOMEgfs;/misc/ndate/ndate">
+33c30
+<         <!ENTITY HOMEjedi "/work/noaa/wrf-chem/bhuang/expCodes-Hercules/JEDI/V20240115/V20240115/build">
+---
+> 	<!ENTITY HOMEjedi "/work/noaa/wrf-chem/bhuang/expCodes/fv3-bundle/V20240115/V20240115/build">
+35,37c32,34
+< 	<!ENTITY DATAROOTTOP "/work2/noaa/zrtrr/bohuang/RUNDIRS/&PSLOT;/">
+< 	<!ENTITY COMROOT "/work2/noaa/zrtrr/bohuang/com/">
+< 	<!ENTITY DMPDIR   "/work2/noaa/zrtrr/bohuang/dump">
+---
+> 	<!ENTITY DATAROOTTOP "/work/noaa/zrtrr/bohuang/RUNDIRS/&PSLOT;/">
+> 	<!ENTITY COMROOT "/work/noaa/zrtrr/bohuang/com/">
+> 	<!ENTITY DMPDIR   "/work/noaa/zrtrr/bohuang/dump">
+40,41c37,38
+< 	<!ENTITY SDATE "202010140000">
+< 	<!ENTITY EDATE "202010140600">
+---
+> 	<!ENTITY SDATE "202007230600">
+> 	<!ENTITY EDATE "202010311800">
+117c114
+< 	<!ENTITY PARTITION    "hercules">
+---
+> 	<!ENTITY PARTITION    "orion">
+119,120c116,117
+< 	<!ENTITY PARTITION_BIGMEM    "hercules">
+< 	<!ENTITY ACCOUNT    "rtrr">
+---
+> 	<!ENTITY PARTITION_BIGMEM    "orion">
+> 	<!ENTITY ACCOUNT    "wrfruc">
+147c144
+< 	<!ENTITY RESOURCES_SIGP_GDAS "1:ppn=40:tpp=1">
+---
+> 	<!ENTITY RESOURCES_SIGP_GDAS "1:ppn=20:tpp=1">
+153c150
+< 	<!ENTITY RESOURCES_ANAL_GDAS "6:ppn=24:tpp=1">
+---
+> 	<!ENTITY RESOURCES_ANAL_GDAS "36:ppn=4:tpp=1">
+159c156
+< 	<!ENTITY RESOURCES_ANAL_ENKF_GDAS "6:ppn=24:tpp=1">
+---
+> 	<!ENTITY RESOURCES_ANAL_ENKF_GDAS "12:ppn=12:tpp=1">
+171,172c168,169
+< 	<!ENTITY RESOURCES_FCST_GDAS "2:ppn=80:tpp=1">
+< 	<!ENTITY NATIVE_FCST_GDAS    "--export=NONE --exclusive">
+---
+> 	<!ENTITY RESOURCES_FCST_GDAS "4:ppn=40:tpp=1">
+> 	<!ENTITY NATIVE_FCST_GDAS    "--export=NONE">
+176,177c173,174
+< 	<!ENTITY RESOURCES_EFCS_GDAS "2:ppn=80:tpp=1">
+< 	<!ENTITY NATIVE_EFCS_GDAS    "--export=NONE --exclusive">
+---
+> 	<!ENTITY RESOURCES_EFCS_GDAS "4:ppn=40:tpp=1">
+> 	<!ENTITY NATIVE_EFCS_GDAS    "--export=NONE">
+226d222
+< 	<envar><name>NDATE</name><value>&NDATE;</value></envar>
+267d262
+< 	<envar><name>HOMEjedi</name><value>&HOMEjedi;</value></envar>
+280d274
+< 	<envar><name>NDATE</name><value>&NDATE;</value></envar>
+318d311
+< 	<envar><name>HOMEjedi</name><value>&HOMEjedi;</value></envar>
+328d320
+< 	<envar><name>NDATE</name><value>&NDATE;</value></envar>
+388d379
+< 	<envar><name>NDATE</name><value>&NDATE;</value></envar>
+438d428
+< 	<envar><name>NDATE</name><value>&NDATE;</value></envar>
+463d452
+< 	<!--
+465d453
+< 	-->
+490d477
+< 	<envar><name>NDATE</name><value>&NDATE;</value></envar>
+525d511
+< 	<envar><name>HOMEjedi</name><value>&HOMEjedi;</value></envar>
+531d516
+< 	<envar><name>NDATE</name><value>&NDATE;</value></envar>
+583d567
+< 		<envar><name>NDATE</name><value>&NDATE;</value></envar>
+637d620
+< 	<envar><name>NDATE</name><value>&NDATE;</value></envar>
+702d684
+< 		<envar><name>NDATE</name><value>&NDATE;</value></envar>
+737d718
+< 	<envar><name>HOMEjedi</name><value>&HOMEjedi;</value></envar>
+741d721
+< 	<envar><name>NDATE</name><value>&NDATE;</value></envar>
+784d763
+< 	<envar><name>NDATE</name><value>&NDATE;</value></envar>

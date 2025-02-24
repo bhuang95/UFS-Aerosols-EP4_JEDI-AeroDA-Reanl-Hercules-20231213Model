@@ -1,0 +1,743 @@
+----hbO1-config.aero----
+----202311 vs wk----
+14c14,15
+<     AERO_INPUTS_DIR="/scratch1/NCEPDEV/global/glopara/data/gocart_emissions"
+---
+>     #AERO_INPUTS_DIR="/scratch1/NCEPDEV/global/glopara/data/gocart_emissions"
+>     AERO_INPUTS_DIR="/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/NRTdata_UFS-Aerosols/gocart_emissions/"
+17c18,19
+<     AERO_INPUTS_DIR="/work2/noaa/global/wkolczyn/noscrub/global-workflow/gocart_emissions"
+---
+>     #AERO_INPUTS_DIR="/work2/noaa/global/wkolczyn/noscrub/global-workflow/gocart_emissions"
+>     AERO_INPUTS_DIR="/work/noaa/wrf-chem/bhuang/NRTdata_UFS-Aerosols/gocart_emissions/"
+36c38
+< AERO_EMIS_FIRE=GBBEPx
+---
+> AERO_EMIS_FIRE=${GBBVER:-"gbbepx_v003"}
+                      
+----202311 vs 202312----
+8,9d7
+< # Directory containing GOCART configuration files. Defaults to parm/ufs/chem if unset.
+< AERO_CONFIG_DIR=${HOMEgfs}/parm/ufs/chem
+16c14
+<   "ORION")
+---
+>   "ORION" | "HERCULES")
+32a31
+> export AERO_INPUTS_DIR=/work2/noaa/global/wkolczyn/noscrub/global-workflow/gocart_emissions
+34,36c33,39
+< # Biomass burning emission dataset. Choose from: GBBEPx, QFED, NONE (default)
+< #AERO_EMIS_FIRE=QFED
+< AERO_EMIS_FIRE=GBBEPx
+---
+> export AERO_DIAG_TABLE="${HOMEgfs}/parm/ufs/fv3/diag_table.aero"
+> export AERO_FIELD_TABLE="${HOMEgfs}/parm/ufs/fv3/field_table.aero"
+> # Biomass burning emission dataset. Choose from: gbbepx, qfed, none
+> #export AERO_EMIS_FIRE="qfed"
+> export AERO_EMIS_FIRE="gbbepx"
+> # Directory containing GOCART configuration files
+> export AERO_CONFIG_DIR="${HOMEgfs}/parm/ufs/gocart"
+41c44
+< aero_conv_scav_factors="'*:0.3','so2:0.0','msa:0.0','dms:0.0','nh3:0.4','nh4:0.6','bc1:0.6','bc2:0.6','oc1:0.4','oc2:0.4','dust1:0.6','dust2:0.6', 'dust3:0.6','dust4:0.6','dust5:0.6','seas1:0.5','seas2:0.5','seas3:0.5','seas4:0.5','seas5:0.5'"
+---
+> export fscav_aero="'*:0.3','so2:0.0','msa:0.0','dms:0.0','nh3:0.4','nh4:0.6','bc1:0.6','bc2:0.6','oc1:0.4','oc2:0.4','dust1:0.6','dust2:0.6', 'dust3:0.6','dust4:0.6','dust5:0.6','seas1:0.5','seas2:0.5','seas3:0.5','seas4:0.5','seas5:0.5'"
+44c47
+< aero_diag_tracers=2
+---
+> export dnats_aero=2
+                      
+                      
+                      
+----HBO1-config.aero-orig----
+----202311 vs wk----
+                      
+----202311 vs 202312----
+diff: /work2/noaa/wrf-chem/bohuang/testHercules/UFSAerosols-workflow/20231213-develop/global-workflow/expdir/cycExp_ATMA_warm//config.aero-orig: No such file or directory
+                      
+                      
+                      
+----HBO1-config.aeroanl----
+----202311 vs wk----
+                      
+----202311 vs 202312----
+11d10
+< export AEROVARYAML=${HOMEgfs}/sorc/gdas.cd/parm/aero/variational/3dvar_gfs_aero.yaml
+21a21,28
+> 
+> if [[ "${DOIAU}" == "YES" ]]; then
+>   export aero_bkg_times="3,6,9"
+>   export AEROVARYAML=${HOMEgfs}/sorc/gdas.cd/parm/aero/variational/3dvar_fgat_gfs_aero.yaml
+> else
+>   export aero_bkg_times="6"
+>   export AEROVARYAML=${HOMEgfs}/sorc/gdas.cd/parm/aero/variational/3dvar_gfs_aero.yaml
+> fi
+                      
+                      
+                      
+----HBO1-config.aeroanlfinal----
+----202311 vs wk----
+                      
+----202311 vs 202312----
+                      
+                      
+                      
+----HBO1-config.aeroanlinit----
+----202311 vs wk----
+                      
+----202311 vs 202312----
+                      
+                      
+                      
+----HBO1-config.aeroanlrun----
+----202311 vs wk----
+9a10,41
+> export layout_envar="4,6" #"8,8"  #"2,4" 
+> export io_layout_envar="1,1"  # Don't Change
+> export ncore_envar=144  #384         # ncore_anal=6*l1*l2 (l1, l2 in layout_anal)
+> 
+> export layout_letkf="4,6"  #"2,4" 
+> export io_layout_letkf="1,1"  # Don't Change
+> export ncore_letkf=144        # ncore_anal=6*l1*l2 (l1, l2 in layout_anal)
+> 
+> export layout_hofx="2,2"  #"2,2" 
+> export io_layout_hofx="1,1"  # Don't Change
+> export ncore_hofx=24        # ncore_anal=6*l1*l2 (l1, l2 in layout_anal)
+> 
+> export STATICB_WEG="0.00"
+> export ENSB_WEG="1.00"
+> 
+> export VAR_BUMP_LOC="fixed_2500km_1.5"
+> export LETKF_LOC="2500e3"
+> export LETKF_INF_MULT="1.2"
+> export LETKF_INF_RTPP="0.0"
+> export LETKF_INF_RTPS="0.85"
+> 
+> export AODOPE="AodLUTs"
+> 
+> #export COMIN_OBS=${OBSDIR_NRT}
+> #export AODTYPE=${AODTYPE}
+> export AEROANL_VAR=${HOMEgfs}/scripts/exgdas_global_aeroanl_3denvar_run.sh
+> export AEROANL_ENKF=${HOMEgfs}/scripts/exgdas_global_aeroanl_enkf_run.sh
+> #export MEANTRCRVARS="sphum,so4,bc1,bc2,oc1,oc2,dust1,dust2,dust3,dust4,dust5,seas1,seas2,seas3,seas4,seas5,no3an1,no3an2,no3an3"
+> export MEANTRCRVARS="sphum,so2,so4,dms,msa,bc1,bc2,oc1,oc2,dust1,dust2,dust3,dust4,dust5,seas1,seas2,seas3,seas4,seas5,pm25,pm10"
+> export MEANCOREVARS="T,delp"
+> #export RPLTRCRVARS="so4,bc1,bc2,oc1,oc2,dust1,dust2,dust3,dust4,dust5,seas1,seas2,seas3,seas4,seas5,no3an1,no3an2,no3an3"
+> export RPLTRCRVARS="so4,bc1,bc2,oc1,oc2,dust1,dust2,dust3,dust4,dust5,seas1,seas2,seas3,seas4,seas5"
+                      
+----202311 vs 202312----
+                      
+                      
+                      
+----HBO1-config.aeroanlrun-orig----
+----202311 vs wk----
+diff: /work2/noaa/wrf-chem/bohuang/testHercules/UFSAerosols-workflow/20231116-develop/global-workflow/expdir/cycExp_ATMA_warm//config.aeroanlrun-orig: No such file or directory
+                      
+----202311 vs 202312----
+diff: /work2/noaa/wrf-chem/bohuang/testHercules/UFSAerosols-workflow/20231116-develop/global-workflow/expdir/cycExp_ATMA_warm//config.aeroanlrun-orig: No such file or directory
+diff: /work2/noaa/wrf-chem/bohuang/testHercules/UFSAerosols-workflow/20231213-develop/global-workflow/expdir/cycExp_ATMA_warm//config.aeroanlrun-orig: No such file or directory
+                      
+                      
+                      
+----HBO1-config.aerosol_init----
+----202311 vs wk----
+                      
+----202311 vs 202312----
+                      
+                      
+                      
+----HBO1-config.base----
+----202311 vs wk----
+9c9
+< export machine="HERA"
+---
+> export machine="ORION"
+15,19c15,19
+< export ACCOUNT="fv3-cpu"
+< export QUEUE="batch"
+< export QUEUE_SERVICE="batch"
+< export PARTITION_BATCH="hera"
+< export PARTITION_SERVICE="service"
+---
+> export ACCOUNT=${ACCOUNT:-"wrf-chem"}
+> export QUEUE=${QUEUE:-"batch"}
+> export QUEUE_SERVICE=${QUEUE:-"batch"}
+> export PARTITION_BATCH=${PARTITION_BATCH:-"hera"}
+> export PARTITION_SERVICE=${PARTITION_SERVICE:-"service"}
+22c22
+< export HPSS_PROJECT="emc-global"
+---
+> export HPSS_PROJECT=${HPSS_PROJECT:-"wrf-chem"}
+25c25
+< export HOMEgfs=/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expCodes/UFSAerosols-workflow/20231116-develop/global-workflow
+---
+> export HOMEgfs=${HOMEgfs:-"/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expCodes/UFSAerosols-workflow/20231116-develop/global-workflow"}
+47,49c47,50
+< export HOMEDIR="/scratch1/NCEPDEV/global/${USER}"
+< export STMP="/scratch1/NCEPDEV/stmp2/${USER}"
+< export PTMP="/scratch1/NCEPDEV/stmp4/${USER}"
+---
+> #HBO
+> export HOMEDIR="/scratch1/BMC/gsd-fv3-dev/NCEPDEV/global/$USER"
+> export STMP="/scratch2/BMC/gsd-fv3-dev/NCEPDEV/stmp3/$USER"
+> export PTMP="/scratch2/BMC/gsd-fv3-dev/NCEPDEV/stmp4/$USER"
+93c94
+< export KEEPDATA="YES"
+---
+> export KEEPDATA="NO"
+104,105c105,108
+< export SDATE=2020060100
+< export EDATE=2020063018
+---
+> #HBO
+> export CDATE=${CDATE:-"2020060100"}
+> export SDATE=${SDATE:-"2020060100"}
+> export EDATE=${EDATE:-"2020063018"}
+108,110c111,113
+< export PSLOT="cycExp_ATMA_warm"
+< export EXPDIR="/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expCodes/UFSAerosols-workflow/20231116-develop/global-workflow/expdir/${PSLOT}"
+< export ROTDIR="/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expCodes/UFSAerosols-workflow/20231116-develop/global-workflow/comrot/${PSLOT}"
+---
+> export PSLOT=${PSLOT:-"cycExp_ATMA_warm"}
+> export EXPDIR=${EXPDIR:-"/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expCodes/UFSAerosols-workflow/20231116-develop/global-workflow/expdir/${PSLOT}"}
+> export ROTDIR=${ROTDIR:-"/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expCodes/UFSAerosols-workflow/20231116-develop/global-workflow/comrot/${PSLOT}"}
+167,169c170,172
+< export LEVS=128
+< export CASE="C96"
+< export CASE_ENS="C96"
+---
+> export LEVS=${LEVS:-"128"}
+> export CASE=${CASE:-"C96"}
+> export CASE_ENS=${CASE_ENKF:-"C96"}
+254,255c257,258
+< export FHMIN=0
+< export FHMAX=9
+---
+> export FHMIN=${FHMIN:-"6"}
+> export FHMAX=${FHMAX:-"6"}
+258,261c261,264
+< export FHOUT=6           # Will be changed to 1 in config.base if (DOHYBVAR set to NO and l4densvar set to false)
+< export FHMIN_ENKF=0
+< export FHMAX_ENKF=9
+< export FHOUT_ENKF=6           # Will be changed to 1 in config.base if (DOHYBVAR set to NO and l4densvar set to false)
+---
+> export FHOUT=${FHOUT:-"6"}           # Will be changed to 1 in config.base if (DOHYBVAR set to NO and l4densvar set to false)
+> export FHMIN_ENKF=${FHMIN}
+> export FHMAX_ENKF=${FHMAX}
+> export FHOUT_ENKF=${FHOUT}           # Will be changed to 1 in config.base if (DOHYBVAR set to NO and l4densvar set to false)
+336,337c339,341
+< export l4densvar=".true."
+< export lwrite4danl=".true."
+---
+> #HBO
+> export l4densvar=".false."
+> export lwrite4danl=".false."
+384c388,399
+< export INCREMENTS_TO_ZERO="'liq_wat_inc','icmr_inc'"
+---
+> #HBO-orig
+> GFSVERSION=${GFSVERSION-"v15"}
+> if [ ${GFSVERSION} = "v14" ];then
+>     export INCREMENTS_TO_ZERO=${ZERO_METINCS:-"'delp_inc','delz_inc','clwmr_inc','icmr_inc','liq_wat_inc'"}
+> elif [ ${GFSVERSION} = "v15" ];then
+>     export INCREMENTS_TO_ZERO=${ZERO_METINCS:-"'delz_inc','clwmr_inc','icmr_inc','liq_wat_inc'"}
+> elif [ ${GFSVERSION} = "v16" ];then
+>     export INCREMENTS_TO_ZERO=${ZERO_METINCS:-"'clwmr_inc','icmr_inc','liq_wat_inc'"}
+> else
+>     echo "In config.base, please define INCREMENTS_TO_ZERO for GFSVERSION that is not v14/15/16"
+>     exit 100
+> fi
+                      
+----202311 vs 202312----
+15,16c15,16
+< export ACCOUNT="fv3-cpu"
+< export QUEUE="batch"
+---
+> export ACCOUNT="wrf-chem"
+> export QUEUE="debug"
+18c18
+< export PARTITION_BATCH="hera"
+---
+> export PARTITION_BATCH="hercules"
+22c22
+< export HPSS_PROJECT="emc-global"
+---
+> export HPSS_PROJECT="wrf-chem"
+25c25
+< export HOMEgfs=/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expCodes/UFSAerosols-workflow/20231116-develop/global-workflow
+---
+> export HOMEgfs=/work2/noaa/wrf-chem/bohuang/testHercules/UFSAerosols-workflow/20231213-develop/global-workflow/
+40,41c40,41
+< export PACKAGEROOT="/scratch1/NCEPDEV/global/glopara/nwpara"    # TODO: set via prod_envir in Ops
+< export COMROOT="/scratch1/NCEPDEV/global/glopara/com"    # TODO: set via prod_envir in Ops
+---
+> export PACKAGEROOT="/work/noaa/zrtrr/bohuang/com/"    # TODO: set via prod_envir in Ops
+> export COMROOT="/work/noaa/zrtrr/bohuang/com/"    # TODO: set via prod_envir in Ops
+43,44c43,44
+< export DMPDIR="/scratch1/NCEPDEV/global/glopara/dump"
+< export BASE_CPLIC="/scratch1/NCEPDEV/global/glopara/data/ICSDIR/prototype_ICs"
+---
+> export DMPDIR="/work/noaa/zrtrr/bohuang/com/"
+> export BASE_CPLIC="/work/noaa/zrtrr/bohuang/com/"
+47,49c47,49
+< export HOMEDIR="/scratch1/NCEPDEV/global/${USER}"
+< export STMP="/scratch1/NCEPDEV/stmp2/${USER}"
+< export PTMP="/scratch1/NCEPDEV/stmp4/${USER}"
+---
+> export HOMEDIR="/work/noaa/zrtrr/bohuang/dump"
+> export STMP="/work/noaa/zrtrr/bohuang/dump"
+> export PTMP="/work/noaa/zrtrr/bohuang/dump"
+55a56
+> export DO_GOES="NO"        # GOES products
+59c60
+< export DO_VRFY="YES"       # VRFY step
+---
+> export DO_NPOESS="NO"       # NPOESS products
+70c71
+< #  use RUNMOS flag (currently in config.vrfy)
+---
+> #  use RUNMOS flag
+92,93c93
+< #HBO
+< export KEEPDATA="YES"
+---
+> export KEEPDATA="NO"
+96c96
+< export NCDUMP="${NETCDF:-}/bin/ncdump"
+---
+> export NCDUMP="${NETCDF:-${netcdf_c_ROOT:-}}/bin/ncdump"
+104,106c104,106
+< export SDATE=2020060100
+< export EDATE=2020063018
+< export EXP_WARM_START=".false."
+---
+> export SDATE=2020100206
+> export EDATE=2020100206
+> export EXP_WARM_START=".true."
+109,110c109,110
+< export EXPDIR="/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expCodes/UFSAerosols-workflow/20231116-develop/global-workflow/expdir/${PSLOT}"
+< export ROTDIR="/scratch1/BMC/gsd-fv3-dev/MAPP_2018/bhuang/JEDI-2020/JEDI-FV3/expCodes/UFSAerosols-workflow/20231116-develop/global-workflow/comrot/${PSLOT}"
+---
+> export EXPDIR="/work2/noaa/wrf-chem/bohuang/testHercules/UFSAerosols-workflow/20231213-develop/global-workflow/expdir/cycExp_ATMA_warm"
+> export ROTDIR="/work2/noaa/gsd-fv3-dev/bhuang/expRuns/UFS-Aerosols_RETcyc/AeroReanl/AeroReanl_EP4_AeroDA_YesSPEEnKF_YesSfcanl_v15_0dz0dp_41M_C96_202007/dr-data/"
+116,118c116
+< #HBO
+< export DATAROOT=${DATAROOT:-"${STMP}/RUNDIRS/${PSLOT}"}
+< #export DATAROOT="${STMP}/RUNDIRS/${PSLOT}"  # TODO: set via prod_envir in Ops
+---
+> export DATAROOT="${STMP}/RUNDIRS/${PSLOT}"  # TODO: set via prod_envir in Ops
+157d154
+< export CCPP_SUITE="FV3_GFS_v17_p8_ugwpv1"
+160d156
+< export cplwav2atm=".false."
+202d197
+<     export confignamevarfornems="atm"
+206d200
+<     export confignamevarfornems="atm_aero"
+212d205
+<     export confignamevarfornems="leapfrog_atm_wav"
+223,224d215
+<     export CCPP_SUITE="FV3_GFS_v17_coupled_p8_ugwpv1"  # TODO: Does this include FV3_GFS_v17_p8?  Can this be used instead of FV3_GFS_v17_p8 on L149
+<     export confignamevarfornems="cpld"
+228d218
+<         export confignamevarfornems="${confignamevarfornems}_aero"
+234,235d223
+<         export cplwav2atm=".true."
+<         export confignamevarfornems="${confignamevarfornems}_outerwave"
+237d224
+< 
+256,261c243
+< #HBO
+< #export FHOUT=3           # Will be changed to 1 in config.base if (DOHYBVAR set to NO and l4densvar set to false)
+< export FHOUT=6           # Will be changed to 1 in config.base if (DOHYBVAR set to NO and l4densvar set to false)
+< export FHMIN_ENKF=0
+< export FHMAX_ENKF=9
+< export FHOUT_ENKF=6           # Will be changed to 1 in config.base if (DOHYBVAR set to NO and l4densvar set to false)
+---
+> export FHOUT=3           # Will be changed to 1 in config.base if (DOHYBVAR set to NO and l4densvar set to false)
+300,301c282
+< #HBO
+< export DOIAU="NO"        # Enable 4DIAU for control with 3 increments
+---
+> export DOIAU="FALSE"        # Enable 4DIAU for control with 3 increments
+330,332c311
+< #HBO
+< #export DOHYBVAR="YES"
+< export DOHYBVAR="NO"
+---
+> export DOHYBVAR="YES"
+395c374
+< # variables here since used in both DA and vrfy jobs
+---
+> # variables here since used in DA job
+400c379
+< export DO_METP="YES"         # Run METPLUS jobs - set METPLUS settings in config.metp
+---
+> export DO_METP="NO"          # Run METPLUS jobs - set METPLUS settings in config.metp; not supported with spack-stack
+                      
+                      
+                      
+----HBO1-config.base-orig----
+----202311 vs wk----
+                      
+----202311 vs 202312----
+diff: /work2/noaa/wrf-chem/bohuang/testHercules/UFSAerosols-workflow/20231213-develop/global-workflow/expdir/cycExp_ATMA_warm//config.base-orig: No such file or directory
+                      
+                      
+                      
+----HBO1-config.com----
+----202311 vs wk----
+                      
+----202311 vs 202312----
+                      
+                      
+                      
+----HBO1-config.efcs----
+----202311 vs wk----
+33,35c33,35
+< export NMEM_EFCSGRP=1
+< export NMEM_EFCSGRP_GFS=1
+< export RERUN_EFCSGRP="NO"
+---
+> export NMEM_EFCSGRP=${NMEM_EFCSGRP:-"5"}
+> export NMEM_EFCSGRP_GFS=${NMEM_EFCSGRP:-"5"}
+> export RERUN_EFCSGRP="YES"
+                      
+----202311 vs 202312----
+17,19c17,20
+< [[ ${DO_OCN} == "YES" ]] && string="${string} --mom6 ${OCNRES}"
+< [[ ${DO_ICE} == "YES" ]] && string="${string} --cice6 ${ICERES}"
+< [[ ${DO_WAVE} == "YES" ]] && string="${string} --ww3 ${waveGRD// /;}"
+---
+> [[ "${DO_OCN}" == "YES" ]] && string="${string} --mom6 ${OCNRES}"
+> [[ "${DO_ICE}" == "YES" ]] && string="${string} --cice6 ${ICERES}"
+> [[ "${DO_WAVE}" == "YES" ]] && string="${string} --ww3 ${waveGRD// /;}"
+> [[ "${DO_AERO}" == "YES" ]] && string="${string} --gocart"
+32,33c33
+< #HBO
+< export NMEM_EFCSGRP=1
+---
+> export NMEM_EFCSGRP=2
+                      
+                      
+                      
+----HBO1-config.efcs-orig----
+----202311 vs wk----
+                      
+----202311 vs 202312----
+diff: /work2/noaa/wrf-chem/bohuang/testHercules/UFSAerosols-workflow/20231213-develop/global-workflow/expdir/cycExp_ATMA_warm//config.efcs-orig: No such file or directory
+                      
+                      
+                      
+----HBO1-config.fcst----
+----202311 vs wk----
+                      
+----202311 vs 202312----
+16,18c16,19
+< [[ ${DO_OCN} == "YES" ]] && string="${string} --mom6 ${OCNRES}"
+< [[ ${DO_ICE} == "YES" ]] && string="${string} --cice6 ${ICERES}"
+< [[ ${DO_WAVE} == "YES" ]] && string="${string} --ww3 ${waveGRD// /;}"
+---
+> [[ "${DO_OCN}" == "YES" ]] && string="${string} --mom6 ${OCNRES}"
+> [[ "${DO_ICE}" == "YES" ]] && string="${string} --cice6 ${ICERES}"
+> [[ "${DO_WAVE}" == "YES" ]] && string="${string} --ww3 ${waveGRD// /;}"
+> [[ "${DO_AERO}" == "YES" ]] && string="${string} --gocart"
+23,29d23
+< # Source component configs if necessary
+< for component in WAVE OCN ICE AERO; do
+<   control="DO_${component}"
+<   if [[ ${!control} == "YES" ]]; then
+<     source "${EXPDIR}/config.${component,,}"
+<   fi
+< done
+45,73d38
+< # COUPLING COMPONENTS
+< 
+< # cpl defaults
+< export cpl=".false."
+< export cplflx=".false."
+< export cplice=".false."
+< export cplchm=".false."
+< export cplwav=".false."
+< 
+< # cpl changes based on APP
+< 
+< if [[ "${DO_COUPLED}" == "YES" ]]; then
+<   export cpl=".true."
+< fi
+< if [[ "${DO_AERO}" == "YES" ]]; then
+<   export cplchm=".true."
+< fi
+< if [[ "${DO_ICE}" == "YES" ]]; then
+<   export cplice=".true."
+<   export cplflx=".true."
+< fi
+< if [[ "${DO_OCN}" == "YES" ]]; then
+<   export cplflx=".true."
+< fi
+< if [[ "${DO_WAVE}" == "YES" ]]; then
+<   export cplwav=".true."
+< fi
+< 
+< #######################################################################
+211c176
+<         export lradar=".false."
+---
+>         export lradar=".true."
+255c220
+< export cplmode="nems_frac"
+---
+> export cplmode="ufs.frac"
+257c222
+<   export cplmode="nems_orig"
+---
+>   export cplmode="ufs.nfrac"
+288d252
+< 
+295,297d258
+<     # Choose coupling with wave
+<     if [[ "${DO_WAVE}" == "YES" ]]; then export cplwav=".true." ; fi
+< 
+309,313d269
+<     # Choose coupling with wave
+<     if [[ "${DO_WAVE}" = "YES" && "${WAVE_CDUMP}" != "gdas" ]]; then
+<         export cplwav=".true."
+<     fi
+< 
+324,334d279
+< fi
+< 
+< if [[ "${DO_AERO}" = "YES" ]]; then # temporary settings for aerosol coupling
+<     export AERO_DIAG_TABLE="${AERO_DIAG_TABLE:-${HOMEgfs}/parm/ufs/fv3/diag_table.aero}"
+<     export AERO_FIELD_TABLE="${AERO_FIELD_TABLE:-${HOMEgfs}/parm/ufs/fv3/field_table.aero}"
+<     AERO_EMIS_FIRE="${AERO_EMIS_FIRE:-none}"
+<     export AERO_EMIS_FIRE=${AERO_EMIS_FIRE,,}
+<     export AERO_CONFIG_DIR="${AERO_CONFIG_DIR:-${HOMEgfs}/parm/ufs/chem}"
+<     export AERO_INPUTS_DIR="${AERO_INPUTS_DIR:-}"
+<     export fscav_aero="${aero_conv_scav_factors:-${fscav_aero}}"
+<     export dnats_aero="${aero_diag_tracers:-0}"
+                      
+                      
+                      
+----HBO1-config.nsst----
+----202311 vs wk----
+                      
+----202311 vs 202312----
+                      
+                      
+                      
+----HBO1-config.resources----
+----202311 vs wk----
+                      
+----202311 vs 202312----
+17c17,18
+<     echo "anal sfcanl analcalc analdiag fcst post echgres"
+---
+>     echo "anal sfcanl analcalc analdiag fcst echgres"
+>     echo "upp atmos_products"
+19c20
+<     echo "verfozn verfrad vminmon vrfy fit2obs metp arch cleanup"
+---
+>     echo "verfozn verfrad vminmon fit2obs metp arch cleanup"
+24c25
+<     echo "postsnd awips gempak"
+---
+>     echo "postsnd awips gempak npoess"
+56a58,59
+> elif [[ ${machine} = "HERCULES" ]]; then
+>    export npe_node_max=40
+708c711
+< elif [[ ${step} = "post" ]]; then
+---
+> elif [[ ${step} = "atmos_products" ]]; then
+710,722c713,720
+<     export wtime_post="00:12:00"
+<     export wtime_post_gfs="01:00:00"
+<     export npe_post=126
+<     res=$(echo "${CASE}" | cut -c2-)
+<     if (( npe_post > res )); then
+<       export npe_post=${res}
+<     fi
+<     export nth_post=1
+<     export npe_node_post=${npe_post}
+<     export npe_node_post_gfs=${npe_post}
+<     export npe_node_dwn=${npe_node_max}
+<     if [[ "${npe_node_post}" -gt "${npe_node_max}" ]]; then export npe_node_post=${npe_node_max} ; fi
+<     if [[ "${npe_node_post_gfs}" -gt "${npe_node_max}" ]]; then export npe_node_post_gfs=${npe_node_max} ; fi
+---
+>     export wtime_atmos_products="00:15:00"
+>     export npe_atmos_products=24
+>     export nth_atmos_products=1
+>     export npe_node_atmos_products="${npe_atmos_products}"
+>     export wtime_atmos_products_gfs="${wtime_atmos_products}"
+>     export npe_atmos_products_gfs="${npe_atmos_products}"
+>     export nth_atmos_products_gfs="${nth_atmos_products}"
+>     export npe_node_atmos_products_gfs="${npe_node_atmos_products}"
+777,786d774
+< elif [[ ${step} = "vrfy" ]]; then
+< 
+<     export wtime_vrfy="00:10:00"
+<     export wtime_vrfy_gfs="00:10:00"
+<     export npe_vrfy=1
+<     export nth_vrfy=1
+<     export npe_node_vrfy=1
+<     export npe_vrfy_gfs=1
+<     export npe_node_vrfy_gfs=1
+< 
+1024a1013,1020
+> 
+> elif [[ ${step} = "npoess" ]]; then
+> 
+>     export wtime_npoess="03:30:00"
+>     export npe_npoess=1
+>     export npe_node_npoess=1
+>     export nth_npoess=1
+>     export memory_npoess="3GB"
+                      
+                      
+                      
+----HBO1-config.ufs----
+----202311 vs wk----
+124,127c124,129
+<         export layout_x=2
+<         export layout_y=2
+<         export layout_x_gfs=2
+<         export layout_y_gfs=2
+---
+> 	#HBO~
+>         export layout_x=${layout_x:-"4"} #2
+>         export layout_y=${layout_y:-"6"} #2
+>         export layout_x_gfs=${layout_x} #2
+>         export layout_y_gfs=${layout_y} #2
+> 	#HBO~
+                      
+----202311 vs 202312----
+11c11
+< if [ $# -le 1 ]; then
+---
+> if (( $# <= 1 )); then
+18a19
+>     echo "--gocart"
+27a29
+> skip_gocart=true
+31c33
+< while [[ $# -gt 0 ]]; do
+---
+> while (( $# > 0 )); do
+35a38
+>       shift
+39a43
+>       shift
+43a48
+>       shift
+47a53,56
+>       shift
+>       ;;
+>     "--gocart")
+>       skip_gocart=false
+55d63
+<   shift
+67c75
+<   "HERA" | "ORION")
+---
+>   "HERA" | "ORION" | "HERCULES")
+100a109,112
+>   *)
+>     echo "FATAL ERROR: Unrecognized machine ${machine}"
+>     exit 14
+>     ;;
+116c128
+<         export knob_ugwp_tauamp=6.0e-3      # setting for UGWPv1 non-stationary GWD 
+---
+>         export knob_ugwp_tauamp=6.0e-3      # setting for UGWPv1 non-stationary GWD
+248a261,264
+>   *)
+>     echo "FATAL ERROR: Unrecognized FV3 resolution ${fv3_res}"
+>     exit 15
+>     ;;
+251a268,277
+> # cpl defaults
+> export cpl=".false."
+> export cplflx=".false."
+> export cplice=".false."
+> export cplchm=".false."
+> export cplwav=".false."
+> export cplwav2atm=".false."
+> export CCPP_SUITE="FV3_GFS_v17_p8_ugwpv1"
+> model_list="atm"
+> 
+253a280
+>   export cpl=".true."
+254a282
+>   export CCPP_SUITE="FV3_GFS_v17_coupled_p8_ugwpv1"  # TODO: Does this include FV3_GFS_v17_p8?  Can this be used instead of FV3_GFS_v17_p8?
+258a287,289
+>   source "${EXPDIR}/config.ocn"
+>   export cplflx=".true."
+>   model_list="${model_list}.ocean"
+366a398,400
+>   source "${EXPDIR}/config.ice"
+>   export cplice=".true."
+>   model_list="${model_list}.ice"
+371a406
+> 
+402a438,441
+>   source "${EXPDIR}/config.wave"
+>   export cplwav=".true."
+>   export cplwav2atm=".true."
+>   model_list="${model_list}.wave"
+431a471,513
+> 
+> # GOCART specific settings
+> if [[ "${skip_gocart}" == "false" ]]; then
+>   source "${EXPDIR}/config.aero"
+>   export cplchm=".true."
+>   model_list="${model_list}.aero"
+> fi
+> 
+> # Set the name of the UFS (previously nems) configure template to use
+> case "${model_list}" in
+>   atm)
+>     export ufs_configure_template="${HOMEgfs}/parm/ufs/ufs.configure.atm.IN"
+>     ;;
+>   atm.aero)
+>     export ufs_configure_template="${HOMEgfs}/parm/ufs/ufs.configure.atm_aero.IN"
+>     ;;
+>   atm.wave)
+>     export ufs_configure_template="${HOMEgfs}/parm/ufs/ufs.configure.leapfrog_atm_wav.IN"
+>     ;;
+>   atm.ocean.ice)
+>     export ufs_configure_template="${HOMEgfs}/parm/ufs/ufs.configure.cpld.IN"
+>     ;;
+>   atm.ocean.ice.aero)
+>     export ufs_configure_template="${HOMEgfs}/parm/ufs/ufs.configure.cpld_aero.IN"
+>     ;;
+>   atm.ocean.ice.wave)
+>     export ufs_configure_template="${HOMEgfs}/parm/ufs/ufs.configure.cpld_outerwave.IN"
+>     ;;
+>   atm.ocean.ice.wave.aero)
+>     export ufs_configure_template="${HOMEgfs}/parm/ufs/ufs.configure.cpld_aero_outerwave.IN"
+>     ;;
+>   *)
+>     echo "FATAL ERROR: Unable to determine appropriate UFS configure template for ${model_list}"
+>     exit 16
+>     ;;
+> esac
+> 
+> if [[ ! -r "${ufs_configure_template}" ]]; then
+>   echo "FATAL ERROR: ${ufs_configure_template} either doesn't exist or is not readable."
+>   exit 17
+> fi
+> 
+> unset model_list
+                      
+                      
+                      
+----HBO1-config.ufs-orig----
+----202311 vs wk----
+diff: /work2/noaa/wrf-chem/bohuang/testHercules/UFSAerosols-workflow/20231116-develop/global-workflow/expdir/cycExp_ATMA_warm//config.ufs-orig: No such file or directory
+                      
+----202311 vs 202312----
+diff: /work2/noaa/wrf-chem/bohuang/testHercules/UFSAerosols-workflow/20231116-develop/global-workflow/expdir/cycExp_ATMA_warm//config.ufs-orig: No such file or directory
+diff: /work2/noaa/wrf-chem/bohuang/testHercules/UFSAerosols-workflow/20231213-develop/global-workflow/expdir/cycExp_ATMA_warm//config.ufs-orig: No such file or directory
+                      
+                      
+                      

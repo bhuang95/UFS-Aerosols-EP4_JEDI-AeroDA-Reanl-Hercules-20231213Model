@@ -1,0 +1,144 @@
+MODULE module_cfnames
+
+  USE module_constants, ONLY: max_varname_length
+
+  IMPLICIT NONE
+
+  PRIVATE
+  PUBLIC :: m2cf,cf2m
+
+  INCLUDE 'mpif.h'
+
+CONTAINS
+
+  FUNCTION m2cf(mname)
+
+    IMPLICIT NONE
+
+    CHARACTER(len=max_varname_length) :: m2cf
+    CHARACTER(len=*), INTENT(in)  :: mname
+
+    INTEGER :: iret
+
+    SELECT CASE(TRIM(mname))
+
+    CASE ('dust1')
+       m2cf='mass_fraction_of_dust001_in_air'
+    CASE ('dust2')
+       m2cf='mass_fraction_of_dust002_in_air'
+    CASE ('dust3')
+       m2cf='mass_fraction_of_dust003_in_air'
+    CASE ('dust4')
+       m2cf='mass_fraction_of_dust004_in_air'
+    CASE ('dust5')
+       m2cf='mass_fraction_of_dust005_in_air'
+
+    CASE ('seas1')
+       m2cf='mass_fraction_of_sea_salt001_in_air'
+    CASE ('seas2')
+       m2cf='mass_fraction_of_sea_salt002_in_air'
+    CASE ('seas3')
+       m2cf='mass_fraction_of_sea_salt003_in_air'
+    CASE ('seas4')
+       m2cf='mass_fraction_of_sea_salt004_in_air'
+    CASE ('seas5')
+       m2cf='mass_fraction_of_sea_salt005_in_air'
+
+    CASE ('bc1')
+       m2cf='mass_fraction_of_hydrophobic_black_carbon_in_air'
+    CASE ('bc2')
+       m2cf='mass_fraction_of_hydrophilic_black_carbon_in_air'
+
+    CASE ('oc1')
+       m2cf='mass_fraction_of_hydrophobic_organic_carbon_in_air'
+    CASE ('oc2')
+       m2cf='mass_fraction_of_hydrophilic_organic_carbon_in_air'
+
+!@mzp old model
+!    CASE ('sulf') 
+    CASE ('so4') 
+       m2cf='mass_fraction_of_sulfate_in_air'
+
+    CASE ('no3an1') 
+       m2cf='mass_fraction_of_nitrate001_in_air'
+
+    CASE ('no3an2') 
+       m2cf='mass_fraction_of_nitrate002_in_air'
+
+    CASE ('no3an3') 
+       m2cf='mass_fraction_of_nitrate003_in_air'
+
+    CASE default
+       PRINT *,'Name unknown - Stopping in module_model2cf.f90'
+       CALL mpi_abort(mpi_comm_world, iret)
+
+    END SELECT
+
+  END FUNCTION m2cf
+
+  FUNCTION cf2m(cfname)
+
+    IMPLICIT NONE
+
+    CHARACTER(len=max_varname_length) :: cf2m
+    CHARACTER(len=*), INTENT(in)  :: cfname
+
+    INTEGER :: iret
+
+    SELECT CASE(TRIM(cfname))
+
+    CASE ('mass_fraction_of_dust001_in_air')
+       cf2m='dust1'
+    CASE ('mass_fraction_of_dust002_in_air')
+       cf2m='dust2'
+    CASE ('mass_fraction_of_dust003_in_air')
+       cf2m='dust3'
+    CASE ('mass_fraction_of_dust004_in_air')
+       cf2m='dust4'
+    CASE ('mass_fraction_of_dust005_in_air')
+       cf2m='dust5'
+
+    CASE ('mass_fraction_of_sea_salt001_in_air')
+       cf2m='seas1'
+    CASE ('mass_fraction_of_sea_salt002_in_air')
+       cf2m='seas2'
+    CASE ('mass_fraction_of_sea_salt003_in_air')
+       cf2m='seas3'
+    CASE ('mass_fraction_of_sea_salt004_in_air')
+       cf2m='seas4'
+    CASE ('mass_fraction_of_sea_salt005_in_air')
+       cf2m='seas5'
+
+    CASE ('mass_fraction_of_hydrophobic_black_carbon_in_air')
+       cf2m='bc1'
+    CASE ('mass_fraction_of_hydrophilic_black_carbon_in_air')
+       cf2m='bc2'
+
+    CASE ('mass_fraction_of_hydrophobic_organic_carbon_in_air')
+       cf2m='oc1'
+    CASE ('mass_fraction_of_hydrophilic_organic_carbon_in_air')
+       cf2m='oc2'
+
+    CASE ('mass_fraction_of_sulfate_in_air') 
+!@mzp old model
+!       cf2m='sulf'
+       cf2m='so4'
+
+    CASE ('mass_fraction_of_nitrate001_in_air')
+       cf2m='no3an1'
+
+    CASE ('mass_fraction_of_nitrate002_in_air')
+       cf2m='no3an2'
+
+    CASE ('mass_fraction_of_nitrate003_in_air')
+       cf2m='no3an3'
+
+    CASE default
+       PRINT *,'Name unknown - Stopping in module_model2cf.f90'
+       CALL mpi_abort(mpi_comm_world, iret)
+
+    END SELECT
+
+  END FUNCTION cf2m
+
+END MODULE module_cfnames

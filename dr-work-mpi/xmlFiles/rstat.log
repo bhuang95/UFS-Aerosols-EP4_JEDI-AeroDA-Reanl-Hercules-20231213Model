@@ -1,0 +1,10 @@
+       CYCLE                    TASK                       JOBID               STATE         EXIT STATUS     TRIES      DURATION
+================================================================================================================================
+202008050000              gdasefcs01                    16996228           SUCCEEDED                   0         1        1122.0
+202008050000              gdasefcs02                    16996229           SUCCEEDED                   0         1        1171.0
+202008050000              gdasefcs03                    16996230           SUCCEEDED                   0         1        1144.0
+202008050000              gdasefcs04                    16996231           SUCCEEDED                   0         1        1053.0
+202008050000              gdasefcs05                    16996232           SUCCEEDED                   0         1        1305.0
+202008050000              gdasefcs06                    16996233           SUCCEEDED                   0         1        1129.0
+202008050000              gdasefcs07                    16996234           SUCCEEDED                   0         1        1109.0
+202008050000              gdasefcs08                    16996235           SUCCEEDED                   0         1        1137.0

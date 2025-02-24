@@ -1,0 +1,1 @@
+/work/noaa/wrf-chem/bhuang/expCodes-Hercules/src_mpi/exec/gocart_aod_fv3_mpi.x

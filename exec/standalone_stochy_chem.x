@@ -1,0 +1,1 @@
+/work/noaa/wrf-chem/bhuang/expCodes-Hercules/src_sppt/exec/standalone_stochy_chem.x

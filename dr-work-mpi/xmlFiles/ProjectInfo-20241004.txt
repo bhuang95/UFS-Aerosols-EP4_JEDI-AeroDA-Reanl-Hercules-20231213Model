@@ -1,0 +1,84 @@
+Account Params -- Information regarding project associations for bohuang
+	Home Quota (/home/bohuang) Used: 244 MB Quota: 8192 MB Grace: 10240
+
+	Project: chem-var 
+		FairShare=0.114 (47/53)
+		Partition Access: ALL
+		Available QOSes: batch,debug,novel,ood,urgent,windfall
+
+		Directory: /work/noaa/chem-var DiskInUse=0 GB, Quota=950 GB, Files=13, FileQUota=0
+		Directory: /work2/noaa/chem-var DiskInUse=0 GB, Quota=950 GB, Files=6, FileQUota=0
+
+	Project: da 
+		Directory: /work/noaa/da DiskInUse=223461 GB, Quota=380000 GB, Files=37302525, FileQUota=0
+		Directory: /work2/noaa/da DiskInUse=112587 GB, Quota=380000 GB, Files=17739805, FileQUota=0
+
+	Project: da-cpu 
+		FairShare=0.299 (44/53)
+		Partition Access: ALL
+		Available QOSes: batch,debug,novel,ood,urgent,windfall
+
+
+	Project: gsd-fv3-dev 
+		FairShare=0.897 (32/53)
+		Partition Access: ALL
+		Available QOSes: batch,debug,novel,ood,urgent,windfall
+
+		Directory: /work/noaa/gsd-fv3-dev DiskInUse=66800 GB, Quota=76000 GB, Files=4387243, FileQUota=0
+		Directory: /work2/noaa/gsd-fv3-dev DiskInUse=73672 GB, Quota=76000 GB, Files=3620364, FileQUota=0
+
+	Project: gsienkf 
+		FairShare=0.000 (53/53)
+		Partition Access: ALL
+		Available QOSes: windfall
+
+		Directory: /work/noaa/gsienkf DiskInUse=78923 GB, Quota=133000 GB, Files=9553156, FileQUota=0
+		Directory: /work2/noaa/gsienkf DiskInUse=255967 GB, Quota=272384 GB, Files=12815804, FileQUota=0
+
+	Project: noaatest 
+		Directory: /work/noaa/noaatest DiskInUse=0 GB, Quota=0 GB, Files=0, FileQUota=0
+		Directory: /work2/noaa/noaatest DiskInUse=0 GB, Quota=0 GB, Files=0, FileQUota=0
+
+	Project: rstprod 
+		Directory: /work/noaa/rstprod DiskInUse=9629 GB, Quota=23750 GB, Files=132981, FileQUota=0
+		Directory: /work2/noaa/rstprod DiskInUse=0 GB, Quota=23750 GB, Files=7, FileQUota=0
+
+	Project: rtrr 
+		FairShare=0.612 (40/53)
+		Partition Access: ALL
+		Available QOSes: batch,debug,novel,ood,urgent,windfall
+
+		Directory: /work/noaa/rtrr DiskInUse=454 GB, Quota=950 GB, Files=89105, FileQUota=0
+		Directory: /work2/noaa/rtrr DiskInUse=0 GB, Quota=950 GB, Files=8, FileQUota=0
+
+	Project: wrf-chem 
+		FairShare=0.819 (36/53)
+		Partition Access: ALL
+		Available QOSes: batch,debug,novel,ood,urgent,windfall
+
+		Directory: /work/noaa/wrf-chem DiskInUse=778 GB, Quota=1900 GB, Files=916050, FileQUota=0
+		Directory: /work2/noaa/wrf-chem DiskInUse=144 GB, Quota=1900 GB, Files=211553, FileQUota=0
+
+	Project: wrfruc 
+		FairShare=0.723 (37/53)
+		Partition Access: ALL
+		Available QOSes: batch,debug,novel,ood,urgent,windfall
+
+		Directory: /work/noaa/wrfruc DiskInUse=319774 GB, Quota=332500 GB, Files=15580434, FileQUota=0
+		Directory: /work2/noaa/wrfruc DiskInUse=328518 GB, Quota=332500 GB, Files=10301682, FileQUota=0
+
+	Project: zrtrr 
+		FairShare=0.289 (45/53)
+		Partition Access: ALL
+		Available QOSes: batch,debug,novel,ood,urgent,windfall
+
+		Directory: /work/noaa/zrtrr DiskInUse=32079 GB, Quota=47500 GB, Files=1275389, FileQUota=0
+		Directory: /work2/noaa/zrtrr DiskInUse=66567 GB, Quota=76000 GB, Files=25853, FileQUota=0
+
+Note: for an explanation of the meaning of these values and general scheduling information see:
+    https://rdhpcs-common-docs.rdhpcs.noaa.gov/wiki/index.php/SLURM_Fair-share
+Note: the parenthetical values after project fairshare indiciate the rank
+          of the project with respect to all other allocated projects. If the first
+          number is lower, your project is likely to have higher priority than
+          other projects. (Of course, other factors weigh in to scheduling.)
+

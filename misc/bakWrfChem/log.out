@@ -1,0 +1,184 @@
++ SRCDIR=/work/noaa/wrf-chem/bhuang/
++ TGTDIR=/work/noaa/gsd-fv3-dev/bhuang/bakWrfChem/
+++ date +%Y%m%d%H
++ DATENOW=2024040918
++ TARDIR=/work/noaa/gsd-fv3-dev/bhuang/bakWrfChem//2024040918
++ [[ ! -d /work/noaa/gsd-fv3-dev/bhuang/bakWrfChem//2024040918 ]]
++ cd /work/noaa/wrf-chem/bhuang/
+++ ls
++ SRCFILEL1='Data
+NRTdata_UFS-Aerosols
+expCodes
+expCodes-Hercules'
++ cd /work/noaa/gsd-fv3-dev/bhuang/bakWrfChem//2024040918
++ ICNT=0
++ for L1 in ${SRCFILEL1}
++ SRCDIRL2=/work/noaa/wrf-chem/bhuang//Data
++ DETDIRL2=/work/noaa/gsd-fv3-dev/bhuang/bakWrfChem//2024040918/Data
++ [[ ! -d /work/noaa/gsd-fv3-dev/bhuang/bakWrfChem//2024040918/Data ]]
++ cd /work/noaa/wrf-chem/bhuang//Data
+++ ls
++ SRCFILEL2=VIIRS-AWS
++ for L2 in ${SRCFILEL2}
++ echo /work/noaa/gsd-fv3-dev/bhuang/bakWrfChem//2024040918/Data/VIIRS-AWS.tar
+/work/noaa/gsd-fv3-dev/bhuang/bakWrfChem//2024040918/Data/VIIRS-AWS.tar
++ echo /work/noaa/wrf-chem/bhuang//Data/VIIRS-AWS
+/work/noaa/wrf-chem/bhuang//Data/VIIRS-AWS
++ ERR=0
++ ICNT=0
++ '[' 0 -ne 0 ']'
++ for L1 in ${SRCFILEL1}
++ SRCDIRL2=/work/noaa/wrf-chem/bhuang//NRTdata_UFS-Aerosols
++ DETDIRL2=/work/noaa/gsd-fv3-dev/bhuang/bakWrfChem//2024040918/NRTdata_UFS-Aerosols
++ [[ ! -d /work/noaa/gsd-fv3-dev/bhuang/bakWrfChem//2024040918/NRTdata_UFS-Aerosols ]]
++ cd /work/noaa/wrf-chem/bhuang//NRTdata_UFS-Aerosols
+++ ls
++ SRCFILEL2='AODObs
+UFS-Aerosols-workflow
+fix_self
+gocart_emissions
+src_mpi
+src_omp
+src_sppt'
++ for L2 in ${SRCFILEL2}
++ echo /work/noaa/gsd-fv3-dev/bhuang/bakWrfChem//2024040918/NRTdata_UFS-Aerosols/AODObs.tar
+/work/noaa/gsd-fv3-dev/bhuang/bakWrfChem//2024040918/NRTdata_UFS-Aerosols/AODObs.tar
++ echo /work/noaa/wrf-chem/bhuang//NRTdata_UFS-Aerosols/AODObs
+/work/noaa/wrf-chem/bhuang//NRTdata_UFS-Aerosols/AODObs
++ ERR=0
++ ICNT=0
++ '[' 0 -ne 0 ']'
++ for L2 in ${SRCFILEL2}
++ echo /work/noaa/gsd-fv3-dev/bhuang/bakWrfChem//2024040918/NRTdata_UFS-Aerosols/UFS-Aerosols-workflow.tar
+/work/noaa/gsd-fv3-dev/bhuang/bakWrfChem//2024040918/NRTdata_UFS-Aerosols/UFS-Aerosols-workflow.tar
++ echo /work/noaa/wrf-chem/bhuang//NRTdata_UFS-Aerosols/UFS-Aerosols-workflow
+/work/noaa/wrf-chem/bhuang//NRTdata_UFS-Aerosols/UFS-Aerosols-workflow
++ ERR=0
++ ICNT=0
++ '[' 0 -ne 0 ']'
++ for L2 in ${SRCFILEL2}
++ echo /work/noaa/gsd-fv3-dev/bhuang/bakWrfChem//2024040918/NRTdata_UFS-Aerosols/fix_self.tar
+/work/noaa/gsd-fv3-dev/bhuang/bakWrfChem//2024040918/NRTdata_UFS-Aerosols/fix_self.tar
++ echo /work/noaa/wrf-chem/bhuang//NRTdata_UFS-Aerosols/fix_self
+/work/noaa/wrf-chem/bhuang//NRTdata_UFS-Aerosols/fix_self
++ ERR=0
++ ICNT=0
++ '[' 0 -ne 0 ']'
++ for L2 in ${SRCFILEL2}
++ echo /work/noaa/gsd-fv3-dev/bhuang/bakWrfChem//2024040918/NRTdata_UFS-Aerosols/gocart_emissions.tar
+/work/noaa/gsd-fv3-dev/bhuang/bakWrfChem//2024040918/NRTdata_UFS-Aerosols/gocart_emissions.tar
++ echo /work/noaa/wrf-chem/bhuang//NRTdata_UFS-Aerosols/gocart_emissions
+/work/noaa/wrf-chem/bhuang//NRTdata_UFS-Aerosols/gocart_emissions
++ ERR=0
++ ICNT=0
++ '[' 0 -ne 0 ']'
++ for L2 in ${SRCFILEL2}
++ echo /work/noaa/gsd-fv3-dev/bhuang/bakWrfChem//2024040918/NRTdata_UFS-Aerosols/src_mpi.tar
+/work/noaa/gsd-fv3-dev/bhuang/bakWrfChem//2024040918/NRTdata_UFS-Aerosols/src_mpi.tar
++ echo /work/noaa/wrf-chem/bhuang//NRTdata_UFS-Aerosols/src_mpi
+/work/noaa/wrf-chem/bhuang//NRTdata_UFS-Aerosols/src_mpi
++ ERR=0
++ ICNT=0
++ '[' 0 -ne 0 ']'
++ for L2 in ${SRCFILEL2}
++ echo /work/noaa/gsd-fv3-dev/bhuang/bakWrfChem//2024040918/NRTdata_UFS-Aerosols/src_omp.tar
+/work/noaa/gsd-fv3-dev/bhuang/bakWrfChem//2024040918/NRTdata_UFS-Aerosols/src_omp.tar
++ echo /work/noaa/wrf-chem/bhuang//NRTdata_UFS-Aerosols/src_omp
+/work/noaa/wrf-chem/bhuang//NRTdata_UFS-Aerosols/src_omp
++ ERR=0
++ ICNT=0
++ '[' 0 -ne 0 ']'
++ for L2 in ${SRCFILEL2}
++ echo /work/noaa/gsd-fv3-dev/bhuang/bakWrfChem//2024040918/NRTdata_UFS-Aerosols/src_sppt.tar
+/work/noaa/gsd-fv3-dev/bhuang/bakWrfChem//2024040918/NRTdata_UFS-Aerosols/src_sppt.tar
++ echo /work/noaa/wrf-chem/bhuang//NRTdata_UFS-Aerosols/src_sppt
+/work/noaa/wrf-chem/bhuang//NRTdata_UFS-Aerosols/src_sppt
++ ERR=0
++ ICNT=0
++ '[' 0 -ne 0 ']'
++ for L1 in ${SRCFILEL1}
++ SRCDIRL2=/work/noaa/wrf-chem/bhuang//expCodes
++ DETDIRL2=/work/noaa/gsd-fv3-dev/bhuang/bakWrfChem//2024040918/expCodes
++ [[ ! -d /work/noaa/gsd-fv3-dev/bhuang/bakWrfChem//2024040918/expCodes ]]
++ cd /work/noaa/wrf-chem/bhuang//expCodes
+++ ls
++ SRCFILEL2=fv3-bundle
++ for L2 in ${SRCFILEL2}
++ echo /work/noaa/gsd-fv3-dev/bhuang/bakWrfChem//2024040918/expCodes/fv3-bundle.tar
+/work/noaa/gsd-fv3-dev/bhuang/bakWrfChem//2024040918/expCodes/fv3-bundle.tar
++ echo /work/noaa/wrf-chem/bhuang//expCodes/fv3-bundle
+/work/noaa/wrf-chem/bhuang//expCodes/fv3-bundle
++ ERR=0
++ ICNT=0
++ '[' 0 -ne 0 ']'
++ for L1 in ${SRCFILEL1}
++ SRCDIRL2=/work/noaa/wrf-chem/bhuang//expCodes-Hercules
++ DETDIRL2=/work/noaa/gsd-fv3-dev/bhuang/bakWrfChem//2024040918/expCodes-Hercules
++ [[ ! -d /work/noaa/gsd-fv3-dev/bhuang/bakWrfChem//2024040918/expCodes-Hercules ]]
++ cd /work/noaa/wrf-chem/bhuang//expCodes-Hercules
+++ ls
++ SRCFILEL2='JEDI
+MariusLibs
+UFSAerosols-workflow
+src_mpi
+src_omp
+src_omp-orion
+src_sppt'
++ for L2 in ${SRCFILEL2}
++ echo /work/noaa/gsd-fv3-dev/bhuang/bakWrfChem//2024040918/expCodes-Hercules/JEDI.tar
+/work/noaa/gsd-fv3-dev/bhuang/bakWrfChem//2024040918/expCodes-Hercules/JEDI.tar
++ echo /work/noaa/wrf-chem/bhuang//expCodes-Hercules/JEDI
+/work/noaa/wrf-chem/bhuang//expCodes-Hercules/JEDI
++ ERR=0
++ ICNT=0
++ '[' 0 -ne 0 ']'
++ for L2 in ${SRCFILEL2}
++ echo /work/noaa/gsd-fv3-dev/bhuang/bakWrfChem//2024040918/expCodes-Hercules/MariusLibs.tar
+/work/noaa/gsd-fv3-dev/bhuang/bakWrfChem//2024040918/expCodes-Hercules/MariusLibs.tar
++ echo /work/noaa/wrf-chem/bhuang//expCodes-Hercules/MariusLibs
+/work/noaa/wrf-chem/bhuang//expCodes-Hercules/MariusLibs
++ ERR=0
++ ICNT=0
++ '[' 0 -ne 0 ']'
++ for L2 in ${SRCFILEL2}
++ echo /work/noaa/gsd-fv3-dev/bhuang/bakWrfChem//2024040918/expCodes-Hercules/UFSAerosols-workflow.tar
+/work/noaa/gsd-fv3-dev/bhuang/bakWrfChem//2024040918/expCodes-Hercules/UFSAerosols-workflow.tar
++ echo /work/noaa/wrf-chem/bhuang//expCodes-Hercules/UFSAerosols-workflow
+/work/noaa/wrf-chem/bhuang//expCodes-Hercules/UFSAerosols-workflow
++ ERR=0
++ ICNT=0
++ '[' 0 -ne 0 ']'
++ for L2 in ${SRCFILEL2}
++ echo /work/noaa/gsd-fv3-dev/bhuang/bakWrfChem//2024040918/expCodes-Hercules/src_mpi.tar
+/work/noaa/gsd-fv3-dev/bhuang/bakWrfChem//2024040918/expCodes-Hercules/src_mpi.tar
++ echo /work/noaa/wrf-chem/bhuang//expCodes-Hercules/src_mpi
+/work/noaa/wrf-chem/bhuang//expCodes-Hercules/src_mpi
++ ERR=0
++ ICNT=0
++ '[' 0 -ne 0 ']'
++ for L2 in ${SRCFILEL2}
++ echo /work/noaa/gsd-fv3-dev/bhuang/bakWrfChem//2024040918/expCodes-Hercules/src_omp.tar
+/work/noaa/gsd-fv3-dev/bhuang/bakWrfChem//2024040918/expCodes-Hercules/src_omp.tar
++ echo /work/noaa/wrf-chem/bhuang//expCodes-Hercules/src_omp
+/work/noaa/wrf-chem/bhuang//expCodes-Hercules/src_omp
++ ERR=0
++ ICNT=0
++ '[' 0 -ne 0 ']'
++ for L2 in ${SRCFILEL2}
++ echo /work/noaa/gsd-fv3-dev/bhuang/bakWrfChem//2024040918/expCodes-Hercules/src_omp-orion.tar
+/work/noaa/gsd-fv3-dev/bhuang/bakWrfChem//2024040918/expCodes-Hercules/src_omp-orion.tar
++ echo /work/noaa/wrf-chem/bhuang//expCodes-Hercules/src_omp-orion
+/work/noaa/wrf-chem/bhuang//expCodes-Hercules/src_omp-orion
++ ERR=0
++ ICNT=0
++ '[' 0 -ne 0 ']'
++ for L2 in ${SRCFILEL2}
++ echo /work/noaa/gsd-fv3-dev/bhuang/bakWrfChem//2024040918/expCodes-Hercules/src_sppt.tar
+/work/noaa/gsd-fv3-dev/bhuang/bakWrfChem//2024040918/expCodes-Hercules/src_sppt.tar
++ echo /work/noaa/wrf-chem/bhuang//expCodes-Hercules/src_sppt
+/work/noaa/wrf-chem/bhuang//expCodes-Hercules/src_sppt
++ ERR=0
++ ICNT=0
++ '[' 0 -ne 0 ']'
++ '[' 0 -eq 0 ']'
++ echo 'All files are tarred successfully.'

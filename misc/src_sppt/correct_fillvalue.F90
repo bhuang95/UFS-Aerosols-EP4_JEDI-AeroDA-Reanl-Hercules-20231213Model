@@ -1,0 +1,182 @@
+PROGRAM  correct_fillvalue
+
+  USE netcdf
+  USE kinddef,             ONLY : kind_dbl_prec,kind_phys
+  USE timedelta_mod
+  USE datetime_mod
+
+
+  IMPLICIT NONE
+
+  INTEGER, PARAMETER :: max_varname_length=100,nvarmax=50
+
+  INTEGER                 :: ncid,xt_dim_id,yt_dim_id,time_dim_id,xt_var_id,yt_var_id,time_var_id,var_id_lat,var_id_lon
+  INTEGER                 :: varid
+
+  INCLUDE 'netcdf.inc'
+
+  INTEGER     :: i,j,k,l,itime
+  INTEGER  :: nlunit,pe,npes
+  CHARACTER(len=NF90_MAX_NAME) :: fnamein_prefix,fnameout_prefix,&
+       &fnamein,fnameout,&
+       &timestring,command,cmsg,time_attstring,isostring
+
+  CHARACTER(len=10) :: cdate
+  TYPE(datetime_type) :: datatime,datatime_start
+  TYPE(timedelta_type) dt,dtime
+
+  REAL(kind=kind_phys), ALLOCATABLE :: lat_tgt(:)
+  REAL(kind=kind_phys), ALLOCATABLE :: lon_tgt(:)
+  INTEGER              :: iret,cstat
+
+  INTEGER :: nvars, nx, ny
+  CHARACTER(len = max_varname_length) :: varlist(nvarmax),varname
+
+  REAL(kind=kind_phys), ALLOCATABLE :: vardata(:,:)
+
+  REAL(kind=kind_phys), PARAMETER :: small_value=1.e-30,large_value=1.e+7
+
+  INTEGER :: ntimes,year,month,day,hour
+  REAL(kind=kind_phys) :: ts
+  REAL(kind=kind_phys) :: tstep,fcst_length,&
+       &output_interval
+  LOGICAL :: fillvalue_correct
+
+  NAMELIST /chem_io/cdate,fnamein_prefix,fnameout_prefix,varlist,&
+       &tstep,fcst_length,output_interval,fillvalue_correct
+
+  nlunit=10
+  OPEN (unit=nlunit, file='input.nml', status='OLD')
+  cdate='2018010100'
+  varlist(:)=""
+  tstep=3600.
+  fcst_length=86400.
+  output_interval=3600.
+  fillvalue_correct=.FALSE.
+
+  READ(nlunit,chem_io)
+  nvars=COUNT(varlist /= "")
+
+  dt=timedelta(seconds=tstep)
+  ntimes=NINT(fcst_length/tstep)
+  time_attstring='hours since '//&
+       &cdate(1:4)//'-'//cdate(5:6)//'-'//cdate(7:8)//' '//&
+       &cdate(9:10)//':00:00'
+  READ(cdate(1:4),'(i4)')year
+  READ(cdate(5:6),'(i2)')month
+  READ(cdate(7:8),'(i2)')day
+  READ(cdate(9:10),'(i2)')hour
+  datatime_start=create_datetime(year=year,month=month,day=day,hour=hour)
+
+  fnamein=TRIM(fnamein_prefix)//'.nc'
+  CALL read_ncgrid(fnamein,lon_tgt,lat_tgt)
+
+  nx=SIZE(lon_tgt)
+  ny=SIZE(lat_tgt)
+
+  ALLOCATE(vardata(nx,ny))
+
+  DO itime=0,ntimes
+
+     ts=itime
+
+     IF (MOD(ts,output_interval/3600.) > 0) CYCLE
+
+     dtime=timedelta(seconds=ts*tstep)
+     datatime=datatime_start+dtime
+     isostring=datatime%isoformat()
+     timestring=isostring(1:4)//isostring(6:7)//&
+          &isostring(9:10)//'t'//isostring(12:19)
+
+     fnameout=TRIM(fnameout_prefix)//TRIM(timestring)//'z.nc'
+
+     PRINT *,'Correcting '//TRIM(fnameout)
+
+     command="/bin/cp "//TRIM(fnamein)//" "//TRIM(fnameout)
+     
+     CALL execute_command_line(command, cmdstat=cstat, cmdmsg=cmsg)
+     
+     IF (cstat > 0) THEN
+        PRINT *, "command execution failed with error ", TRIM(cmsg)
+        STOP 1
+     ELSE IF (cstat < 0) THEN
+        PRINT *, "command execution not supported"
+        STOP 1
+     END IF
+
+     CALL check_nc(nf90_open(TRIM(fnameout),mode=nf90_write,&
+          &ncid=ncid))
+     CALL check_nc(nf90_inq_varid(ncid,'time',time_var_id))
+     CALL check_nc(nf90_redef(ncid))
+     CALL check_nc(nf90_put_att(ncid,time_var_id,'units',&
+          &TRIM(time_attstring)))
+     CALL check_nc(nf90_enddef(ncid))
+     CALL check_nc(nf90_put_var(ncid,time_var_id,ts,(/1/)))
+
+     DO i=1,nvars
+        varname=TRIM(varlist(i))
+        CALL check_nc(nf90_inq_varid(ncid,varname,varid))
+        CALL check_nc(nf90_get_var(ncid,varid,vardata))
+        IF (fillvalue_correct) &
+             &WHERE(vardata <= 0. .OR. vardata >=large_value) &
+             &vardata=small_value
+        CALL check_nc(nf90_put_var(ncid,varid,vardata,(/1,1,1/)))
+     ENDDO
+     
+     CALL check_nc(nf90_close(ncid))
+
+  ENDDO
+  
+CONTAINS
+
+  SUBROUTINE read_ncgrid(fnamein,lon,lat)
+    
+    IMPLICIT NONE
+    
+    CHARACTER(*), INTENT(in) :: fnamein
+    REAL(kind=kind_phys), DIMENSION(:), ALLOCATABLE, INTENT(out) :: &
+         &lon,lat
+
+    CHARACTER(len=max_varname_length) :: varname
+    INTEGER :: dimids(1),dims(1)
+    INTEGER :: varid,status
+
+    CALL check_nc(nf90_open(fnamein, nf90_nowrite, ncid))
+    
+    varname='lon'
+    status=nf90_inq_varid(ncid,TRIM(varname),varid)
+    IF (status /= 0) THEN
+       varname='longitude'
+       CALL check_nc(nf90_inq_varid(ncid,TRIM(varname),varid))
+    ENDIF
+    CALL check_nc(nf90_inquire_variable(ncid,varid,dimids=dimids))
+    CALL check_nc(nf90_inquire_dimension(ncid,dimids(1),len=dims(1)))
+    ALLOCATE(lon(dims(1)))
+    CALL check_nc(nf90_get_var(ncid,varid,lon))
+
+    varname='lat'
+    status=nf90_inq_varid(ncid,TRIM(varname),varid)
+    IF (status /= 0) THEN
+       varname='latitude'
+       CALL check_nc(nf90_inq_varid(ncid,TRIM(varname),varid))
+    ENDIF
+    CALL check_nc(nf90_inq_varid(ncid,TRIM(varname),varid))
+    CALL check_nc(nf90_inquire_variable(ncid,varid,dimids=dimids))
+    CALL check_nc(nf90_inquire_dimension(ncid,dimids(1),len=dims(1)))
+    ALLOCATE(lat(dims(1)))
+    CALL check_nc(nf90_get_var(ncid,varid,lat))
+    CALL check_nc(nf90_close(ncid))
+
+  END SUBROUTINE read_ncgrid
+
+  SUBROUTINE check_nc(status)
+    INTEGER, INTENT(in) :: status
+    
+    IF(status /= nf90_noerr) THEN
+       PRINT *, TRIM(nf90_strerror(status))
+       STOP 1
+    END IF
+  END SUBROUTINE check_nc
+  
+END PROGRAM correct_fillvalue
+

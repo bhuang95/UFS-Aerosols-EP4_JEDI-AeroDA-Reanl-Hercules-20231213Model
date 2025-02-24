@@ -1,0 +1,227 @@
+2020081218 at Sun Mar 17 00:29:07 CDT 2024
+    ** SUCCEEDED: grp01-mem005 replaced by grp02-mem010
+2020082718 at Thu Mar 21 00:27:51 CDT 2024
+    ** SUCCEEDED: grp02-mem006 replaced by grp01-mem001
+    ** SUCCEEDED: grp02-mem007 replaced by grp01-mem002
+    ** SUCCEEDED: grp02-mem008 replaced by grp01-mem003
+    ** SUCCEEDED: grp02-mem009 replaced by grp01-mem004
+    ** SUCCEEDED: grp02-mem010 replaced by grp01-mem005
+2020083012 at Fri Mar 22 11:36:37 CDT 2024
+    ** SUCCEEDED: grp02-mem008 replaced by grp01-mem003
+    ** SUCCEEDED: grp02-mem009 replaced by grp01-mem004
+    ** SUCCEEDED: grp02-mem010 replaced by grp01-mem005
+2020090618 at Mon Mar 25 18:10:14 CDT 2024
+    ** SUCCEEDED: grp07-mem031 replaced by grp01-mem001
+    ** SUCCEEDED: grp07-mem032 replaced by grp01-mem002
+    ** SUCCEEDED: grp07-mem033 replaced by grp01-mem003
+    ** SUCCEEDED: grp07-mem034 replaced by grp01-mem004
+    ** SUCCEEDED: grp07-mem035 replaced by grp01-mem005
+2021042806 at Sun Jun  2 19:23:48 CDT 2024
+    ** SUCCEEDED: grp01-mem001 replaced by grp02-mem006
+    ** SUCCEEDED: grp01-mem002 replaced by grp02-mem007
+    ** SUCCEEDED: grp01-mem003 replaced by grp02-mem008
+    ** SUCCEEDED: grp01-mem004 replaced by grp02-mem009
+    ** SUCCEEDED: grp01-mem005 replaced by grp02-mem010
+2021050812 at Thu Jun  6 13:30:11 CDT 2024
+    ** SUCCEEDED: grp02-mem009 replaced by grp01-mem004
+    ** SUCCEEDED: grp02-mem010 replaced by grp01-mem005
+    ** SUCCEEDED: grp05-mem024 replaced by grp03-mem014
+    ** SUCCEEDED: grp05-mem025 replaced by grp03-mem015
+2021051200 at Fri Jun  7 05:35:41 CDT 2024
+    ** SUCCEEDED: grp02-mem010 replaced by grp01-mem005
+    ** SUCCEEDED: grp03-mem015 replaced by grp04-mem020
+    ** SUCCEEDED: grp06-mem030 replaced by grp05-mem025
+    ** SUCCEEDED: grp07-mem035 replaced by grp08-mem040
+2021051500 at Fri Jun  7 23:25:32 CDT 2024
+    ** FAILED: replace failed members due to FNUM=8 larger than SNUM=0
+2021052918 at Mon Jun 17 18:00:17 CDT 2024
+2021052918 at Mon Jun 17 18:15:09 CDT 2024
+2021052918 at Mon Jun 17 18:20:10 CDT 2024
+2021052918 at Mon Jun 17 18:30:09 CDT 2024
+2021052918 at Mon Jun 17 18:35:09 CDT 2024
+2021052918 at Mon Jun 17 18:45:09 CDT 2024
+2021052918 at Mon Jun 17 18:50:09 CDT 2024
+2021052918 at Tue Jun 18 00:00:09 CDT 2024
+2021052918 at Tue Jun 18 00:15:14 CDT 2024
+2021052918 at Tue Jun 18 00:30:09 CDT 2024
+2021052918 at Tue Jun 18 00:45:09 CDT 2024
+2021052918 at Tue Jun 18 06:00:11 CDT 2024
+2021052918 at Tue Jun 18 06:15:08 CDT 2024
+2021052918 at Tue Jun 18 06:30:10 CDT 2024
+2021052918 at Tue Jun 18 06:45:09 CDT 2024
+2021052918 at Tue Jun 18 06:50:09 CDT 2024
+2021052918 at Tue Jun 18 12:03:33 CDT 2024
+    ** SUCCEEDED: grp06-mem030 replaced by grp01-mem005
+    ** SUCCEEDED: grp08-mem039 replaced by grp02-mem009
+    ** SUCCEEDED: grp08-mem040 replaced by grp02-mem010
+2021060218 at Wed Jun 19 06:00:09 CDT 2024
+2021060218 at Wed Jun 19 06:05:09 CDT 2024
+2021060218 at Wed Jun 19 06:10:11 CDT 2024
+2021060218 at Wed Jun 19 06:15:09 CDT 2024
+2021060218 at Wed Jun 19 06:20:09 CDT 2024
+2021060218 at Wed Jun 19 06:25:09 CDT 2024
+2021060218 at Wed Jun 19 06:30:09 CDT 2024
+2021060218 at Wed Jun 19 06:35:09 CDT 2024
+2021060218 at Wed Jun 19 06:40:09 CDT 2024
+2021060218 at Wed Jun 19 06:45:09 CDT 2024
+2021060218 at Wed Jun 19 06:50:09 CDT 2024
+2021060218 at Wed Jun 19 06:55:09 CDT 2024
+2021060218 at Wed Jun 19 08:00:09 CDT 2024
+2021060218 at Wed Jun 19 08:05:10 CDT 2024
+2021060218 at Wed Jun 19 08:10:10 CDT 2024
+2021060218 at Wed Jun 19 08:15:09 CDT 2024
+2021060218 at Wed Jun 19 08:20:09 CDT 2024
+2021060218 at Wed Jun 19 08:25:09 CDT 2024
+2021060218 at Wed Jun 19 08:30:08 CDT 2024
+2021060218 at Wed Jun 19 08:35:08 CDT 2024
+2021060218 at Wed Jun 19 08:40:09 CDT 2024
+2021060218 at Wed Jun 19 08:45:10 CDT 2024
+2021060218 at Wed Jun 19 08:50:09 CDT 2024
+2021060218 at Wed Jun 19 08:55:10 CDT 2024
+2021060218 at Wed Jun 19 10:00:10 CDT 2024
+2021060218 at Wed Jun 19 10:05:09 CDT 2024
+2021060218 at Wed Jun 19 10:10:09 CDT 2024
+2021060218 at Wed Jun 19 10:15:09 CDT 2024
+2021060218 at Wed Jun 19 10:20:09 CDT 2024
+2021060218 at Wed Jun 19 10:25:09 CDT 2024
+2021060218 at Wed Jun 19 10:30:09 CDT 2024
+2021060218 at Wed Jun 19 10:35:09 CDT 2024
+2021060218 at Wed Jun 19 10:40:12 CDT 2024
+2021060218 at Wed Jun 19 10:45:11 CDT 2024
+2021060218 at Wed Jun 19 10:50:11 CDT 2024
+2021060218 at Wed Jun 19 10:55:11 CDT 2024
+2021060218 at Wed Jun 19 12:00:13 CDT 2024
+2021060218 at Wed Jun 19 12:05:12 CDT 2024
+2021060218 at Wed Jun 19 12:10:12 CDT 2024
+2021060218 at Wed Jun 19 12:15:12 CDT 2024
+2021060218 at Wed Jun 19 12:20:11 CDT 2024
+2021060218 at Wed Jun 19 12:25:16 CDT 2024
+2021060218 at Wed Jun 19 12:30:11 CDT 2024
+2021060218 at Wed Jun 19 12:35:12 CDT 2024
+2021060218 at Wed Jun 19 12:40:12 CDT 2024
+2021060218 at Wed Jun 19 12:45:11 CDT 2024
+2021060218 at Wed Jun 19 12:50:11 CDT 2024
+2021060218 at Wed Jun 19 12:55:11 CDT 2024
+2021060218 at Wed Jun 19 14:00:12 CDT 2024
+2021060218 at Wed Jun 19 14:05:11 CDT 2024
+2021060218 at Wed Jun 19 14:10:14 CDT 2024
+2021060218 at Wed Jun 19 14:15:12 CDT 2024
+2021060218 at Wed Jun 19 14:20:12 CDT 2024
+2021060218 at Wed Jun 19 14:25:12 CDT 2024
+2021060218 at Wed Jun 19 14:30:13 CDT 2024
+2021060218 at Wed Jun 19 14:35:15 CDT 2024
+2021060218 at Wed Jun 19 14:40:12 CDT 2024
+2021060218 at Wed Jun 19 14:45:13 CDT 2024
+2021060218 at Wed Jun 19 14:50:14 CDT 2024
+2021060218 at Wed Jun 19 14:55:12 CDT 2024
+2021060218 at Wed Jun 19 16:00:12 CDT 2024
+2021060218 at Wed Jun 19 16:05:18 CDT 2024
+2021060218 at Wed Jun 19 16:10:12 CDT 2024
+2021060218 at Wed Jun 19 16:15:12 CDT 2024
+2021060218 at Wed Jun 19 16:20:12 CDT 2024
+2021060218 at Wed Jun 19 16:25:12 CDT 2024
+2021060218 at Wed Jun 19 16:30:12 CDT 2024
+2021060218 at Wed Jun 19 16:35:12 CDT 2024
+2021060218 at Wed Jun 19 16:40:12 CDT 2024
+2021060218 at Wed Jun 19 16:45:08 CDT 2024
+2021060218 at Wed Jun 19 16:50:10 CDT 2024
+2021061112 at Fri Jun 21 20:00:12 CDT 2024
+2021061112 at Fri Jun 21 21:00:11 CDT 2024
+    ** SUCCEEDED: grp07-mem031 replaced by grp01-mem001
+2021061112 at Fri Jun 21 21:20:10 CDT 2024
+    ** SUCCEEDED: grp07-mem035 replaced by grp01-mem005
+2021061406 at Sat Jun 22 10:10:13 CDT 2024
+2021061406 at Sat Jun 22 11:00:11 CDT 2024
+    ** SUCCEEDED: grp05-mem025 replaced by grp01-mem005
+    ** SUCCEEDED: grp06-mem029 replaced by grp02-mem009
+2021061706 at Sun Jun 23 00:35:11 CDT 2024
+2021061706 at Sun Jun 23 01:00:13 CDT 2024
+    ** SUCCEEDED: grp05-mem023 replaced by grp01-mem003
+    ** SUCCEEDED: grp08-mem038 replaced by grp02-mem008
+2021062318 at Mon Jun 24 10:00:11 CDT 2024
+2021062318 at Mon Jun 24 11:00:10 CDT 2024
+    ** SUCCEEDED: grp07-mem035 replaced by grp01-mem005
+Reboot gdasefcs07
+2021062318 at Mon Jun 24 11:15:09 CDT 2024
+    ** SUCCEEDED: grp07-mem035 replaced by grp01-mem005
+Reboot gdasefcs07
+2021062318 at Mon Jun 24 11:30:10 CDT 2024
+    ** SUCCEEDED: grp07-mem035 replaced by grp01-mem005
+Reboot gdasefcs07
+2021062318 at Mon Jun 24 11:45:09 CDT 2024
+    ** SUCCEEDED: grp07-mem035 replaced by grp01-mem005
+Reboot gdasefcs07
+2021062318 at Mon Jun 24 13:00:10 CDT 2024
+    ** SUCCEEDED: grp07-mem035 replaced by grp01-mem005
+Reboot gdasefcs07
+2021062318 at Mon Jun 24 13:15:10 CDT 2024
+    ** SUCCEEDED: grp07-mem035 replaced by grp01-mem005
+Reboot gdasefcs07
+2021062318 at Mon Jun 24 13:30:10 CDT 2024
+    ** SUCCEEDED: grp07-mem035 replaced by grp01-mem005
+Reboot gdasefcs07
+2021062318 at Mon Jun 24 13:45:10 CDT 2024
+    ** SUCCEEDED: grp07-mem035 replaced by grp01-mem005
+Reboot gdasefcs07
+2021062318 at Mon Jun 24 14:48:45 CDT 2024
+    ** SUCCEEDED: grp07-mem035 replaced by grp01-mem005
+Reboot gdasefcs07
+2021062318 at Mon Jun 24 14:51:14 CDT 2024
+Reboot gdasefcs07
+2021082206 at Thu Jul 11 20:00:12 CDT 2024
+2021082206 at Thu Jul 11 21:00:11 CDT 2024
+    ** SUCCEEDED: grp02-mem008 replaced by grp01-mem003
+Reboot gdasefcs02
+2021082712 at Sat Jul 13 00:15:10 CDT 2024
+2021082712 at Sat Jul 13 01:00:15 CDT 2024
+    ** SUCCEEDED: grp03-mem011 replaced by grp01-mem001
+Reboot gdasefcs03
+2021091318 at Tue Jul 16 18:00:20 CDT 2024
+2021091318 at Tue Jul 16 19:00:12 CDT 2024
+    ** SUCCEEDED: grp06-mem026 replaced by grp01-mem001
+Reboot gdasefcs06
+2021100318 at Sun Jul 21 00:00:13 CDT 2024
+2021100318 at Sun Jul 21 01:00:12 CDT 2024
+    ** SUCCEEDED: grp04-mem019 replaced by grp01-mem004
+Reboot gdasefcs04
+2021102600 at Fri Jul 26 16:50:47 CDT 2024
+2022051518 at Sat Sep  7 20:00:13 CDT 2024
+2022051518 at Sat Sep  7 21:00:19 CDT 2024
+    ** SUCCEEDED: grp07-mem032 replaced by grp01-mem002
+Reboot gdasefcs07
+2022062718 at Mon Sep 16 00:00:17 CDT 2024
+2022062718 at Mon Sep 16 01:00:16 CDT 2024
+    ** SUCCEEDED: grp08-mem040 replaced by grp01-mem005
+Reboot gdasefcs08
+2022072412 at Mon Sep 23 08:00:30 CDT 2024
+2022072412 at Mon Sep 23 09:00:23 CDT 2024
+    ** SUCCEEDED: grp05-mem022 replaced by grp01-mem002
+Reboot gdasefcs05
+2022072500 at Mon Sep 23 12:30:19 CDT 2024
+2022072500 at Mon Sep 23 13:00:20 CDT 2024
+    ** SUCCEEDED: grp08-mem036 replaced by grp01-mem001
+Reboot gdasefcs08
+2022081212 at Fri Sep 27 14:00:25 CDT 2024
+2022081212 at Fri Sep 27 15:00:25 CDT 2024
+    ** SUCCEEDED: grp06-mem026 replaced by grp01-mem001
+Reboot gdasefcs06
+2022081518 at Sat Sep 28 06:25:23 CDT 2024
+2022081518 at Sat Sep 28 07:00:23 CDT 2024
+    ** SUCCEEDED: grp05-mem024 replaced by grp01-mem004
+Reboot gdasefcs05
+2022091118 at Fri Oct  4 16:40:26 CDT 2024
+2022091118 at Fri Oct  4 17:00:26 CDT 2024
+    ** SUCCEEDED: grp05-mem022 replaced by grp01-mem002
+Reboot gdasefcs05
+2022092206 at Mon Oct  7 02:00:33 CDT 2024
+2022092206 at Mon Oct  7 03:00:33 CDT 2024
+    ** SUCCEEDED: grp08-mem040 replaced by grp01-mem005
+Reboot gdasefcs08
+2022092218 at Mon Oct  7 06:00:34 CDT 2024
+2022092218 at Mon Oct  7 07:00:38 CDT 2024
+    ** SUCCEEDED: grp07-mem035 replaced by grp01-mem005
+Reboot gdasefcs07
+2022121900 at Tue Oct 22 16:00:13 CDT 2024
+2022121900 at Tue Oct 22 17:00:16 CDT 2024
+    ** SUCCEEDED: grp08-mem039 replaced by grp01-mem004
+Reboot gdasefcs08

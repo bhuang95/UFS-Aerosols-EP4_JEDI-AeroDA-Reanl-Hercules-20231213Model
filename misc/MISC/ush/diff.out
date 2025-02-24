@@ -1,0 +1,297 @@
+----HBO1-atparse.bash----
+----202311 vs wk----
+                      
+----202311 vs 202312----
+                      
+                      
+                      
+----HBO1-cplvalidate.sh----
+----202311 vs wk----
+                      
+----202311 vs 202312----
+diff: /work2/noaa/wrf-chem/bohuang/testHercules/UFSAerosols-workflow/20231213-develop/global-workflow//ush/cplvalidate.sh: No such file or directory
+                      
+                      
+                      
+----HBO1-detect_machine.sh----
+----202311 vs wk----
+                      
+----202311 vs 202312----
+28a29,30
+>   [Hh]ercules-login-[1-4].[Hh][Pp][Cc].[Mm]s[Ss]tate.[Ee]du) MACHINE_ID=hercules ;; ### hercules1-4
+> 
+67,68c69,75
+<   # We are on MSU Orion
+<   MACHINE_ID=orion
+---
+>   # We are on MSU Orion or Hercules
+>   if [[ -d /apps/other ]] ; then
+>     # We are on Hercules
+>     MACHINE_ID=hercules
+>   else
+>     MACHINE_ID=orion
+>   fi
+                      
+                      
+                      
+----HBO1-forecast_det.sh----
+----202311 vs wk----
+                      
+----202311 vs 202312----
+                      
+                      
+                      
+----HBO1-forecast_postdet.sh----
+----202311 vs wk----
+19a20,29
+>   #HBO+
+>   # Define MISSINGGDAS
+>   MISSINGGDAS="NO"
+>   SFCANL_RST=${SFCANL_RST:-"YES"}
+>   MISSGDASRECORD=${MISSGDASRECORD:-"/home/Bo.Huang/JEDI-2020/UFS-Aerosols_NRTcyc/UFS-Aerosols_JEDI-AeroDA-1C192-20C192_NRT/misc/GDAS/CHGRESGDAS/v15/record.chgres_hpss_htar_allmissing_v15"}
+>   if ( grep ${CDATE} ${MISSGDASRECORD} ); then
+>       export MISSINGGDAS="YES"
+>       export SFCANL_RST="NO"
+>   fi
+>   #HBO
+27c37
+<       # Link all restart files from previous cycle
+---
+>       # Link all restart files from previous cycle except for sfc_data and fv_tracer
+32c42,46
+<         ${NLN} "${file}" "${DATA}/INPUT/${file2}"
+---
+> 	#HBO+
+> 	if [[ ! $(echo ${fsuf} | grep "sfc") ]] && [[ ! $(echo ${fsuf} | grep "tracer") ]]; then
+>             ${NLN} "${file}" "${DATA}/INPUT/${file2}"
+> 	fi
+> 	#HBO+
+36,44c50,67
+<       if [[ "${MODE}" = "cycled" ]] && [[ "${CCPP_SUITE}" = "FV3_GFS_v16" ]]; then  # TODO: remove if statement when global_cycle can handle NOAHMP
+<         for file in "${COM_ATMOS_RESTART}/${sPDY}.${scyc}0000."*.nc; do
+<           file2=$(basename "${file}")
+<           file2=$(echo "${file2}" | cut -d. -f3-) # remove the date from file
+<           fsufanl=$(echo "${file2}" | cut -d. -f1)
+<           file2=$(echo "${file2}" | sed -e "s/sfcanl_data/sfc_data/g")
+<           rm -f "${DATA}/INPUT/${file2}"
+<           ${NLN} "${file}" "${DATA}/INPUT/${file2}"
+<         done
+---
+>       #HBO~+
+>       #if [[ "${MODE}" = "cycled" ]] && [[ "${CCPP_SUITE}" = "FV3_GFS_v16" ]]; then  # TODO: remove if statement when global_cycle can handle NOAHMP
+>       if [[ "${MODE}" = "cycled" ]]; then
+>           if [[ ${SFCANL_RST} = "NO" ]]; then
+>               sfcrst=$(ls ${COM_ATMOS_RESTART_PREV}/${sPDY}.${scyc}0000.sfc_data.*.nc)
+> 	  else
+>               sfcrst=$(ls ${COM_ATMOS_RESTART_PREV}/${sPDY}.${scyc}0000.sfc_data_com_sfcanl.*.nc)
+> 	  fi
+> 	  #HBO~+
+>           #for file in "${COM_ATMOS_RESTART}/${sPDY}.${scyc}0000."*.nc; do
+> 	  for file in ${sfcrst}; do
+>               file2=$(basename "${file}")
+>               file2=$(echo "${file2}" | cut -d. -f3-) # remove the date from file
+>               fsufanl=$(echo "${file2}" | cut -d. -f1)
+>               file2=$(echo "${file2}" | sed -e "s/sfc_data_com_sfcanl/sfc_data/g")
+>               rm -f "${DATA}/INPUT/${file2}"
+>               ${NLN} "${file}" "${DATA}/INPUT/${file2}"
+>          done
+46a70,95
+>       #HBO+
+>       # Link tracer files
+>       trcrst=fv_tracer
+>       if [[ ${AERODA} = "YES" ]]; then
+>           if [[ ${MEMBER} -le 0 ]]; then
+>               trcrst="fv_tracer_aeroanl"
+> 	  else
+>               if [[ ${RECENTER_ENKF_AERO} = "YES" ]]; then
+>                   trcrst="fv_tracer_raeroanl"
+> 	      else
+>                   trcrst="fv_tracer_aeroanl"
+> 	      fi
+> 	  fi
+>       fi
+> 
+>       for file in "${COM_ATMOS_RESTART_PREV}/${sPDY}.${scyc}0000.${trcrst}."*.nc; do
+>           file2=$(echo $(basename "${file}"))
+>           file2=$(echo "${file2}" | cut -d. -f3-) # remove the date from file
+>           fsuf=$(echo "${file2}" | cut -d. -f1)
+> 	  if [ $fsuf = ${trcrst} ]; then
+>               file2=$(echo $file2 | sed -e "s/${trcrst}/fv_tracer/g")
+>               ${NLN} "${file}" "${DATA}/INPUT/${file2}"
+> 	  fi
+>       done
+>       #HBO+
+> 
+106a156,172
+>     #HBO+
+>     #Double check MISSINGGDAS, warm_start, read_increment, res_latlon_dynamics
+>     if [[ ${MISSINGGDAS} = "YES" ]]; then
+> 	echo "GDAS files are missing and set read_increment=".false.""
+>         read_increment=".false."
+> 	res_latlon_dynamics=""
+>     else
+> 	if [[ ${read_increment} = ".false." ]]; then
+>             echo "GDAS files exist, but read_increment=".false.""
+> 	    echo "Exit for now before to continue."
+> 	    echo "Please double check why read_increment=".false." was define in ush/forecast_postdet.sh"
+> 	    echo "Likely because increment calculation failed."
+> 	    exit 100
+> 	fi 
+>     fi
+>     #HBO+
+> 
+511c577,580
+<         ${NCP} "${file}" "${COM_ATMOS_RESTART}/${file}"
+---
+>         #HBO~
+> 	#${NCP} "${file}" "${COM_ATMOS_RESTART}/${file}"
+> 	[[ -f ${COM_ATMOS_RESTART}/${file} ]] && rm -rf ${COM_ATMOS_RESTART}/${file}
+>         /bin/mv -f "${file}" "${COM_ATMOS_RESTART}/${file}"
+514a584,590
+>     #HBO+
+>     ${NCP} "${DATA}/input.nml" "${COM_CONF}/ufs.input.nml"
+>     ${NCP} "${DATA}/model_configure" "${COM_CONF}/ufs.model_configure"
+>     ${NCP} "${DATA}/nems.configure" "${COM_CONF}/ufs.nems.configure"
+>     ${NCP} "${DATA}/diag_table" "${COM_CONF}/ufs.diag_table"  
+>     ${NCP} "${DATA}/AERO_ExtData.rc" "${COM_CONF}/ufs.AERO_ExtData.rc"  
+>     #HBO+
+1021,1022c1097,1107
+<         cat "${AERO_CONFIG_DIR}/ExtData.other" ; \
+<         cat "${AERO_CONFIG_DIR}/ExtData.${AERO_EMIS_FIRE:-none}" ; \
+---
+> 	#HBO~
+>         #cat "${AERO_CONFIG_DIR}/ExtData.other" ; \
+>         if [[ ${AEROEMIS_STOCH} = "YES" ]]; then
+>             cat "${AERO_CONFIG_DIR}/ExtData.other${AEROEMIS_EXTSUF}" ; \
+> 	    cat "${AERO_CONFIG_DIR}/ExtData.${AERO_EMIS_FIRE:-none}${AEROEMIS_EXTSUF}" ; \
+> 	    ${NLN} ${COM_ATMOS_RESTART_PREV}/pertEmis/* ${DATA} 
+> 	else
+>             cat "${AERO_CONFIG_DIR}/ExtData.other" ; \
+>             cat "${AERO_CONFIG_DIR}/ExtData.${AERO_EMIS_FIRE:-none}" ; \
+> 	fi
+> 	#HBO~
+                      
+----202311 vs 202312----
+519c519
+<     ${NCP} "${DATA}/nems.configure" "${COM_CONF}/ufs.nems.configure"
+---
+>     ${NCP} "${DATA}/ufs.configure" "${COM_CONF}/ufs.ufs.configure"
+885c885
+<   dumpfreq_n=${dumpfreq_n:-1000}  # Set this to a really large value, as cice, mom6 and cmeps restart interval is controlled by nems.configure
+---
+>   dumpfreq_n=${dumpfreq_n:-1000}  # Set this to a really large value, as cice, mom6 and cmeps restart interval is controlled by ufs.configure
+                      
+                      
+                      
+----HBO1-forecast_predet.sh----
+----202311 vs wk----
+                      
+----202311 vs 202312----
+                      
+                      
+                      
+----HBO1-jjob_header.sh----
+----202311 vs wk----
+                      
+----202311 vs 202312----
+                      
+                      
+                      
+----HBO1-load_ufswm_modules.sh----
+----202311 vs wk----
+                      
+----202311 vs 202312----
+13c13,15
+< source "${HOMEgfs}/ush/module-setup.sh"
+---
+> #source "${HOMEgfs}/ush/module-setup.sh"
+> source "${HOMEgfs}/modulefiles/module-setup.sh.inc"
+> source "${HOMEgfs}/versions/run.ver"
+15c17
+<   module use "${HOMEgfs}/sorc/ufs_model.fd/tests"
+---
+>   module use "${HOMEgfs}/sorc/ufs_model.fd/tests/modulefiles"
+16a19
+>   module load prod_util
+18d20
+<     module load prod_util
+25d26
+<     module load prod-util
+31,35d31
+< if [[ "${MACHINE_ID}" = "hera" ]]; then
+<   module use "/scratch2/NCEPDEV/ensemble/save/Walter.Kolczynski/modulefiles/core"
+<   module load "miniconda3/4.6.14"
+<   module load "gfs_workflow/1.0.0"
+< fi
+70c66
+< ftype=$(type -t set_trace)
+---
+> ftype=$(type -t set_trace || echo "")
+                      
+                      
+                      
+----HBO1-module-setup.sh----
+----202311 vs wk----
+                      
+----202311 vs 202312----
+21a22,31
+> elif [[ ${MACHINE_ID} = hercules* ]] ; then
+>     # We are on Hercules
+>     if ( ! eval module help > /dev/null 2>&1 ) ; then
+>         source /apps/other/lmod/lmod/init/bash
+>     fi
+>     export LMOD_SYSTEM_DEFAULT_MODULES=contrib
+>     set +u
+>     module reset
+>     set -u
+> 
+25c35
+<         source /apps/lmod/init/bash
+---
+>         source /apps/lmod/lmod/init/bash
+122c132
+< ftype=$(type -t set_strict)
+---
+> ftype=$(type -t set_strict || echo "")
+                      
+                      
+                      
+----HBO1-nems_configure.sh----
+----202311 vs wk----
+                      
+----202311 vs 202312----
+diff: /work2/noaa/wrf-chem/bohuang/testHercules/UFSAerosols-workflow/20231213-develop/global-workflow//ush/nems_configure.sh: No such file or directory
+                      
+                      
+                      
+----HBO1-parsing_model_configure_FV3.sh----
+----202311 vs wk----
+                      
+----202311 vs 202312----
+49a50
+> zstandard_level:         0
+                      
+                      
+                      
+----HBO1-parsing_namelists_FV3.sh----
+----202311 vs wk----
+                      
+----202311 vs 202312----
+254c254
+<   lradar       = ${lradar:-".false."}
+---
+>   lradar       = ${lradar:-".true."}
+320a321,323
+>   betascu      = ${betascu:-"8.0"}
+>   betamcu      = ${betamcu:-"1.0"}
+>   betadcu      = ${betadcu:-"2.0"}
+                      
+                      
+                      
+----HBO1-preamble.sh----
+----202311 vs wk----
+                      
+----202311 vs 202312----
+                      
+                      
+                      
